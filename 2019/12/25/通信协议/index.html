@@ -6,18 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>封装 | welcome to yhy&#39;s blogs</title>
+  <title>通信协议 | welcome to yhy&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
-<meta property="og:title" content="封装">
-<meta property="og:url" content="http://yoursite.com/2019/12/23/%E5%B0%81%E8%A3%85/index.html">
+  <meta name="description" content="前言局域网（Local Area Network，LAN）是最常见到的，也是应用最多的一种计算机网络，大到各行各业的企业内部网络，小到千家万户的家庭网络都属于局域网（仅指内部网络部分）。我们常说的校园网通常也是一种局域网 广域网（Wide Area Network，WAN）是规模最大的一种计算机网络，分布的地理范围可以非常广。  这篇讲下通信协议，现在是想讲下ssh与ssl 发送端是把通信连接建立">
+<meta property="og:type" content="article">
+<meta property="og:title" content="通信协议">
+<meta property="og:url" content="http://yoursite.com/2019/12/25/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/index.html">
 <meta property="og:site_name" content="welcome to yhy&#39;s blogs">
+<meta property="og:description" content="前言局域网（Local Area Network，LAN）是最常见到的，也是应用最多的一种计算机网络，大到各行各业的企业内部网络，小到千家万户的家庭网络都属于局域网（仅指内部网络部分）。我们常说的校园网通常也是一种局域网 广域网（Wide Area Network，WAN）是规模最大的一种计算机网络，分布的地理范围可以非常广。  这篇讲下通信协议，现在是想讲下ssh与ssl 发送端是把通信连接建立">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-12-22T16:16:20.805Z">
-<meta property="article:modified_time" content="2019-12-20T04:33:44.966Z">
+<meta property="og:image" content="https://i.loli.net/2019/12/23/hgMsCvyxqBbfozw.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/23/2g7DpKIcWC6m8Jy.png">
+<meta property="og:image" content="https://i.loli.net/2019/12/23/1IPiOlUeFZ54Hvd.png">
+<meta property="article:published_time" content="2019-12-24T16:16:14.374Z">
+<meta property="article:modified_time" content="2019-12-23T04:58:58.087Z">
 <meta property="article:author" content="yhy coder">
 <meta property="article:tag" content="Java，Notes">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/12/23/hgMsCvyxqBbfozw.png">
   
     <link rel="alternative" href="/atom.xml" title="welcome to yhy&#39;s blogs" type="application/atom+xml">
   
@@ -157,27 +163,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-封装" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-通信协议" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      封装
+      通信协议
     </h1>
   
 
         
-        <a href="/2019/12/23/%E5%B0%81%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.805Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
+        <a href="/2019/12/25/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
+  	<time datetime="2019-12-24T16:16:14.374Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>局域网（Local Area Network，LAN）是最常见到的，也是应用最多的一种计算机网络，大到各行各业的企业内部网络，小到千家万户的家庭网络都属于局域网（仅指内部网络部分）。我们常说的校园网通常也是一种局域网</p>
+<p>广域网（Wide Area Network，WAN）是规模最大的一种计算机网络，分布的地理范围可以非常广。</p>
+<p><img src="https://i.loli.net/2019/12/23/hgMsCvyxqBbfozw.png" alt="image.png"></p>
+<p>这篇讲下通信协议，现在是想讲下ssh与ssl</p>
+<p>发送端是把<strong>通信连接建立指令和用户应用数据</strong>从上层向下层传输的，直到最低的物理层；而接收端是把通信连接建立指令和用户应用数据从下层（从最低的物理层开始）向上层传输的，直到与发送端发起通信的对等层。</p>
+<p>下面图是计算机网络互连体系结构图OSI/RM：包括了广域网中不同局域网间通信的功能层次（上面五层），也给出了局域网内部通信所必需的两个层次（最下面两层）。</p>
+<p><img src="https://i.loli.net/2019/12/23/2g7DpKIcWC6m8Jy.png" alt="image.png"></p>
+<p>OSI/RM低四层（从物理层到传输层）定义了如何进行端到端的<strong>数据传输</strong>，也就是定义了如何通过网卡、物理电缆、交换机和路由器进行数据传输；而高三层（从会话层到应用层）定义了终端系统的应用程序和用户<strong>如何彼此通信</strong>，也即定义了如何重建从发送方到目的方的应用程序数据流。更多的是把OSI/RM的七层结构分成低三层和高四层的，低三层负责创建网络通信所需的网络连接（面向网络），属于“通信子网”部分，高四层具体负责端到端的用户数据通信（面向用户），属于“资源子网”部分。</p>
+<p><img src="https://i.loli.net/2019/12/23/1IPiOlUeFZ54Hvd.png" alt="image.png"></p>
+<h2 id="ssh（安全外壳协议）"><a href="#ssh（安全外壳协议）" class="headerlink" title="ssh（安全外壳协议）"></a>ssh（安全外壳协议）</h2><p>SSH仅仅是一<strong>协议标准</strong>，其具体的实现有很多，既有开源实现的OpenSSH，也有商业实现方案。使用范围最广泛的当然是开源实现OpenSSH。其目的是为了实现安全远程登录以及其它安全网络服务。ssh属于上述计算机网络体系中的应用层的。</p>
+<p>ssh root@IP</p>
+
       
 
       
@@ -256,7 +273,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/23/%E5%B0%81%E8%A3%85/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/12/25/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -270,18 +287,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/12/23/Java%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java总结
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/12/23/%E7%BB%A7%E6%89%BF/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">继承</div>
+    <a href="/2019/12/25/http/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">http</div>
       <i class="icon-circle-right"></i>
     </a>
   

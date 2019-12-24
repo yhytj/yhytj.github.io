@@ -8,20 +8,21 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>栈与堆 | welcome to yhy&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="内存空间前言这一部分涉及到一些理解Java虚拟机的东西，但是今天这篇就只想总结栈与堆空间。 正题首先Java 内存可以粗糙的区分为堆内存（Heap）和栈内存(Stack)。 栈现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成 堆Java虚拟机里面管理内存中的最大一块，堆也是所有线程共享的一块内存区域。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。">
+  <meta name="description" content="内存空间前言这一部分涉及到一些理解Java虚拟机的东西，但是今天这篇就只想总结栈与堆空间。 正题首先Java 内存可以粗糙的区分为堆内存（Heap）和栈内存(Stack)。 栈现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成。  堆Java虚拟机里面管理内存中的最大一块，堆也是所有线程共享的一块内存区域。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="栈与堆">
 <meta property="og:url" content="http://yoursite.com/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/index.html">
 <meta property="og:site_name" content="welcome to yhy&#39;s blogs">
-<meta property="og:description" content="内存空间前言这一部分涉及到一些理解Java虚拟机的东西，但是今天这篇就只想总结栈与堆空间。 正题首先Java 内存可以粗糙的区分为堆内存（Heap）和栈内存(Stack)。 栈现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成 堆Java虚拟机里面管理内存中的最大一块，堆也是所有线程共享的一块内存区域。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。">
+<meta property="og:description" content="内存空间前言这一部分涉及到一些理解Java虚拟机的东西，但是今天这篇就只想总结栈与堆空间。 正题首先Java 内存可以粗糙的区分为堆内存（Heap）和栈内存(Stack)。 栈现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成。  堆Java虚拟机里面管理内存中的最大一块，堆也是所有线程共享的一块内存区域。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2019/12/23/9UDh6ntkuyPcAqj.png">
 <meta property="og:image" content="https://i.loli.net/2019/12/23/elOn9x8wdyokJ3r.png">
 <meta property="article:published_time" content="2019-12-22T16:16:20.766Z">
-<meta property="article:modified_time" content="2019-12-22T16:10:17.930Z">
-<meta property="article:author" content="yhytj coder">
+<meta property="article:modified_time" content="2019-12-23T04:59:22.956Z">
+<meta property="article:author" content="yhy coder">
 <meta property="article:tag" content="Java，Notes">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2019/12/23/elOn9x8wdyokJ3r.png">
+<meta name="twitter:image" content="https://i.loli.net/2019/12/23/9UDh6ntkuyPcAqj.png">
   
     <link rel="alternative" href="/atom.xml" title="welcome to yhy&#39;s blogs" type="application/atom+xml">
   
@@ -53,7 +54,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">yhytj coder</a></h1>
+		  <h1 class="header-author"><a href="/">yhy coder</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">yhytj</p>
@@ -113,7 +114,7 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">yhytj coder</h1>
+			  <h1 class="header-author js-header-author">yhy coder</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>yhytj<i class="icon icon-quo-right"></i></p>
@@ -183,10 +184,11 @@
       
         <h1 id="内存空间"><a href="#内存空间" class="headerlink" title="内存空间"></a>内存空间</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一部分涉及到一些理解Java虚拟机的东西，但是今天这篇就只想总结栈与堆空间。</p>
 <h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>首先<strong>Java 内存可以粗糙的区分为堆内存（Heap）和栈内存(Stack)。</strong></p>
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成</p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成。</p>
+<p><img src="https://i.loli.net/2019/12/23/9UDh6ntkuyPcAqj.png" alt="image.png"></p>
 <h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>Java虚拟机里面管理内存中的最大一块，堆也是所有线程共享的一块内存区域。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。</p>
 <p><img src="https://i.loli.net/2019/12/23/elOn9x8wdyokJ3r.png" alt="image.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();<span class="comment">//new Dog（）要求虚拟机分配堆空间给新建的Dog对象</span></span><br><span class="line"><span class="comment">//上述的程序先是对象的声明，然后创建与赋值三个步骤。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="comment">//new Dog（）要求虚拟机分配堆空间给新建的Dog对象</span></span><br><span class="line"><span class="comment">//上述的程序先是对象的声明，然后创建与赋值三个步骤。</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -337,7 +339,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 yhytj coder
+    		&copy; 2019 yhy coder
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

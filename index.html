@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="welcome to yhy&#39;s blogs">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="yhytj coder">
+<meta property="article:author" content="yhy coder">
 <meta property="article:tag" content="Java，Notes">
 <meta name="twitter:card" content="summary">
   
@@ -47,7 +47,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">yhytj coder</a></h1>
+		  <h1 class="header-author"><a href="/">yhy coder</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">yhytj</p>
@@ -107,7 +107,7 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">yhytj coder</h1>
+			  <h1 class="header-author js-header-author">yhy coder</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>yhytj<i class="icon icon-quo-right"></i></p>
@@ -156,6 +156,349 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-通信协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/25/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">通信协议</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/25/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
+  	<time datetime="2019-12-24T16:16:14.374Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>局域网（Local Area Network，LAN）是最常见到的，也是应用最多的一种计算机网络，大到各行各业的企业内部网络，小到千家万户的家庭网络都属于局域网（仅指内部网络部分）。我们常说的校园网通常也是一种局域网</p>
+<p>广域网（Wide Area Network，WAN）是规模最大的一种计算机网络，分布的地理范围可以非常广。</p>
+<p><img src="https://i.loli.net/2019/12/23/hgMsCvyxqBbfozw.png" alt="image.png"></p>
+<p>这篇讲下通信协议，现在是想讲下ssh与ssl</p>
+<p>发送端是把<strong>通信连接建立指令和用户应用数据</strong>从上层向下层传输的，直到最低的物理层；而接收端是把通信连接建立指令和用户应用数据从下层（从最低的物理层开始）向上层传输的，直到与发送端发起通信的对等层。</p>
+<p>下面图是计算机网络互连体系结构图OSI/RM：包括了广域网中不同局域网间通信的功能层次（上面五层），也给出了局域网内部通信所必需的两个层次（最下面两层）。</p>
+<p><img src="https://i.loli.net/2019/12/23/2g7DpKIcWC6m8Jy.png" alt="image.png"></p>
+<p>OSI/RM低四层（从物理层到传输层）定义了如何进行端到端的<strong>数据传输</strong>，也就是定义了如何通过网卡、物理电缆、交换机和路由器进行数据传输；而高三层（从会话层到应用层）定义了终端系统的应用程序和用户<strong>如何彼此通信</strong>，也即定义了如何重建从发送方到目的方的应用程序数据流。更多的是把OSI/RM的七层结构分成低三层和高四层的，低三层负责创建网络通信所需的网络连接（面向网络），属于“通信子网”部分，高四层具体负责端到端的用户数据通信（面向用户），属于“资源子网”部分。</p>
+<p><img src="https://i.loli.net/2019/12/23/1IPiOlUeFZ54Hvd.png" alt="image.png"></p>
+<h2 id="ssh（安全外壳协议）"><a href="#ssh（安全外壳协议）" class="headerlink" title="ssh（安全外壳协议）"></a>ssh（安全外壳协议）</h2><p>SSH仅仅是一<strong>协议标准</strong>，其具体的实现有很多，既有开源实现的OpenSSH，也有商业实现方案。使用范围最广泛的当然是开源实现OpenSSH。其目的是为了实现安全远程登录以及其它安全网络服务。ssh属于上述计算机网络体系中的应用层的。</p>
+<p>ssh root@IP</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/25/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-http" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/25/http/">http</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/25/http/" class="archive-article-date">
+  	<time datetime="2019-12-24T16:16:14.367Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><h2 id="长轮询：都是浪费性能"><a href="#长轮询：都是浪费性能" class="headerlink" title="长轮询：都是浪费性能"></a>长轮询：都是浪费性能</h2><h2 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h2><h1 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h1><p>全双工通信，实时通信，互相的，服务器主动通知客户端，用HTTP请求协议，HTTP头部有WebSocket协议，握手后，就使用TCP协议交流</p>
+<p>node.js一开始就支持websocket协议。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/25/http/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/25/Linux/">Linux</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/25/Linux/" class="archive-article-date">
+  	<time datetime="2019-12-24T16:16:14.365Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h1><p><strong>Linux</strong>是一套免费使用和自由传播的类Unix操作系统，是一个基于POSIX和Unix的多用户、多任务、支持多线程和多CPU的操作系统。它能运行主要的Unix工具软件、应用程序和网络协议。它支持32位和64位硬件。Linux继承了Unix以网络为核心的设计思想，是一个性能稳定的多用户网络操作系统（度娘）。Linux系统大致分为两种，debian系和redhat系的。现在国产的也有很多，例如优麒麟、以及安全操作系统凝思。</p>
+<table>
+<thead>
+<tr>
+<th>debian系</th>
+<th>redhat系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Debian</td>
+<td>RedHat</td>
+</tr>
+<tr>
+<td>|Ubuntu</td>
+<td>Fedora</td>
+</tr>
+<tr>
+<td>Mint</td>
+<td>Centos</td>
+</tr>
+</tbody></table>
+<h1 id="2-好处"><a href="#2-好处" class="headerlink" title="2. 好处"></a>2. 好处</h1><ol>
+<li>免费开源：感觉这也是受欢迎的关键点，在国内也有很多自己的版本，比如最近在使用的国产ubuntu优麒麟，正是由于Linux的免费，许多程序员可以根据自己的兴趣去修改，这也让Linux不断壮大发展。</li>
+<li>支持多用户、多用户：Linux支持多用户，各个用户对于自己的文件设备有自己特殊的权利，保证了各用户之间互不影响。</li>
+<li>良好的界面：有着字符界面和图形界面，在Linux上，可以通过终端来完成所有工作基本上。其实也是一种给人很牛皮的感觉。</li>
+<li>支持多平台：Linux可以运行在多种硬件平台上，如具有x86、680x0、SPARC、Alpha等处理器的平台。此外Linux还是一种嵌入式操作系统，可以运行在掌上电脑、机顶盒或游戏机上。之前玩了一阵子的树莓派，树莓派上就可以跑Linux的。</li>
+</ol>
+<h1 id="3-常见操作"><a href="#3-常见操作" class="headerlink" title="3. 常见操作"></a>3. 常见操作</h1><h1 id="4-Linux命令操作"><a href="#4-Linux命令操作" class="headerlink" title="4. Linux命令操作"></a>4. Linux命令操作</h1><h3 id="dpkg：-package-manager-for-Debian"><a href="#dpkg：-package-manager-for-Debian" class="headerlink" title="dpkg： package manager for Debian"></a>dpkg： package manager for Debian</h3><ol>
+<li>- 安装： dpkg -i package（命令行操作常用）</li>
+<li>- 卸载： dpkg -r package</li>
+<li>- 卸载并删除配置文件： dpkg -P |–purge package</li>
+<li>- 如果安装一个包时、说依赖某些库、 可以先 apt-get install somelib</li>
+<li>- 查看软件包安装内容 ：dpkg -L package</li>
+<li>- 查看文件由哪个软件包提供： dpkg -S filename</li>
+<li>- 另外 dpkg还有 dselect和aptitude 两个frontend</li>
+</ol>
+<h3 id="apt"><a href="#apt" class="headerlink" title="apt"></a>apt</h3><ul>
+<li>- 安装： apt-get install packs</li>
+<li>- 更新源：apt-get update</li>
+<li>- 升级系统：apt-get upgrade（安装东西的时候，都要进行这一步。这里一般都很花费较长时间，有时比较慢，可以考虑换成国内的源。）</li>
+<li>- 智能升级、安装新软件包，删除废弃的软件包：apt-get dist-upgrade f –fix broken 修复依赖：apt-get f install</li>
+<li>- 自动删除无用的软件：apt-get autoremove 删除软件：apt-get remove packages</li>
+</ul>
+<h3 id="mount"><a href="#mount" class="headerlink" title="mount"></a>mount</h3><ul>
+<li>- 用来挂载linux外的文件，非常重要的一个命令，笔者也算是入门水平，还没真正熟悉用这个命令。大家可以多查阅资料去了解更多的内容。</li>
+<li>- 基本格式:mount -t type [-o options] device dir (device:指定要挂载的设备，磁盘、光驱等 dir 指定把文件系统挂载到哪个目录 type 指定挂载的文件系统类型 options 指定挂载参数)。</li>
+<li>- <a href="https://www.runoob.com/linux/linux-comm-mount.html" target="_blank" rel="noopener">菜鸟教程的链接</a></li>
+<li>- 示例：#mount -o ro /a/b/c——将a/b挂在/c下面</li>
+<li>- [-o options]—— -o auto打开挂上模式 -o ro 只读 -o rw 读写模式挂载</li>
+</ul>
+<h3 id="man"><a href="#man" class="headerlink" title="man"></a>man</h3><p>- 这个命令是在Linux下提供的帮助手册，也很重要，对于哪个命令不清楚的话。就直接man +命令即可查阅。<br><img src="https://img-blog.csdnimg.cn/2019111309480482.png" alt="img"></p>
+<p>格式有下面这些；退出阅读界面就直接按q即可。</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>NAME</td>
+<td>名称，可以最简洁得了解该命令</td>
+</tr>
+<tr>
+<td>SYNOPSIS</td>
+<td>概要，用法说明和能够使用的选项</td>
+</tr>
+<tr>
+<td>DESCRIPTION</td>
+<td>对各个功能命令的详细解释说明</td>
+</tr>
+<tr>
+<td>OPTIONS</td>
+<td>说明每一项的意义</td>
+</tr>
+<tr>
+<td>AUTHORS</td>
+<td>伟大的发明创作这个的作者</td>
+</tr>
+<tr>
+<td>SEE ALSO</td>
+<td>另外参照</td>
+</tr>
+<tr>
+<td>COPYRIGHT</td>
+<td>版权说明，在linux都是可以更改的 free</td>
+</tr>
+</tbody></table>
+<h3 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h3><ul>
+<li>- df -h——查看磁盘空间（h是以友好的方式进行查看）</li>
+<li><img src="https://img-blog.csdnimg.cn/20191113101506159.png" alt="img"></li>
+</ul>
+<ul>
+<li><strong>find+文件</strong>——可以查看当前目录下的文件，若是文件夹，存在就会列出文件夹中的文件。</li>
+<li><strong>netstat -ant</strong>——用来查看本地一些端口信息等，监听使用等，这个命令很重要，之前在设置mysql的时候都有用到，解决一些端口问题上都会用到这个命令。</li>
+<li><img src="https://img-blog.csdnimg.cn/20191113101917287.png" alt="Linux实例"></li>
+<li><strong>mkdir</strong> ——创建文件夹 eg：mkdir 文件夹名 touch ——创建文件eg：touch 文件名。</li>
+<li><strong>du -h 文件</strong>——查看文件的大小，有时要查看文件的大小，在使用vim之前一般都会建议查看一下大小，因为大于100M的文件直接vim打开会出现问题。</li>
+<li><img src="https://img-blog.csdnimg.cn/20191113104248336.png" alt="实例图片"></li>
+<li><strong>su</strong> ——切换用户，比如su -uroot -p切换到root用户下。</li>
+<li><strong>ping命令</strong>——这个其实不管哪个系统都很重要，是关于tcp/ip的，Ping 是一个十分好用的TCP/IP工具。它是用来检测网络的连通情况和分析网络速度。</li>
+<li><img src="https://img-blog.csdnimg.cn/20191113112148837.png" alt="img"></li>
+</ul>
+<h1 id="推荐"><a href="#推荐" class="headerlink" title="推荐"></a>推荐</h1><p>在这个标题下推荐一些好的链接（书籍、网站、博客等）</p>
+<p>\1. <strong>书籍</strong></p>
+<table>
+<thead>
+<tr>
+<th>鸟哥的Linux私房菜</th>
+<th>鸟哥（作者）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>The Linux Command Line(linux命令行大全)</td>
+<td>william E</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p>个人感觉要想形成自己的知识体系，就要不断得去学习和阅读书籍，现在的学习环境总体而言太复杂了，太浮躁了，学技术要定下心，沉住气，所以阅读经典实用的书籍是必不可少的，日后对某一种知识遗忘时，随手一翻也可以快速得拾起记忆。</p>
+<p>一般这些技术书，我都是上一些二手网站淘回来，例如有路网等，当然京东和当当网也会搞活动有时候，也很划算，刚刚过去的双十一就买了两本。比较划算，包括上面那个Linux command line</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1847641/201911/1847641-20191114090926580-989305844.png" alt="img"></p>
+<p> 双十一折扣回来两本70多，很香的价格。</p>
+<p>下面的截图是<em>鸟哥的Linux私房菜</em>截图，个人强烈推荐，对于学生来讲是非常友好的，用易懂的语言去讲解，并不枯燥。</p>
+<p><img src="https://img2018.cnblogs.com/i-beta/1847641/201911/1847641-20191114094314704-856124372.png" alt="img"></p>
+<p>\2. <strong>Github</strong></p>
+<ul>
+<li>[大佬总结pdf（强烈推荐）]</li>
+</ul>
+<p><a href="https://github.com/xjjdog/javaok/blob/master/最有用Linux系列-百页精华.pdf" target="_blank" rel="noopener">https://github.com/xjjdog/javaok/blob/master/%E6%9C%80%E6%9C%89%E7%94%A8Linux%E7%B3%BB%E5%88%97-%E7%99%BE%E9%A1%B5%E7%B2%BE%E5%8D%8E.pdf</a><br>\3. <strong>网站</strong></p>
+<ul>
+<li>个人感觉挺不错的一个学习实践<a href="https://linux.cn/" target="_blank" rel="noopener">开源中国社区</a>。</li>
+<li><a href="https://www.runoob.com/linux/linux-tutorial.html" target="_blank" rel="noopener">菜鸟教程</a>-这是一个比较快速入门的网站，但有些地方没细讲，大家可以自行查看。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/25/Linux/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -778,318 +1121,6 @@
 
 
   
-    <article id="post-1215" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/1215/">1215</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/1215/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.805Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ArrayList-与数组的“纠缠不清”的暧昧"><a href="#ArrayList-与数组的“纠缠不清”的暧昧" class="headerlink" title="ArrayList 与数组的“纠缠不清”的暧昧"></a>ArrayList 与数组的“纠缠不清”的暧昧</h1><p>[TOC]</p>
-<p><a href="#1">前言</a></p>
-<p><a href="#2">是什么</a></p>
-<p><a href="#3">有什么用</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id = 1>前言</div></h2><p>能不能有一种数组可以在删除掉某些元素自动缩小就好了。可是话说哪里学的Java?数组能删除元素吗？今天讲一下一个特殊对象——ArrayList，它的出现与存在和数组有着几分类似。下面按照它是什么-有什么用-怎么用来讲？再讲讲与数组的区别?</p>
-<h2 id="正话（个人的见解，有误请多指教）"><a href="#正话（个人的见解，有误请多指教）" class="headerlink" title="正话（个人的见解，有误请多指教）"></a>正话（个人的见解，有误请多指教）</h2><h3 id="惯例先明白它是什么？"><a href="#惯例先明白它是什么？" class="headerlink" title="惯例先明白它是什么？"></a><div id = 2>惯例先明白它是什么？</div></h3><ul>
-<li>源码搞上！！！<E>表示泛型(只能引用类型)，也就是装在集合当中的所有元素，全都是统一的什么类型. 很明显它是一个类，继承(extends)了AbstractList,实现(implements)了List、RandomAcess等。（<em>extends可以理解为全盘继承了父类的功能。implements可以理解为为这个类附加一些额外的功能</em>）。它是一个容量可以自动增长的动态数组（并非数组），可以支持删除操作。</li>
-<li><img src="https://i.loli.net/2019/12/15/g3inT2s8DdpjzO9.png" alt="image.png"></li>
-<li><img src="https://i.loli.net/2019/12/15/JfeIDxX7PE6luZW.png" alt="image.png"></li>
-<li>它的初始容量为10。下面的构造方法第一个就是构造容量为10的。要想改变这个容量，就像第二个的构造方法那样就可以了。第三个是构造一个包含指定集合的元素的列表，按照他们由集合的迭代器返回的顺序。</li>
-<li><img src="https://i.loli.net/2019/12/15/rhu9EzO46fmKFpI.png" alt="image.png"></li>
-<li>值得一提的是，Java集合框架中定义了List接口，而且只有两个实现，除了这个ArrayList还有LinkedList。在数据结构与算法分析书上有着这么两句结论，具体得到是在书中通过了算法得来的。LinkedList在Java和C#中实际上是在使用双链表。<ul>
-<li>ArrayList优势是在末尾添加，删除，获取和设置（set and get）。</li>
-<li>LinkedList优势是从开头添加级删除开头元素。</li>
-</ul>
-</li>
-<li>数组表（ArrayList）和数组很相似在于，读取的时候为O（1），在插入时候就变为O（n）了，不同在于这个数组表可以增加长度，在添加时候，只需表尾编号加一便可以确定新元素了。</li>
-<li>ArrayList不是线程安全的。<strong>线程安全是说一个对象可以完全被多个线程同时使用，不出问题。</strong>这个在后面的深入学习虚拟机会经常遇到——使用多线程之间同步synchronized或使用锁(lock)可以解决。</li>
-</ul>
-<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a><div id =3>基本用法</div></h3><ul>
-<li>动态的增加和减少元素，实现了ICollection和list接口。当然还可以灵活得选择数组的大小。</li>
-</ul>
-<ol>
-<li><p>常用方法</p>
-<p><img src="https://i.loli.net/2019/12/15/2dPnz9GAHgTweyi.png" alt="image.png"></p>
-</li>
-<li><p>删除作用，可以实现数组不能的删除</br></p>
-<div><img src="https://i.loli.net/2019/12/15/L18TVydzQEfMwSo.png" alt="image.png" width="800" height="300" /></div>
-</li>
-<li><p>实现添加整个容量，添加元素</br><img src="https://i.loli.net/2019/12/15/rlvCPUWqksK3oTf.png" alt="image.png"></p>
-</li>
-</ol>
-<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><ol>
-<li><p>想要存储数字，也就是基本数据类型，就可以使用包装类(位于java.lang下)。</p>
-<ul>
-<li><table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th>包装类</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>int</td>
-<td>Integer</td>
-</tr>
-<tr>
-<td>byte</td>
-<td>Byte</td>
-</tr>
-<tr>
-<td>short</td>
-<td>Short</td>
-</tr>
-<tr>
-<td>long</td>
-<td>Long</td>
-</tr>
-<tr>
-<td>float</td>
-<td>Float</td>
-</tr>
-<tr>
-<td>doublr</td>
-<td>Double</td>
-</tr>
-<tr>
-<td>char</td>
-<td>Character</td>
-</tr>
-<tr>
-<td>boolean</td>
-<td>Boolean</td>
-</tr>
-</tbody></table>
-</li>
-<li><pre><code class="java">ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;;<span class="comment">//这样创建不会报错了</span>
-&lt;!--￼<span class="number">0</span>--&gt;
-
-
-</code></pre>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="3">
-<li></li>
-<li><p>* </p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/1215/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/%E5%A4%9A%E6%80%81/">多态</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/%E5%A4%9A%E6%80%81/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.805Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>这篇讲下三大特性之一的<strong>多态</strong>，可以通俗得去理解，多种形态，多种姿态。。。</p>
-<p>那么在面向对象的程序设计中，多态是    指什么?</p>
-<blockquote>
-<p>Java引用变量有两个类型；一个是编译类型，一个是运行时类型。编译时类型由声明该变量时使用的类型决定，运行时类型由实际赋给该变量的对象决定.如果编译类型和运行时类型不一致，就可能出现所谓的多态（Polymorphism）</p>
-<p>“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。——ThinkinJava</p>
-</blockquote>
-<p>直接网易百科-Polymorphism</p>
-<p><img src="https://i.loli.net/2019/12/20/Q4IryEZBHvd5OUY.png" alt="image.png"></p>
-<h2 id="二、多态包含（或者说体现在）两个方面："><a href="#二、多态包含（或者说体现在）两个方面：" class="headerlink" title="二、多态包含（或者说体现在）两个方面："></a>二、多态包含（或者说体现在）两个方面：</h2><ol>
-<li><p>首先是同一个方法，不同的实现效果，就具体的方法是怎么实现的，是可以不同的。就是<strong>方法的多态性</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">吃苹果方法，可以剥皮吃，也可以不剥皮吃，甚至是榨苹果汁喝。</span><br></pre></td></tr></table></figure>
-
-<p>规范讲这种就是可以通过重载和覆写来实现</p>
-<ul>
-<li>重载：同一个方法名称，因为不同的参数类型和个数，因此可以达到不同的效果。</li>
-<li>覆写：同一个方法，根据实例化的子类对象不同，最后的效果和实现功能不一样。</li>
-</ul>
-</li>
-<li><p>对象的多态性：父子类对象的转换。</p>
-<ul>
-<li>向上转型：子类对象变为父类</li>
-<li>向下转型：父类对象变为子类</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、实现的前提条件"><a href="#三、实现的前提条件" class="headerlink" title="三、实现的前提条件"></a>三、实现的前提条件</h2><p>继承和接口可以实现多态</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/%E5%A4%9A%E6%80%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git-leanring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/git-leanring/">git-leanring</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/git-leanring/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>git reset HEAD <file></p>
-<p>用来取消暂存文件，就是git add 1和2，但是你不想提交2了。那么就可以用该命令去取消。</p>
-</li>
-<li><p>git checkout – <file></p>
-<p>用来撤销对文件的修改，在changes not staged for commit 中经常看到，这个是可以还原成它上次提交的时候的样子。需要注意的是，你自上次修改后的内容将全部作废，所以这个命令还是蛮危险的</p>
-</li>
-<li></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/git-leanring/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -1104,7 +1135,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 yhytj coder
+    		&copy; 2019 yhy coder
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten

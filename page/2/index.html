@@ -13,7 +13,7 @@
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="welcome to yhy&#39;s blogs">
 <meta property="og:locale" content="en_US">
-<meta property="article:author" content="yhytj coder">
+<meta property="article:author" content="yhy coder">
 <meta property="article:tag" content="Java，Notes">
 <meta name="twitter:card" content="summary">
   
@@ -47,7 +47,7 @@
 			<img src="" class="js-avatar">
 		</a>
 		<hgroup>
-		  <h1 class="header-author"><a href="/">yhytj coder</a></h1>
+		  <h1 class="header-author"><a href="/">yhy coder</a></h1>
 		</hgroup>
 		
 		<p class="header-subtitle">yhytj</p>
@@ -107,7 +107,7 @@
 				<img src="" class="js-avatar">
 			</div>
 			<hgroup>
-			  <h1 class="header-author js-header-author">yhytj coder</h1>
+			  <h1 class="header-author js-header-author">yhy coder</h1>
 			</hgroup>
 			
 			<p class="header-subtitle"><i class="icon icon-quo-left"></i>yhytj<i class="icon icon-quo-right"></i></p>
@@ -156,6 +156,318 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-1215" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/23/1215/">1215</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/23/1215/" class="archive-article-date">
+  	<time datetime="2019-12-22T16:16:20.805Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ArrayList-与数组的“纠缠不清”的暧昧"><a href="#ArrayList-与数组的“纠缠不清”的暧昧" class="headerlink" title="ArrayList 与数组的“纠缠不清”的暧昧"></a>ArrayList 与数组的“纠缠不清”的暧昧</h1><p>[TOC]</p>
+<p><a href="#1">前言</a></p>
+<p><a href="#2">是什么</a></p>
+<p><a href="#3">有什么用</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id = 1>前言</div></h2><p>能不能有一种数组可以在删除掉某些元素自动缩小就好了。可是话说哪里学的Java?数组能删除元素吗？今天讲一下一个特殊对象——ArrayList，它的出现与存在和数组有着几分类似。下面按照它是什么-有什么用-怎么用来讲？再讲讲与数组的区别?</p>
+<h2 id="正话（个人的见解，有误请多指教）"><a href="#正话（个人的见解，有误请多指教）" class="headerlink" title="正话（个人的见解，有误请多指教）"></a>正话（个人的见解，有误请多指教）</h2><h3 id="惯例先明白它是什么？"><a href="#惯例先明白它是什么？" class="headerlink" title="惯例先明白它是什么？"></a><div id = 2>惯例先明白它是什么？</div></h3><ul>
+<li>源码搞上！！！<E>表示泛型(只能引用类型)，也就是装在集合当中的所有元素，全都是统一的什么类型. 很明显它是一个类，继承(extends)了AbstractList,实现(implements)了List、RandomAcess等。（<em>extends可以理解为全盘继承了父类的功能。implements可以理解为为这个类附加一些额外的功能</em>）。它是一个容量可以自动增长的动态数组（并非数组），可以支持删除操作。</li>
+<li><img src="https://i.loli.net/2019/12/15/g3inT2s8DdpjzO9.png" alt="image.png"></li>
+<li><img src="https://i.loli.net/2019/12/15/JfeIDxX7PE6luZW.png" alt="image.png"></li>
+<li>它的初始容量为10。下面的构造方法第一个就是构造容量为10的。要想改变这个容量，就像第二个的构造方法那样就可以了。第三个是构造一个包含指定集合的元素的列表，按照他们由集合的迭代器返回的顺序。</li>
+<li><img src="https://i.loli.net/2019/12/15/rhu9EzO46fmKFpI.png" alt="image.png"></li>
+<li>值得一提的是，Java集合框架中定义了List接口，而且只有两个实现，除了这个ArrayList还有LinkedList。在数据结构与算法分析书上有着这么两句结论，具体得到是在书中通过了算法得来的。LinkedList在Java和C#中实际上是在使用双链表。<ul>
+<li>ArrayList优势是在末尾添加，删除，获取和设置（set and get）。</li>
+<li>LinkedList优势是从开头添加级删除开头元素。</li>
+</ul>
+</li>
+<li>数组表（ArrayList）和数组很相似在于，读取的时候为O（1），在插入时候就变为O（n）了，不同在于这个数组表可以增加长度，在添加时候，只需表尾编号加一便可以确定新元素了。</li>
+<li>ArrayList不是线程安全的。<strong>线程安全是说一个对象可以完全被多个线程同时使用，不出问题。</strong>这个在后面的深入学习虚拟机会经常遇到——使用多线程之间同步synchronized或使用锁(lock)可以解决。</li>
+</ul>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a><div id =3>基本用法</div></h3><ul>
+<li>动态的增加和减少元素，实现了ICollection和list接口。当然还可以灵活得选择数组的大小。</li>
+</ul>
+<ol>
+<li><p>常用方法</p>
+<p><img src="https://i.loli.net/2019/12/15/2dPnz9GAHgTweyi.png" alt="image.png"></p>
+</li>
+<li><p>删除作用，可以实现数组不能的删除</br></p>
+<div><img src="https://i.loli.net/2019/12/15/L18TVydzQEfMwSo.png" alt="image.png" width="800" height="300" /></div>
+</li>
+<li><p>实现添加整个容量，添加元素</br><img src="https://i.loli.net/2019/12/15/rlvCPUWqksK3oTf.png" alt="image.png"></p>
+</li>
+</ol>
+<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><ol>
+<li><p>想要存储数字，也就是基本数据类型，就可以使用包装类(位于java.lang下)。</p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>doublr</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody></table>
+</li>
+<li><pre><code class="java">ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;;<span class="comment">//这样创建不会报错了</span>
+&lt;!--￼<span class="number">0</span>--&gt;
+
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li></li>
+<li><p>* </p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/23/1215/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/23/%E5%A4%9A%E6%80%81/">多态</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/23/%E5%A4%9A%E6%80%81/" class="archive-article-date">
+  	<time datetime="2019-12-22T16:16:20.805Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>这篇讲下三大特性之一的<strong>多态</strong>，可以通俗得去理解，多种形态，多种姿态。。。</p>
+<p>那么在面向对象的程序设计中，多态是    指什么?</p>
+<blockquote>
+<p>Java引用变量有两个类型；一个是编译类型，一个是运行时类型。编译时类型由声明该变量时使用的类型决定，运行时类型由实际赋给该变量的对象决定.如果编译类型和运行时类型不一致，就可能出现所谓的多态（Polymorphism）</p>
+<p>“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。——ThinkinJava</p>
+</blockquote>
+<p>直接网易百科-Polymorphism</p>
+<p><img src="https://i.loli.net/2019/12/20/Q4IryEZBHvd5OUY.png" alt="image.png"></p>
+<h2 id="二、多态包含（或者说体现在）两个方面："><a href="#二、多态包含（或者说体现在）两个方面：" class="headerlink" title="二、多态包含（或者说体现在）两个方面："></a>二、多态包含（或者说体现在）两个方面：</h2><ol>
+<li><p>首先是同一个方法，不同的实现效果，就具体的方法是怎么实现的，是可以不同的。就是<strong>方法的多态性</strong>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">吃苹果方法，可以剥皮吃，也可以不剥皮吃，甚至是榨苹果汁喝。</span><br></pre></td></tr></table></figure>
+
+<p>规范讲这种就是可以通过重载和覆写来实现</p>
+<ul>
+<li>重载：同一个方法名称，因为不同的参数类型和个数，因此可以达到不同的效果。</li>
+<li>覆写：同一个方法，根据实例化的子类对象不同，最后的效果和实现功能不一样。</li>
+</ul>
+</li>
+<li><p>对象的多态性：父子类对象的转换。</p>
+<ul>
+<li>向上转型：子类对象变为父类</li>
+<li>向下转型：父类对象变为子类</li>
+</ul>
+</li>
+</ol>
+<h2 id="三、实现的前提条件"><a href="#三、实现的前提条件" class="headerlink" title="三、实现的前提条件"></a>三、实现的前提条件</h2><p>继承和接口可以实现多态</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/23/%E5%A4%9A%E6%80%81/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-git-leanring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/23/git-leanring/">git-leanring</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/23/git-leanring/" class="archive-article-date">
+  	<time datetime="2019-12-22T16:16:20.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>git reset HEAD <file></p>
+<p>用来取消暂存文件，就是git add 1和2，但是你不想提交2了。那么就可以用该命令去取消。</p>
+</li>
+<li><p>git checkout – <file></p>
+<p>用来撤销对文件的修改，在changes not staged for commit 中经常看到，这个是可以还原成它上次提交的时候的样子。需要注意的是，你自上次修改后的内容将全部作废，所以这个命令还是蛮危险的</p>
+</li>
+<li></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/23/git-leanring/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-垃圾回收机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -341,10 +653,11 @@
       
         <h1 id="内存空间"><a href="#内存空间" class="headerlink" title="内存空间"></a>内存空间</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一部分涉及到一些理解Java虚拟机的东西，但是今天这篇就只想总结栈与堆空间。</p>
 <h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>首先<strong>Java 内存可以粗糙的区分为堆内存（Heap）和栈内存(Stack)。</strong></p>
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成</p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成。</p>
+<p><img src="https://i.loli.net/2019/12/23/9UDh6ntkuyPcAqj.png" alt="image.png"></p>
 <h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>Java虚拟机里面管理内存中的最大一块，堆也是所有线程共享的一块内存区域。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。</p>
 <p><img src="https://i.loli.net/2019/12/23/elOn9x8wdyokJ3r.png" alt="image.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();<span class="comment">//new Dog（）要求虚拟机分配堆空间给新建的Dog对象</span></span><br><span class="line"><span class="comment">//上述的程序先是对象的声明，然后创建与赋值三个步骤。</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="comment">//new Dog（）要求虚拟机分配堆空间给新建的Dog对象</span></span><br><span class="line"><span class="comment">//上述的程序先是对象的声明，然后创建与赋值三个步骤。</span></span><br></pre></td></tr></table></figure>
 
 
 
@@ -592,7 +905,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2019 yhytj coder
+    		&copy; 2019 yhy coder
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
