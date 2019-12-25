@@ -3,6 +3,9 @@
 <head>
   <meta charset="utf-8">
   
+  
+    <link rel="icon" href="/img/baobao.ico">
+  
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
@@ -545,6 +548,78 @@
 
 
   
+    <article id="post-栈与堆" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/">栈与堆</a>
+    </h1>
+  
+
+        
+        <a href="/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/" class="archive-article-date">
+  	<time datetime="2019-12-22T16:16:20.766Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="内存空间"><a href="#内存空间" class="headerlink" title="内存空间"></a>内存空间</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一部分涉及到一些理解Java虚拟机的东西，但是今天这篇就只想总结栈与堆空间。</p>
+<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>首先<strong>Java 内存可以粗糙的区分为堆内存（Heap）和栈内存(Stack)。</strong></p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成。</p>
+<p><img src="https://i.loli.net/2019/12/23/9UDh6ntkuyPcAqj.png" alt="image.png"></p>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>Java虚拟机里面管理内存中的最大一块，堆也是所有线程共享的一块内存区域。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。</p>
+<p><img src="https://i.loli.net/2019/12/23/elOn9x8wdyokJ3r.png" alt="image.png"></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="comment">//new Dog（）要求虚拟机分配堆空间给新建的Dog对象</span></span><br><span class="line"><span class="comment">//上述的程序先是对象的声明，然后创建与赋值三个步骤。</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-常量变量数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -615,78 +690,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/12/23/%E5%B8%B8%E9%87%8F%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-栈与堆" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/">栈与堆</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.766Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="内存空间"><a href="#内存空间" class="headerlink" title="内存空间"></a>内存空间</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一部分涉及到一些理解Java虚拟机的东西，但是今天这篇就只想总结栈与堆空间。</p>
-<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>首先<strong>Java 内存可以粗糙的区分为堆内存（Heap）和栈内存(Stack)。</strong></p>
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成。</p>
-<p><img src="https://i.loli.net/2019/12/23/9UDh6ntkuyPcAqj.png" alt="image.png"></p>
-<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>Java虚拟机里面管理内存中的最大一块，堆也是所有线程共享的一块内存区域。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。</p>
-<p><img src="https://i.loli.net/2019/12/23/elOn9x8wdyokJ3r.png" alt="image.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="comment">//new Dog（）要求虚拟机分配堆空间给新建的Dog对象</span></span><br><span class="line"><span class="comment">//上述的程序先是对象的声明，然后创建与赋值三个步骤。</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/">展开全文 >></a>
         </p>
       
 
