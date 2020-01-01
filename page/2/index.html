@@ -160,20 +160,739 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-Linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java-SE/Java SE 与Java EE" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/25/Linux/">Linux</a>
+      <a class="article-title" href="/2020/01/01/Java-SE/Java%20SE%20%E4%B8%8EJava%20EE/">Java-SE/Java SE 与Java EE</a>
     </h1>
   
 
         
-        <a href="/2019/12/25/Linux/" class="archive-article-date">
-  	<time datetime="2019-12-24T16:16:14.365Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-25</time>
+        <a href="/2020/01/01/Java-SE/Java%20SE%20%E4%B8%8EJava%20EE/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.117Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Java-SE-——Java-Platform，Standard-Edition"><a href="#Java-SE-——Java-Platform，Standard-Edition" class="headerlink" title="Java SE ——Java Platform，Standard Edition"></a>Java SE ——Java Platform，Standard Edition</h1><p>以前称谓J2SE，包含支持Java web服务开发的类，并为Java作基础</p>
+<h1 id="Java-EE——Java-Platform，Enterprise-Edition"><a href="#Java-EE——Java-Platform，Enterprise-Edition" class="headerlink" title="Java EE——Java Platform，Enterprise Edition"></a>Java EE——Java Platform，Enterprise Edition</h1><p>以前称为 J2EE，提供web服务、组件模型和管理和通信API</p>
+<ul>
+<li>简单来说Java SE 是做电脑运行的软件，EE是用来做网站服务的。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/Java-SE/Java%20SE%20%E4%B8%8EJava%20EE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-SE/ArrayList介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/Java-SE/ArrayList%E4%BB%8B%E7%BB%8D/">Java-SE/ArrayList介绍</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/Java-SE/ArrayList%E4%BB%8B%E7%BB%8D/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.117Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ArrayList-与数组的“纠缠不清”的暧昧"><a href="#ArrayList-与数组的“纠缠不清”的暧昧" class="headerlink" title="ArrayList 与数组的“纠缠不清”的暧昧"></a>ArrayList 与数组的“纠缠不清”的暧昧</h1><p>[TOC]</p>
+<p><a href="#1">前言</a></p>
+<p><a href="#2">是什么</a></p>
+<p><a href="#3">有什么用</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id = 1>前言</div></h2><p>能不能有一种数组可以在删除掉某些元素自动缩小就好了。可是话说哪里学的Java?数组能删除元素吗？今天讲一下一个特殊对象——ArrayList，它的出现与存在和数组有着几分类似。下面按照它是什么-有什么用-怎么用来讲？再讲讲与数组的区别?</p>
+<h2 id="正话（个人的见解，有误请多指教）"><a href="#正话（个人的见解，有误请多指教）" class="headerlink" title="正话（个人的见解，有误请多指教）"></a>正话（个人的见解，有误请多指教）</h2><h3 id="惯例先明白它是什么？"><a href="#惯例先明白它是什么？" class="headerlink" title="惯例先明白它是什么？"></a><div id = 2>惯例先明白它是什么？</div></h3><ul>
+<li>源码搞上！！！<E>表示泛型(只能引用类型)，也就是装在集合当中的所有元素，全都是统一的什么类型. 很明显它是一个类，继承(extends)了AbstractList,实现(implements)了List、RandomAcess等。（<em>extends可以理解为全盘继承了父类的功能。implements可以理解为为这个类附加一些额外的功能</em>）。它是一个容量可以自动增长的动态数组（并非数组），可以支持删除操作。</li>
+<li><img src="https://i.loli.net/2019/12/15/g3inT2s8DdpjzO9.png" alt="image.png"></li>
+<li><img src="https://i.loli.net/2019/12/15/JfeIDxX7PE6luZW.png" alt="image.png"></li>
+<li>它的初始容量为10。下面的构造方法第一个就是构造容量为10的。要想改变这个容量，就像第二个的构造方法那样就可以了。第三个是构造一个包含指定集合的元素的列表，按照他们由集合的迭代器返回的顺序。</li>
+<li><img src="https://i.loli.net/2019/12/15/rhu9EzO46fmKFpI.png" alt="image.png"></li>
+<li>值得一提的是，Java集合框架中定义了List接口，而且只有两个实现，除了这个ArrayList还有LinkedList。在数据结构与算法分析书上有着这么两句结论，具体得到是在书中通过了算法得来的。LinkedList在Java和C#中实际上是在使用双链表。<ul>
+<li>ArrayList优势是在末尾添加，删除，获取和设置（set and get）。</li>
+<li>LinkedList优势是从开头添加级删除开头元素。</li>
+</ul>
+</li>
+<li>数组表（ArrayList）和数组很相似在于，读取的时候为O（1），在插入时候就变为O（n）了，不同在于这个数组表可以增加长度，在添加时候，只需表尾编号加一便可以确定新元素了。</li>
+<li>ArrayList不是线程安全的。<strong>线程安全是说一个对象可以完全被多个线程同时使用，不出问题。</strong>这个在后面的深入学习虚拟机会经常遇到——使用多线程之间同步synchronized或使用锁(lock)可以解决。</li>
+</ul>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a><div id =3>基本用法</div></h3><ul>
+<li>动态的增加和减少元素，实现了ICollection和list接口。当然还可以灵活得选择数组的大小。</li>
+</ul>
+<ol>
+<li><p>常用方法</p>
+<p><img src="https://i.loli.net/2019/12/15/2dPnz9GAHgTweyi.png" alt="image.png"></p>
+</li>
+<li><p>删除作用，可以实现数组不能的删除</br></p>
+<div><img src="https://i.loli.net/2019/12/15/L18TVydzQEfMwSo.png" alt="image.png" width="800" height="300" /></div>
+</li>
+<li><p>实现添加整个容量，添加元素</br><img src="https://i.loli.net/2019/12/15/rlvCPUWqksK3oTf.png" alt="image.png"></p>
+</li>
+</ol>
+<h3 id="怎么用"><a href="#怎么用" class="headerlink" title="怎么用"></a>怎么用</h3><ol>
+<li><p>想要存储数字，也就是基本数据类型，就可以使用包装类(位于java.lang下)。</p>
+<ul>
+<li><table>
+<thead>
+<tr>
+<th>基本类型</th>
+<th>包装类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>int</td>
+<td>Integer</td>
+</tr>
+<tr>
+<td>byte</td>
+<td>Byte</td>
+</tr>
+<tr>
+<td>short</td>
+<td>Short</td>
+</tr>
+<tr>
+<td>long</td>
+<td>Long</td>
+</tr>
+<tr>
+<td>float</td>
+<td>Float</td>
+</tr>
+<tr>
+<td>doublr</td>
+<td>Double</td>
+</tr>
+<tr>
+<td>char</td>
+<td>Character</td>
+</tr>
+<tr>
+<td>boolean</td>
+<td>Boolean</td>
+</tr>
+</tbody></table>
+</li>
+<li><pre><code class="java">ArrayList&lt;Integer&gt; list = <span class="keyword">new</span> ArrayList&lt;&gt;;<span class="comment">//这样创建不会报错了</span>
+&lt;!--￼<span class="number">0</span>--&gt;
+
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<ol start="3">
+<li></li>
+<li><p>* </p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/Java-SE/ArrayList%E4%BB%8B%E7%BB%8D/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-随记及总结/总结2019 展望2020" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/%E6%80%BB%E7%BB%932019%20%E5%B1%95%E6%9C%9B2020/">随记及总结/总结2019 展望2020</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/%E6%80%BB%E7%BB%932019%20%E5%B1%95%E6%9C%9B2020/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.117Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="总结2019-展望2020"><a href="#总结2019-展望2020" class="headerlink" title="总结2019 展望2020"></a>总结2019 展望2020</h1><h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><p>完成第一份意义上的实习</p>
+<p>参加了校内技术性比赛，获得了名次，虽然不大，但是也算是新的尝试</p>
+<p>篮球上获得了很多，下半年集中在自己的目标上，明确了自己的目标</p>
+<h2 id="展望"><a href="#展望" class="headerlink" title="展望"></a>展望</h2><p>要在新的一年斩获好的多的offer</p>
+<p>补充自己的知识，不断学习，Javaweb框架，看书，看视频</p>
+<p>落实自己的Java100计划，以及后期推出的每日25页计划</p>
+<p>好好学习，好好准备，愿2020是个丰收的一年</p>
+<p>共勉！！！！</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/%E6%80%BB%E7%BB%932019%20%E5%B1%95%E6%9C%9B2020/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-随记及总结/Git问题记录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/Git%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">随记及总结/Git问题记录</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/Git%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.117Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="git问题：fatal：HttpRequestException-encountered"><a href="#git问题：fatal：HttpRequestException-encountered" class="headerlink" title="git问题：fatal：HttpRequestException encountered"></a>git问题：fatal：HttpRequestException encountered</h1><p><a href="https://blog.csdn.net/qq_25610067/article/details/80102594" target="_blank" rel="noopener">解决</a></p>
+<p><img src="https://i.loli.net/2019/12/13/4FTzHqDWgUZCBMQ.png" alt="image.png"></p>
+<ul>
+<li><p>记录删除后的文件恢复</p>
+<p>因为自己的一波猛操作，将本地文件不小心给干掉了</p>
+<ul>
+<li><p><img src="https://i.loli.net/2019/12/13/XjGRaHNo3xQscAb.png" alt="image.png"></p>
+</li>
+<li><p><img src="https://i.loli.net/2019/12/13/HK7TtZA1sR4rdV5.png" alt="image.png"></p>
+</li>
+</ul>
+</li>
+</ul>
+<p>找不到了</p>
+<ul>
+<li>通过找head的id</li>
+</ul>
+<ul>
+<li><p><img src="https://i.loli.net/2019/12/13/Hnb9DIBPuj165gc.png" alt="image.png"></p>
+</li>
+<li><p>最后操作回去，将其还原</p>
+</li>
+<li><p><img src="https://i.loli.net/2019/12/13/7B6JLrblNSQyKq4.png" alt="image.png"></p>
+</li>
+<li><p><img src="https://i.loli.net/2019/12/14/387tG9kR6pszrBg.png" alt="image.png"></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/Git%E9%97%AE%E9%A2%98%E8%AE%B0%E5%BD%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-随记及总结/快捷键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/%E5%BF%AB%E6%8D%B7%E9%94%AE/">随记及总结/快捷键</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.117Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[TOC]</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>工欲善其事，必将利其器，当然，不需要背诵这些快捷键，这篇博客就是给个参考，你可以通过阅读去掌握这些技巧。</p>
+<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p><em>其实windows上很多的热键也可以修改的_，键盘的一些键位也.可以通过软件去修改，按照个人的习惯来做就行了</em><br>BIOS(Basic Input Output System)写死在内存的一套程序。开机选择时候经常用到。开机首先使用的小程序。</p>
+<p><strong>F1:打开帮助信息</strong><br><strong>F2:选定了一个桌面的信息</strong><br><strong>F3:打开搜素功能</strong><br><strong>F4:打开浏览器的地址菜单列表</strong><br><strong>F5:刷新</strong><br><strong>F6:迅速定位到页面的编辑框</strong><br><strong>F11:全屏</strong><br><em>浏览器上的操作</em><br><strong>ctrl+w:关闭当前的页面<br>Windows+shift+s:截屏</strong></p>
+<ul>
+<li>键盘灯的快捷键<br>fn+上下（方向键）可以调节亮度<br>fn+insert<br>fn+home<br>fn+delete</li>
+<li>博客编辑网站<br>很多网站的博客文章编辑时的快捷键都是相通相似的，加粗、撤销等都是一样的，个人感觉如果熟悉掌握之后，在平时编辑记录时候是非常方便高效的，像csdn的markdown编辑快捷键可以直接显示在帮助文档中，可以在编辑的时候进行查看自己所需要的快捷键。<h2 id="Notepad"><a href="#Notepad" class="headerlink" title="Notepad++"></a>Notepad++</h2>notepad这个就无需多介绍了，这个开源代码编辑器功能强大，支持多种语言，以开源、小巧、免费等特点广受各类<em>脱发人士</em>深爱。</li>
+<li>CTRL+L可以快速删除空行，这个是最爱的，经常copy一些文件代码的时候会存在一大堆空行。</li>
+<li>CTRL+Q可以添加单行注释，将当前行变为注释。</li>
+</ul>
+<h2 id="IDEA快捷键"><a href="#IDEA快捷键" class="headerlink" title="IDEA快捷键"></a>IDEA快捷键</h2><p>alt+ctrl+l代码格式化，将对齐代码</p>
+<p>ctrl+/注释，多行是鼠标选定行即可</p>
+<p>ctrl+D是可以复制当行，并将其复制在光标的下一行中。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/%E5%BF%AB%E6%8D%B7%E9%94%AE/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-其它/git-leanring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/%E5%85%B6%E5%AE%83/git-leanring/">其它/git-leanring</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/%E5%85%B6%E5%AE%83/git-leanring/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.102Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>git reset HEAD <file></p>
+<p>用来取消暂存文件，就是git add 1和2，但是你不想提交2了。那么就可以用该命令去取消。</p>
+</li>
+<li><p>git checkout – <file></p>
+<p>用来撤销对文件的修改，在changes not staged for commit 中经常看到，这个是可以还原成它上次提交的时候的样子。需要注意的是，你自上次修改后的内容将全部作废，所以这个命令还是蛮危险的</p>
+</li>
+<li></li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/%E5%85%B6%E5%AE%83/git-leanring/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-其它/http" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/%E5%85%B6%E5%AE%83/http/">其它/http</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/%E5%85%B6%E5%AE%83/http/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.102Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="http"><a href="#http" class="headerlink" title="http"></a>http</h1><h2 id="长轮询：都是浪费性能"><a href="#长轮询：都是浪费性能" class="headerlink" title="长轮询：都是浪费性能"></a>长轮询：都是浪费性能</h2><h2 id="长连接"><a href="#长连接" class="headerlink" title="长连接"></a>长连接</h2><h1 id="websocket"><a href="#websocket" class="headerlink" title="websocket"></a>websocket</h1><p>全双工通信，实时通信，互相的，服务器主动通知客户端，用HTTP请求协议，HTTP头部有WebSocket协议，握手后，就使用TCP协议交流</p>
+<p>node.js一开始就支持websocket协议。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/%E5%85%B6%E5%AE%83/http/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-其它/sql语句" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/%E5%85%B6%E5%AE%83/sql%E8%AF%AD%E5%8F%A5/">其它/sql语句</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/%E5%85%B6%E5%AE%83/sql%E8%AF%AD%E5%8F%A5/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.102Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="sql语句"><a href="#sql语句" class="headerlink" title="sql语句"></a>sql语句</h1><ul>
+<li>条件查询</li>
+<li><img src="https://i.loli.net/2019/12/14/w2epo1YbiAIayP3.png" alt="image.png"></li>
+<li><img src="https://i.loli.net/2019/12/14/DeqKVBwpTGPR6Hy.png" alt="image.png"></li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/%E5%85%B6%E5%AE%83/sql%E8%AF%AD%E5%8F%A5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-其它/网络结构知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/%E5%85%B6%E5%AE%83/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86/">其它/网络结构知识</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/%E5%85%B6%E5%AE%83/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.102Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="网络结构知识"><a href="#网络结构知识" class="headerlink" title="网络结构知识"></a>网络结构知识</h1><p>分布式：一个业务分拆多个子业务，部署在不同的服务器上<br>集群：同一个业务，部署在多个服务器上</p>
+<p>“小饭店原来只有一个厨师，切菜洗菜备料炒菜全干。后来客人多了，厨房一个厨师忙不过来，又请了个厨师，两个厨师都能炒一样的菜，这两个厨师的关系是集群。为了让厨师专心炒菜，把菜做到极致，又请了个配菜师负责切菜，备菜，备料，厨师和配菜师的关系是分布式，一个配菜师也忙不过来了，又请了个配菜师，两个配菜师关系是集群”</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/01/01/%E5%85%B6%E5%AE%83/%E7%BD%91%E7%BB%9C%E7%BB%93%E6%9E%84%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-其它/Linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/01/01/%E5%85%B6%E5%AE%83/Linux/">其它/Linux</a>
+    </h1>
+  
+
+        
+        <a href="/2020/01/01/%E5%85%B6%E5%AE%83/Linux/" class="archive-article-date">
+  	<time datetime="2020-01-01T04:28:19.102Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
 </a>
         
       </header>
@@ -336,775 +1055,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/25/Linux/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-文章" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/24/%E6%96%87%E7%AB%A0/">文章</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/24/%E6%96%87%E7%AB%A0/" class="archive-article-date">
-  	<time datetime="2019-12-24T03:26:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="测试博客自建"><a href="#测试博客自建" class="headerlink" title="测试博客自建"></a>测试博客自建</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/24/%E6%96%87%E7%AB%A0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/Java%E6%80%BB%E7%BB%93/">Java总结</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/Java%E6%80%BB%E7%BB%93/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.821Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Java学习总结"><a href="#Java学习总结" class="headerlink" title="Java学习总结"></a>Java学习总结</h1><p>今天就总结理清一下关于面向对象和面向过程的程序设计的一些不同特点。</p>
-<p>[TOC]</p>
-<h2 id="概论"><a href="#概论" class="headerlink" title="概论"></a>概论</h2><ul>
-<li>现在接触的Java是面向对象的，我现在不看书，光靠回忆去想这个特性的解释性语言，只能想到看书时很深刻的一句话，面向对象就是一个更加具体描述一个事件的一种设计方法，就像在公司里面吃饭，面向对象的话就可以按照你自己的想法去决定你想吃什么，喝什么，吃多久，坐在哪里，这些都是可以实例具体差异化展开。</li>
-<li>关于面向对象的程序设计三个特点：封装性、继承性、多态性。<br>首先封装性是把对象属性、行为看成一个密不可分的整体封装在独立单位中，一种信息隐蔽的特性。<br>其次是继承性：父类与子类的表达与描述就是一种继承性，拥有反映事物一般特性的类，在其基础上派生出反映特殊事物的类。（类是由属性和方法组成）。<br>最后是多态性，包括方法重载和对象多态。子类与父类可以相互转换，根据其使用的子类不同完成的功能也不同。</li>
-<li>类的构造方法：与类同名的方法。</li>
-<li>java的四块内存空间<ul>
-<li>堆内存空间：保存所有对象的名称（堆内存空间的地址）</li>
-<li>栈内存空间：保存每个对象的具体属性内容</li>
-<li>全局数据区：保留static类型的属性</li>
-<li>全局代码区：保存所有的方法定义</li>
-</ul>
-</li>
-<li>全局和局部变量是相对而言的。</li>
-<li>访问属性，建议加上this。</li>
-</ul>
-<h1 id="面向对象的基本概念"><a href="#面向对象的基本概念" class="headerlink" title="#面向对象的基本概念"></a>#面向对象的基本概念</h1><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><ul>
-<li><p>数组固定长度，无法改变</p>
-</li>
-<li><p>数组插入删除比较麻烦，需要移动其它元素。 随机读取比较快速，高效</p>
-</li>
-<li><p>定义：（多维的话类型，将[]变为[][]）</p>
-<ul>
-<li>数据类型 名字[] = new 数据类型[长度]——动态初始化 </li>
-<li>数据类型 名字[] = new 数据类型[]{直接具体的数值}——动态初始化</li>
-<li>不建议使用多维数组</li>
-</ul>
-</li>
-<li><p>例子：</p>
-<ul>
-<li><p>数组倒置（reverse）——1定义两个数组，一个是原数组，另一个空数组，将空数组的最后一个元素，对应原数组的第一个，以此类推。这是会产生垃圾，这个空数组会变成垃圾2可以通过数组长度/2次循环。实现首尾的交换</p>
-<p><img src="https://i.loli.net/2019/12/15/bPyoWpDZBsvdGVO.png" alt="image.png"></p>
-</li>
-</ul>
-</li>
-<li><p>数组复制：System.arraycopy(原数组，复制开始索引，目标数组，目标开始索引，长度)     数组排序：java.util.Arrays.sort(数组);</p>
-</li>
-<li><p>对象数组：数组是引用类型 ，就是除了数据类型改变了，这里是类对象，之前是数据类型，其它没有任何区别</p>
-<ul>
-<li>类名称 对象数组名称=new 类名称[长度]——静态初始化。动态初始化和普通的没区别。</li>
-</ul>
-</li>
-<li><p>Arraylist与数组</p>
-</li>
-</ul>
-<h2 id="String类"><a href="#String类" class="headerlink" title="String类"></a>String类</h2><ul>
-<li><img src="https://i.loli.net/2019/12/15/op3zfgj2Us6hlBR.png" alt="image-20191211094606003.png"></li>
-<li>==与equals():前者是用于所有的引用数据类型的比较，比较的是地址的数值内容。后者是比较字符串的内容</li>
-<li>String的两种赋值方法<ul>
-<li>直接赋值 String str = “随便”，只要内容相同就不会产生新的堆内存空间。</li>
-<li>构造方法赋值 用了new：String str1 = new String(“随便”)——这个会产生垃圾空间，new会开辟新的堆内存空间。</li>
-</ul>
-</li>
-<li>所以构造方法new不会主动入池，需要在后面加上<strong>.intern（）</strong>才可以。所以不主动入池，上面的str=str1的结果是false</li>
-<li>String频繁改变就会产生垃圾空间，一般都是用StringBuffer或者StringBuilder来代替</li>
-<li>string——char charAt（int index）会报错<code>IndexOutOfBoundsException</code> - if the <code>index</code> argument is negative or not less than the length of this string.</li>
-<li>public int indexOf(String str)由前向后查找指定字符串的位置，如果找到了则返回第一个字母的位置索引。如果找不到就返回-1。</li>
-<li>str.split()字符串拆分 toLowerCase()-转小写 toUpperCase()-转大写。</li>
-<li>字符串的length（）与数组的length要注意，一个没有（）</li>
-<li>特意回忆下，八种数据类型：boolean byte double float int short char long</li>
-</ul>
-<h2 id="this关键字"><a href="#this关键字" class="headerlink" title="this关键字"></a>this关键字</h2><ul>
-<li>总的来说叫，调用本类属性，调用本类方法，表示当前对象。<ol>
-<li>本类属性——用this.title=xx,前提是前面的形参有这个title。传统的是可以直接title=xx，但是为了不必要的麻烦（类中的属性可能会和参数重名）</li>
-<li>调用本类方法：普通的就直接this.方法（），构造的话可以this（）就可以。有参数就变为this(参数)——这个方法在解决构造方法成千上百行时候会显得效率奇高。</li>
-<li>表示当前对象：返回当前的值。</li>
-</ol>
-</li>
-</ul>
-<h2 id="引用传递"><a href="#引用传递" class="headerlink" title="引用传递"></a>引用传递</h2><ul>
-<li>同一块堆内存空间可以被不同的栈内存所指向，不同栈内存可以对同一堆内存进行内容修改。</li>
-</ul>
-<h2 id="static关键字"><a href="#static关键字" class="headerlink" title="static关键字"></a>static关键字</h2><ul>
-<li><p>一个人类的主要组成就是属性和方法（构造方法和普通方法），如果一个类中的某个属性想被所有对象访问，就变成公共的，可以在属性前面加多一个static。</p>
-</li>
-<li><p>Java中的变量分为成员变量和局部变量；局部变量还分为三种：形参、方法内的局部变量、代码块内的局部变量（作用范围看名字就可以明白，如代码块内的，代码块结束后就开始失效消亡）。成员变量：类体内定义的变量，包括了非静态变量又称实例变量，和静态变量又称类变量。</p>
-</li>
-<li><p>static字面意思是静态；但是在Java程序中，它是一个标志，作用是将<strong>实例成员</strong>变为类成员。而且只能修饰在类里定义的成员部分，包括成员变量、方法，内部类、初始化块。不用static去修饰类里的这些成员，它们就属于该类的实例。<br></br>eg：static int num2 = 20;(这是一个类变量)<br></br>eg: int num1 = 238;(实例变量)</p>
-</li>
-<li><p>static修饰的成员属于类，类变量会随着类初始化得到初始化；而没有static修饰的成员变量则属于实例，实例变量随着对象的初始化而初始化。因为在初始化之前一个对象之前，肯定得先初始化该对象所属的类，所以static修饰的时机肯定较实例变量早。</p>
-</li>
-<li><p><strong>static方法</strong>一般称作静态方法，不依赖任何对象就可以进行访问，因此对于静态方法来说，没有this的。</p>
-</li>
-</ul>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><ul>
-<li><p>使用{}——可以分为普通代码块（写在方法里）、构造块（写在类里面）、静态块（用static定义的代码块）-作用可以为static属性初始化和同步代码块（等待多线程时候）</p>
-</li>
-<li><pre><code class="java"><span class="comment">//卸载方法里</span>
-<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>{
-    {
-        System.out.println();
-    }
-}
-<span class="comment">//代码写在类里。构造块</span>
-<span class="class"><span class="keyword">class</span> <span class="title">test</span></span>{
-    {
-        System.out.println();
-    }
-}
-<span class="comment">//静态块,运行时候会优先调用。而且之调用一次，若主函数里面用了两次new test ,下面的2也只是第一次输出</span>
-<span class="class"><span class="keyword">class</span> <span class="title">test</span></span>{
-    <span class="keyword">static</span>{
-    System.out.println(<span class="string">"2"</span>);
-    }
-}
-&lt;!--￼<span class="number">0</span>--&gt;</code></pre>
-</li>
-<li><p>在主函数中实例化内部类的格式——outer.inner in = new outer.inner();</p>
-</li>
-<li><p>若在inner前面加上private，则该内部类只能服务于外部类。</p>
-</li>
-</ul>
-<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><ul>
-<li><p>链表逻辑简单、比较实用，几乎被所有程序设计语言支持。是一种根据元素节点逻辑关系排列起来的数据结构。</p>
-</li>
-<li><p><img src="https://i.loli.net/2019/12/15/DznMocCuhvyFl28.png" alt="image.png"></p>
-</li>
-<li><p>链表也分单向和双向（一个数据域，两个指针域-指向后继，指向前驱，在最后指向表头结点），还有循环链表（和单链表基本相同，但是最后一个结点的指针域不空，指向表头结点）。</p>
-</li>
-<li><p>node类有两个属性：（数据）data和（下一节点）next（指明自己有什么，还提醒下一个在哪，看起来是非常友好的结构。）——单向的</p>
-</li>
-<li><p>动态的对象数组，优势在与没有长度限制。</p>
-</li>
-<li><pre><code class="java"></code></pre>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/Java%E6%80%BB%E7%BB%93/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/%E5%B0%81%E8%A3%85/">封装</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/%E5%B0%81%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.805Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/%E5%B0%81%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/%E7%BB%A7%E6%89%BF/">继承</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/%E7%BB%A7%E6%89%BF/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.805Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/%E7%BB%A7%E6%89%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/%E5%A4%9A%E6%80%81/">多态</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/%E5%A4%9A%E6%80%81/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.805Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>这篇讲下三大特性之一的<strong>多态</strong>，可以通俗得去理解，多种形态，多种姿态。。。</p>
-<p>那么在面向对象的程序设计中，多态是    指什么?</p>
-<blockquote>
-<p>Java引用变量有两个类型；一个是编译类型，一个是运行时类型。编译时类型由声明该变量时使用的类型决定，运行时类型由实际赋给该变量的对象决定.如果编译类型和运行时类型不一致，就可能出现所谓的多态（Polymorphism）</p>
-<p>“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。——ThinkinJava</p>
-</blockquote>
-<p>直接网易百科-Polymorphism</p>
-<p><img src="https://i.loli.net/2019/12/20/Q4IryEZBHvd5OUY.png" alt="image.png"></p>
-<h2 id="二、多态包含（或者说体现在）两个方面："><a href="#二、多态包含（或者说体现在）两个方面：" class="headerlink" title="二、多态包含（或者说体现在）两个方面："></a>二、多态包含（或者说体现在）两个方面：</h2><ol>
-<li><p>首先是同一个方法，不同的实现效果，就具体的方法是怎么实现的，是可以不同的。就是<strong>方法的多态性</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">吃苹果方法，可以剥皮吃，也可以不剥皮吃，甚至是榨苹果汁喝。</span><br></pre></td></tr></table></figure>
-
-<p>规范讲这种就是可以通过重载和覆写来实现</p>
-<ul>
-<li>重载：同一个方法名称，因为不同的参数类型和个数，因此可以达到不同的效果。</li>
-<li>覆写：同一个方法，根据实例化的子类对象不同，最后的效果和实现功能不一样。</li>
-</ul>
-</li>
-<li><p>对象的多态性：父子类对象的转换。</p>
-<ul>
-<li>向上转型：子类对象变为父类</li>
-<li>向下转型：父类对象变为子类</li>
-</ul>
-</li>
-</ol>
-<h2 id="三、实现的前提条件"><a href="#三、实现的前提条件" class="headerlink" title="三、实现的前提条件"></a>三、实现的前提条件</h2><p>继承和接口可以实现多态</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/%E5%A4%9A%E6%80%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-git-leanring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/git-leanring/">git-leanring</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/git-leanring/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>git reset HEAD <file></p>
-<p>用来取消暂存文件，就是git add 1和2，但是你不想提交2了。那么就可以用该命令去取消。</p>
-</li>
-<li><p>git checkout – <file></p>
-<p>用来撤销对文件的修改，在changes not staged for commit 中经常看到，这个是可以还原成它上次提交的时候的样子。需要注意的是，你自上次修改后的内容将全部作废，所以这个命令还是蛮危险的</p>
-</li>
-<li></li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/git-leanring/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-垃圾回收机制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">垃圾回收机制</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.789Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Java的垃圾回收是Java语言的重要功能之一。当程序创建对象、数组等引用类型实体时，系统都会在堆内存中为之分配一块内存区，对象就保存在这块内存区中，当这块内存不再被任何引用变量引用时，这块内存就变成垃圾，等待垃圾回收机制进行回收。垃圾回收机制具有如下特征。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6%E6%9C%BA%E5%88%B6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-栈与堆" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/">栈与堆</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.766Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="内存空间"><a href="#内存空间" class="headerlink" title="内存空间"></a>内存空间</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一部分涉及到一些理解Java虚拟机的东西，但是今天这篇就只想总结栈与堆空间。</p>
-<h2 id="正题"><a href="#正题" class="headerlink" title="正题"></a>正题</h2><p>首先<strong>Java 内存可以粗糙的区分为堆内存（Heap）和栈内存(Stack)。</strong></p>
-<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>现在的Heap也指的是虚拟机栈，其下还包括栈，栈再由栈帧组成。</p>
-<p><img src="https://i.loli.net/2019/12/23/9UDh6ntkuyPcAqj.png" alt="image.png"></p>
-<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>Java虚拟机里面管理内存中的最大一块，堆也是所有线程共享的一块内存区域。此内存区域的唯一目的就是存放对象实例，几乎所有的对象实例以及数组都在这里分配内存。</p>
-<p><img src="https://i.loli.net/2019/12/23/elOn9x8wdyokJ3r.png" alt="image.png"></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Dog myDog = <span class="keyword">new</span> Dog();</span><br><span class="line"><span class="comment">//new Dog（）要求虚拟机分配堆空间给新建的Dog对象</span></span><br><span class="line"><span class="comment">//上述的程序先是对象的声明，然后创建与赋值三个步骤。</span></span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/%E6%A0%88%E4%B8%8E%E5%A0%86/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-常量变量数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/12/23/%E5%B8%B8%E9%87%8F%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">常量变量数据类型</a>
-    </h1>
-  
-
-        
-        <a href="/2019/12/23/%E5%B8%B8%E9%87%8F%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2019-12-22T16:16:20.766Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-12-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>按照xmind文件总结所有的基础，开始第二阶段学习。</p>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ol>
-<li><p>有些数据在程序运行中值不能被改变，这些数据在程序中就被称为常量。</p>
-</li>
-<li><p>Java中用final修饰的成员变量表示常量，值一旦给定就无法改变！</p>
-<ol>
-<li><pre><code class="java"><span class="number">1</span>. <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.14</span>；
-<span class="number">2</span>. <span class="keyword">final</span> <span class="keyword">char</span> MAN=‘M’，FEMALE=‘F’;
-&lt;!--￼<span class="number">0</span>--&gt;</code></pre>
-</li>
-</ol>
-</li>
-<li><p>还分为静态常量和局部常量；局部常量放在class里面，也可以被调用时候引用。静态常量往往由于访问效率比较高。不过一般会把他们放在以下三个地方。</p>
-<p>一：放到Interface,因为 Java interface中声明的字段在编译时会自动加上static final的修饰符，即声明为常量</p>
-<p>二：放到文件，如Properties文件</p>
-<p>三：放到Class，使用final String </p>
-</li>
-</ol>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
-<li>变量分为基本类型和引用类型。<ul>
-<li>基本类型包括boolean类型和数值类型。数值类型有整数类型和浮点类型。整数类型包括byte、short、int、long、char，浮点类型包括float和double。（八大类型，不包括string）</li>
-<li>byte（-128~127）是1个字节，short两位，int是四位，long是八位，float是四位，double是八位(保存范围最广的)，char（字符）是两位。</li>
-<li>建议在选择小数操作时候都使用double型；每一个单引号中只保存一个字符</li>
-<li>引用类型包括<strong>类(class)、接口（interface）和数组</strong>类型，还有NULL型。所谓引用数据类型就是对一个对象的引用，对象包括实例和数组两种。这个引用类型在Java中非常非常重要。</li>
-</ul>
-</li>
-</ul>
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ol>
-<li>单行注释：/</li>
-<li>多行注释/**/</li>
-</ol>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>开发一个大型软件时，需要定义成千上万的类，而且需要很多人参与开发。每个人都会开发一些类，并在类里定义一些方法、Field提供给其他人使用，但其他人怎么知道如何使用这些类和方法呢？这时候就需要提供一份说明文档，用于说明每个类、每个方法的用途。当其他人使用一个类或一个方法时，他无须关心这个类或这个方法的具体实现，他只要知道这个类或这个方法的功能即可，然后使用这个类或方法来实现具体的目的，也就是通过调用应用程序接口（API）来编程。API文档就是用以说明这些应用程序接口的文档。对于Java语言而言，API文档通常详细说明了每个类、每个方法的功能及用法等。调用API可以实现更快的开发。Java的API可以在官网下载jdk文档来看。</p>
-<h2 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h2><p>圆点（.）通常用做类/对象和它的成员（包括Field、方法和内部类）之间的分隔符，表明调用某个类或某个实例的指定成员。</p>
-<p>运算符就不讲了，遗忘的话可以多查看。</p>
-<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>标识符不能以数字开头，不能用关键字，不能空格。标识符只能包含美元符（$），不能包含@、#等其他特殊字符。</p>
-<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p><img src="https://i.loli.net/2019/12/22/osKhMiEGkx95uVd.png" alt="image.png">上面的enum是用来定义一个枚举。从Java 5增加的。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/12/23/%E5%B8%B8%E9%87%8F%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/01/01/%E5%85%B6%E5%AE%83/Linux/">展开全文 >></a>
         </p>
       
 
