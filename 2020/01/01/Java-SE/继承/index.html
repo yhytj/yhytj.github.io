@@ -11,13 +11,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java-SE/继承 | welcome to yhy&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="article">
+  <meta name="description" content="[TOC] 前言 类的继承性是面向对象语言的基本特性，多态性前提是继承性。Java 支持继承性和多态性。——Java从小白到大牛  继承：三大特性之一，关键词：extends 简单用伪代码去介绍一些。 假设需要定义个student类  12345public class Student&amp;#123;    private String name;&#x2F;&#x2F;名字     private int age;&#x2F;&#x2F;">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Java-SE&#x2F;继承">
 <meta property="og:url" content="http://yoursite.com/2020/01/01/Java-SE/%E7%BB%A7%E6%89%BF/index.html">
 <meta property="og:site_name" content="welcome to yhy&#39;s blogs">
+<meta property="og:description" content="[TOC] 前言 类的继承性是面向对象语言的基本特性，多态性前提是继承性。Java 支持继承性和多态性。——Java从小白到大牛  继承：三大特性之一，关键词：extends 简单用伪代码去介绍一些。 假设需要定义个student类  12345public class Student&amp;#123;    private String name;&#x2F;&#x2F;名字     private int age;&#x2F;&#x2F;">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2020-01-01T04:28:19.139Z">
-<meta property="article:modified_time" content="2019-12-20T04:33:01.451Z">
+<meta property="article:modified_time" content="2020-01-08T15:03:54.319Z">
 <meta property="article:author" content="yhy coder">
 <meta property="article:tag" content="Java，Notes">
 <meta name="twitter:card" content="summary">
@@ -180,7 +182,57 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>[TOC]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>类的继承性是面向对象语言的基本特性，多态性前提是继承性。Java 支持继承性和多态性。——Java从小白到大牛</p>
+</blockquote>
+<p>继承：三大特性之一，关键词：extends</p>
+<h3 id="简单用伪代码去介绍一些。"><a href="#简单用伪代码去介绍一些。" class="headerlink" title="简单用伪代码去介绍一些。"></a>简单用伪代码去介绍一些。</h3><ul>
+<li>假设需要定义个student类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//名字 </span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;<span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sex;<span class="comment">//性别</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>再来个需求，需要定义一个学生Andy，不用继承时候，需要一个个去定义；</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Andy</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sex;</span><br><span class="line">    <span class="keyword">private</span> String country;<span class="comment">//新增一个国家信息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>从上面看两者有着很多的相似的重复定义的东西，如果使用继承去写这段代码就可以如下：</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Andy</span> <span class="keyword">extends</span> <span class="title">student</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String country</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>所以从上面可以看出类的继承大致用途，Andy类已经继承了Student类，上面的父类便是student，extends后面跟着的</strong>。继承的时候，要明确指出，要不然就是在<em>Java标准根类Object</em>进行继承。</p>
+<p>再者，在继承的过程中，除了你可以在新的类中去添加东西，也不一定非得使用基类的方法属性等。</p>
+<ul>
+<li>还可以有多层继承关系（下面的输出是随便定义的伪代码，可以是直接输出某一些语句，方便运行查看）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Art</span></span>&#123;</span><br><span class="line">Art()&#123;输出<span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Music</span> <span class="keyword">extends</span> <span class="title">Art</span></span>&#123;</span><br><span class="line">Music(输出<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dance</span> <span class="keyword">extends</span> <span class="title">music</span></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Dance</span><span class="params">()</span></span>&#123;输出<span class="number">3</span>&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">dance x = <span class="keyword">new</span> dance();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出的顺序是1 2 3</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="父类与子类的构造函数问题"><a href="#父类与子类的构造函数问题" class="headerlink" title="父类与子类的构造函数问题"></a>父类与子类的构造函数问题</h3><ul>
+<li>若不在类中定义构造函数，会默认生成一个无参的函数构造器，如果有了就不会。（构造器即构造函数，与类同名，在初始化的时候就被调用,,默认的构造函数是不带任何参数的）</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Art</span>｛</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">｝</span></span><br><span class="line"><span class="class">//等同于下面</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">Art</span>｛</span></span><br><span class="line"><span class="class">	<span class="title">public</span> <span class="title">Art</span>()</span>&#123;</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	&#125;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>​    super关键字</li>
+</ul>
+<p>Java用super表示超类的医生，当前类是从超类继承来的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Game</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    Game(<span class="keyword">int</span> i)&#123;<span class="comment">//构造函数</span></span><br><span class="line">        System.out.println(<span class="string">"this is a game!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printg</span><span class="params">(<span class="keyword">int</span> d)</span></span>&#123;<span class="comment">//普通函数</span></span><br><span class="line">        System.out.println(<span class="string">"12"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ballGame</span> <span class="keyword">extends</span> <span class="title">Game</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    ballGame(<span class="keyword">int</span> i)&#123;</span><br><span class="line">        <span class="keyword">super</span>(i);<span class="comment">//调用父类的构造器,漏了这句就会报错，显示there is no default constructor available</span></span><br><span class="line">        System.out.println(<span class="string">"ballGame is coming!"</span>);</span><br><span class="line">        <span class="keyword">super</span>.h = <span class="number">3</span>;<span class="comment">//访问父类的属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>super可以用于访问父类定义的属性，用于调用父类中的成员方法，super代表父类的内存空间。可以访问父类的父类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Game</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    Game(<span class="keyword">int</span> i)&#123;<span class="comment">//构造函数</span></span><br><span class="line">        System.out.println(i);<span class="comment">//输出</span></span><br><span class="line">        System.out.println(<span class="string">"第一层"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printg</span><span class="params">(<span class="keyword">int</span> d)</span></span>&#123;<span class="comment">//普通函数</span></span><br><span class="line">        System.out.println(<span class="string">"1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ballGame</span> <span class="keyword">extends</span> <span class="title">Game</span></span>&#123;</span><br><span class="line">    ballGame(<span class="keyword">int</span> i)&#123;</span><br><span class="line">    	<span class="keyword">super</span>(i);<span class="comment">//调用父类的构造器</span></span><br><span class="line">    	System.out.println(<span class="string">"第二层"</span>);</span><br><span class="line">    	<span class="keyword">super</span>.h = <span class="number">2</span>;<span class="comment">//访问父类的属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">jichengSuper</span> <span class="keyword">extends</span> <span class="title">ballGame</span></span>&#123;</span><br><span class="line">    jichengSuper(<span class="keyword">int</span> b) &#123;</span><br><span class="line">    	<span class="keyword">super</span>(b);<span class="comment">//调用的是上面父类的构造函数，将输出3</span></span><br><span class="line">     	<span class="keyword">int</span> a = <span class="keyword">super</span>.h ;<span class="comment">//将第二层里的3赋值给a</span></span><br><span class="line">     	System.out.println(a);<span class="comment">//打印</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        <span class="keyword">new</span> jichengSuper(<span class="number">3</span>);<span class="comment">//这里的3将代进去上面的构造函数jichengSuper中</span></span><br><span class="line">        System.out.print(<span class="string">"最后一层"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *output：</span></span><br><span class="line"><span class="comment"> 3</span></span><br><span class="line"><span class="comment">第一层</span></span><br><span class="line"><span class="comment">第二层</span></span><br><span class="line"><span class="comment">2</span></span><br><span class="line"><span class="comment">最后一层</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li><p>接口在实现的时候，在类中一定要实现接口的抽象方法</p>
+</li>
+<li><p>而继承不用，想要用哪个再用</p>
+</li>
+</ul>
+<h2 id="others"><a href="#others" class="headerlink" title="others"></a>others</h2><p>可以有多个接口但是只能有一个继承。一般情况下，一个子类只能继承一个父类，这称为“单继承”，但有的情况下一个子类可以有多个不同的父类，这称为“多重继承”。在Java中，类的继承只能是单继承，而多重继承可以通过实现多个接口实现。</p>
+
       
 
       
@@ -316,7 +368,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#简单用伪代码去介绍一些。"><span class="toc-number">1.1.</span> <span class="toc-text">简单用伪代码去介绍一些。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#父类与子类的构造函数问题"><span class="toc-number">1.2.</span> <span class="toc-text">父类与子类的构造函数问题</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#others"><span class="toc-number">2.</span> <span class="toc-text">others</span></a></li></ol>
                     </div>
                 </span>
             </div>
