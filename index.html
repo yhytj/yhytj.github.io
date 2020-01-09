@@ -264,9 +264,30 @@
     <div class="article-entry" itemprop="articleBody">
       
         <ol>
-<li>在重写继承的时候，子类的权限不能比父类低</li>
-<li>类对接口的实现，其实体现了多态性，因为类需要重写接口中所有的抽象方法。</li>
-<li>构造函数：特殊类型的方法，没有返回值，与void的普通方法不一样，</li>
+<li><p>在重写继承的时候，子类的权限不能比父类低</p>
+</li>
+<li><p>类对接口的实现，其实体现了多态性，因为类需要重写接口中所有的抽象方法。</p>
+</li>
+<li><p>构造函数：特殊类型的方法，没有返回值，与void的普通方法不一样，</p>
+</li>
+<li><p>归并排序：稳定，时间复杂度 O(nlog n)</p>
+<p>快速排序：不稳定，时间复杂度 最理想 O(nlogn) 最差时间O(n^2)</p>
+<p>堆排序：不稳定，时间复杂度 O(nlog n)</p>
+<p>归并排序时间复杂度 O（n），消耗空间最多。</p>
+</li>
+<li><p>比特成帧，帧成报文，报文成包，包成段(物理层，数据链路层，网络层，传输层的单位)</p>
+</li>
+<li><p>IP地址分类</p>
+<p>A：0.0.0.0~127.255.255.255</p>
+<p>B：128.0.0.0~191.255.255.255</p>
+<p>C：192.0.0.0~223.255.255.255</p>
+</li>
+<li><pre><code>ARP协议（Address Resolution Protocol，地址解析协议），属于IPv4协议簇，工作在数据链路层。其功能是将IP地址解析为对应的MAC地址。
+
+RARP协议（Reverse ARP，反向ARP协议），其功能是将MAC地址解析为对应的IP地址。
+</code></pre></li>
+<li><p>JDK1.8后，接口中可以有静态方法，静态方法必须有方法体。</p>
+</li>
 </ol>
 
       
@@ -459,7 +480,106 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <p>三大特性之浅谈<strong>封装</strong></p>
+<p>[TOC]</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>英语：Encapsulation——封装，包装。</p>
+<blockquote>
+<p>面向对象的封装与真实世界的目的是一样的。封装能够使外部访问者不能随意存取对象的内部数据，隐藏了对象的内部细节，只保留有限的对外接口。外部访问者不用关心对象的内部细节，使得操作对象变得简单。</p>
+</blockquote>
+<h2 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h2><p><em>先通过阅读下面的文字，再回来理解可能会更好一点</em></p>
+<ol>
+<li>减少了耦合（物理学上类似相互影响的概念）</li>
+<li>便于维护和修改</li>
+<li>可以隐藏信息，一些具体实现代码，安全性</li>
+<li>对成员变量精准控制</li>
+</ol>
+<h2 id="介绍（实现方式）"><a href="#介绍（实现方式）" class="headerlink" title="介绍（实现方式）"></a>介绍（实现方式）</h2><ol>
+<li><p>Java 面向对象的封装性是通过对成员变量和方法进行访问控制实现的。这里就涉及到了访问控制的四个关键字了。</p>
+<table>
+<thead>
+<tr>
+<th>类别\不同地方</th>
+<th><strong>同一个类</strong></th>
+<th><strong>同一个包</strong></th>
+<th><strong>不同包</strong>的子类</th>
+<th><strong>不同包非</strong>子类</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>私有的（private）</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>默认</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>保护的（protected）</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>公有的（public）</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>封装是一种保护作用，将其变量以及方法保护起来，防止被随机访问，所以一定程度上增强了代码的安全性。</p>
+</li>
+</ol>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
+<li>下面是代码示例，<em>私有类只能在同一个类中被访问，否则会报错。</em></li>
+</ul>
+<td style="text-align:left;"><img src="https://i.loli.net/2020/01/09/HsmyfUFcCWDiwkA.png" alt="image.png" width="850px"/></td>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">private</span>还可以防止直接访问特定的构造器（或全部的构造器）</span><br><span class="line">    <span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">TestClass</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> TestClass <span class="title">make</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> TestClass();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrivateDaiMa</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line"><span class="comment">//        TestClass x = new TestClass();</span></span><br><span class="line">        TestClass x = TestClass.make();</span><br><span class="line"><span class="comment">//        不能通过构造器来创建TestClass,要通过调用make方法才可以</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>  报错信息说明TestClass的private将其构造器给私有化了，不能直接访问。</p>
+<td style="text-align:left;"><img src="https://i.loli.net/2020/01/09/rcEMGRdyOFzu9At.png" width="850px"/></td>
+
+<ul>
+<li>访问不同包的protected方法（非子类的），先是定义在Music类中的BaoHu方法。</li>
+</ul>
+<td style="text-align:right;"><img src="https://i.loli.net/2020/01/09/c5KPmB3XEnYWo9H.png" alt="image.png" width="850px"/></td>
+
+<p>  在其它包访问，就会报错，因为在Music里面这个BaoHu的方法用的是protected修饰的。</p>
+<td style="text-align:left;"><img src="https://i.loli.net/2020/01/09/RLNfpT5oZqzY7AD.png" alt = "image2.png" width="850px"/></td>
+
+<p>  其实在Idea写代码时候，定义的属性之类可以在左下角有个概览,可以查看是什么类型的</p>
+<td style="text-align:left;"><img src="https://i.loli.net/2020/01/09/bZSgJKmIBAhtvqX.png" alt="image.png" width="850px" /></td>
+
+<ul>
+<li><p>整体的test代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> music.Music;<span class="comment">//导入了music包的Music类</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    test(<span class="keyword">int</span> i)&#123;</span><br><span class="line"></span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//将其变为public String name;的话下面就可以访问</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> num=<span class="number">2</span>;<span class="comment">//公有的可以被访问</span></span><br><span class="line">    <span class="keyword">double</span> i = <span class="number">2.2</span>;<span class="comment">//默认的定义，也可以被访问，在本包里面</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FengZhuang</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">       test a = <span class="keyword">new</span> test(<span class="number">6</span>);</span><br><span class="line">        System.out.println(a.num);</span><br><span class="line">        <span class="comment">//a.name就会报错，因为在上面的name是私有的</span></span><br><span class="line">        Music ceshi = <span class="keyword">new</span> Music();<span class="comment">//导入了不同的包中的类</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        ceshi.BaoHu();报错，是在其它包里的protected方法</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>访问成员有两种方式：一种是调用，即通过类或对象调用它的成员，如p.printX()语句；另一种是继承，即子类继承父类的成员变量和方法。在开发使用的时候，应该尽量限制类中成员的可见性</p>
+<ol>
+<li><p>公有访问级别任何情况下两种方式都可以；（public）</p>
+</li>
+<li><p>默认访问级别在同一包中两种访问方式都可以，不能在包之外访问；()</p>
+</li>
+<li><p>保护访问级别在同一包中与默认访问级别一样，两种访问方式都可以。但是在不同包之</p>
+<p>外只能继承访问；(protected)</p>
+</li>
+<li><p>私有访问级别只能在本类中通过调用方法访问，不能继承访问。(private)</p>
+</li>
+</ol>
+<h2 id="感谢阅读！！！"><a href="#感谢阅读！！！" class="headerlink" title="感谢阅读！！！"></a>感谢阅读！！！</h2><p>才疏学浅，有不对的地方请指出。</p>
+
       
 
       
@@ -641,8 +761,24 @@
 <p>“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。——ThinkinJava</p>
 </blockquote>
 <p>直接网易百科-Polymorphism</p>
-<p><img src="https://i.loli.net/2019/12/20/Q4IryEZBHvd5OUY.png" alt="image.png"></p>
-<h2 id="二、多态包含（或者说体现在）两个方面："><a href="#二、多态包含（或者说体现在）两个方面：" class="headerlink" title="二、多态包含（或者说体现在）两个方面："></a>二、多态包含（或者说体现在）两个方面：</h2><ol>
+<img src="https://i.loli.net/2019/12/20/Q4IryEZBHvd5OUY.png" width= "850px"/>
+
+
+
+
+
+
+
+<h2 id="二、发生的条件"><a href="#二、发生的条件" class="headerlink" title="二、发生的条件"></a>二、发生的条件</h2><ul>
+<li>继承。多态发生一定要子类和父类之间。</li>
+<li>覆盖。子类覆盖父类的方法</li>
+<li>声明的变量类型是父类，但是实际指向的是子类。程序中的new后面就是子类</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//f4变量是子类类型，指向子类实例</span></span><br><span class="line">       Triangle f4 = <span class="keyword">new</span> Triangle();</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="三、多态包含（或者说体现在）两个方面："><a href="#三、多态包含（或者说体现在）两个方面：" class="headerlink" title="三、多态包含（或者说体现在）两个方面："></a>三、多态包含（或者说体现在）两个方面：</h2><ol>
 <li><p>首先是同一个方法，不同的实现效果，就具体的方法是怎么实现的，是可以不同的。就是<strong>方法的多态性</strong>。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">吃苹果方法，可以剥皮吃，也可以不剥皮吃，甚至是榨苹果汁喝。</span><br></pre></td></tr></table></figure>
 
@@ -652,14 +788,33 @@
 <li>覆写：同一个方法，根据实例化的子类对象不同，最后的效果和实现功能不一样。</li>
 </ul>
 </li>
-<li><p>对象的多态性：父子类对象的转换。</p>
+<li><p>对象的多态性</p>
+<p><em>引用类型转换也是通过小括号运算符实现，类型转换有两个方向：将父类引用类型</em></p>
+<p><em>变量转换为子类类型，这种转换称为向下转型（downcast）；将子类引用类型变量转换为</em></p>
+<p><em>父类类型，这种转换称为向上转型（upcast）。向下转型需要强制转换，而向上转型是自</em></p>
+<p><em>动的。</em></p>
 <ul>
 <li>向上转型：子类对象变为父类</li>
 <li>向下转型：父类对象变为子类</li>
 </ul>
 </li>
 </ol>
-<h2 id="三、实现的前提条件"><a href="#三、实现的前提条件" class="headerlink" title="三、实现的前提条件"></a>三、实现的前提条件</h2><p>继承和接口可以实现多态</p>
+<h2 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h2><ul>
+<li><strong>简单的示例多态,代码里面的@Override是伪代码，表示方法重写。一般你重写正确了，IDE会自动加上去的。也是一种验证方法。</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Figure</span></span>&#123;</span><br><span class="line">    <span class="comment">//绘制几何图形方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"绘制Figure..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ellipse</span> <span class="keyword">extends</span> <span class="title">Figure</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"绘制椭圆形"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Triangle</span> <span class="keyword">extends</span> <span class="title">Figure</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 绘制几何图形方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"绘制三角形..."</span>);</span><br><span class="line">    &#125; &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PolymorphismEasy</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// f1变量是父类类型，指向父类实例</span></span><br><span class="line">        Figure f1 = <span class="keyword">new</span> Figure();</span><br><span class="line">        f1.onDraw();</span><br><span class="line">        <span class="comment">//f2变量是父类类型，指向子类实例，发生多态</span></span><br><span class="line">        Figure f2 = <span class="keyword">new</span> Triangle();</span><br><span class="line">        f2.onDraw();</span><br><span class="line">        <span class="comment">//f3变量是父类类型，指向子类实例，发生多态</span></span><br><span class="line">        Figure f3 = <span class="keyword">new</span> Ellipse();</span><br><span class="line">        f3.onDraw();</span><br><span class="line">        <span class="comment">//f4变量是子类类型，指向子类实例</span></span><br><span class="line">        Triangle f4 = <span class="keyword">new</span> Triangle(	);</span><br><span class="line">        f4.onDraw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line">绘制Figure...</span><br><span class="line">绘制三角形...</span><br><span class="line">绘制椭圆形</span><br><span class="line">绘制三角形...</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>不能覆盖private方法</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PolymorphismFugai</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">p</span><span class="params">()</span></span>&#123;<span class="comment">//if public...就可以覆盖</span></span><br><span class="line">        System.out.println(<span class="string">"1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        PolymorphismFugai s = <span class="keyword">new</span> jicheng();</span><br><span class="line">        s.p();<span class="comment">//将输出的是上面的1而不是我们想要的jicheng类中的方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">jicheng</span> <span class="keyword">extends</span> <span class="title">PolymorphismFugai</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">p</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:1</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><strong>Static静态方法与多态的关系</strong></li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"><span class="comment">//这一篇是用来研究静态方法与多态的</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">get</span><span class="params">()</span></span>&#123;<span class="comment">//定义一个方法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"A is base"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//继承A</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">get</span><span class="params">()</span></span>&#123;<span class="comment">//同样的方法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"B is not base"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticUpcast</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        A a = <span class="keyword">new</span> B();<span class="comment">//upcast 向上转型</span></span><br><span class="line">        System.out.println(a.get());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line"><span class="comment">//A is base</span></span><br><span class="line"><span class="comment">//从这里发现静态方法是与类相关联的，不是与单个对象关联的，不能覆盖掉</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="感谢阅读"><a href="#感谢阅读" class="headerlink" title="感谢阅读"></a>感谢阅读</h2><p>才疏学浅，有不对的地方欢迎指教！</p>
 
       
 
