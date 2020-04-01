@@ -61,9 +61,13 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/%E9%9A%8F%E8%AE%B0/%E6%80%BB%E7%BB%932019%E5%B1%95%E6%9C%9B2020.md">随笔</a></li>
+				<li><a href="/%E9%9A%8F%E8%AE%B0">随笔</a></li>
 	        
 				<li><a href="/about">关于我</a></li>
+	        
+				<li><a href="/tags/">tags</a></li>
+	        
+				<li><a href="/categories/">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -125,6 +129,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -145,11 +153,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/%E9%9A%8F%E8%AE%B0/%E6%80%BB%E7%BB%932019%E5%B1%95%E6%9C%9B2020.md">随笔</a></li>
+					<li style="width: 20%"><a href="/%E9%9A%8F%E8%AE%B0">随笔</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/about">关于我</a></li>
+					<li style="width: 20%"><a href="/about">关于我</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/">tags</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -166,37 +178,143 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-其它/通信协议" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java-SE/接口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/%E5%85%B6%E5%AE%83/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">其它/通信协议</a>
+      <a class="article-title" href="/2020/04/01/Java-SE/%E6%8E%A5%E5%8F%A3/">Java-SE/接口</a>
     </h1>
   
 
         
-        <a href="/2020/01/01/%E5%85%B6%E5%AE%83/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:19.102Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+        <a href="/2020/04/01/Java-SE/%E6%8E%A5%E5%8F%A3/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.758Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>局域网（Local Area Network，LAN）是最常见到的，也是应用最多的一种计算机网络，大到各行各业的企业内部网络，小到千家万户的家庭网络都属于局域网（仅指内部网络部分）。我们常说的校园网通常也是一种局域网</p>
-<p>广域网（Wide Area Network，WAN）是规模最大的一种计算机网络，分布的地理范围可以非常广。</p>
-<p><img src="https://i.loli.net/2019/12/23/hgMsCvyxqBbfozw.png" alt="image.png"></p>
-<p>这篇讲下通信协议，现在是想讲下ssh与ssl</p>
-<p>发送端是把<strong>通信连接建立指令和用户应用数据</strong>从上层向下层传输的，直到最低的物理层；而接收端是把通信连接建立指令和用户应用数据从下层（从最低的物理层开始）向上层传输的，直到与发送端发起通信的对等层。</p>
-<p>下面图是计算机网络互连体系结构图OSI/RM：包括了广域网中不同局域网间通信的功能层次（上面五层），也给出了局域网内部通信所必需的两个层次（最下面两层）。</p>
-<p><img src="https://i.loli.net/2019/12/23/2g7DpKIcWC6m8Jy.png" alt="image.png"></p>
-<p>OSI/RM低四层（从物理层到传输层）定义了如何进行端到端的<strong>数据传输</strong>，也就是定义了如何通过网卡、物理电缆、交换机和路由器进行数据传输；而高三层（从会话层到应用层）定义了终端系统的应用程序和用户<strong>如何彼此通信</strong>，也即定义了如何重建从发送方到目的方的应用程序数据流。更多的是把OSI/RM的七层结构分成低三层和高四层的，低三层负责创建网络通信所需的网络连接（面向网络），属于“通信子网”部分，高四层具体负责端到端的用户数据通信（面向用户），属于“资源子网”部分。</p>
-<p><img src="https://i.loli.net/2019/12/23/1IPiOlUeFZ54Hvd.png" alt="image.png"></p>
-<h2 id="ssh（安全外壳协议）"><a href="#ssh（安全外壳协议）" class="headerlink" title="ssh（安全外壳协议）"></a>ssh（安全外壳协议）</h2><p>SSH仅仅是一<strong>协议标准</strong>，其具体的实现有很多，既有开源实现的OpenSSH，也有商业实现方案。使用范围最广泛的当然是开源实现OpenSSH。其目的是为了实现安全远程登录以及其它安全网络服务。ssh属于上述计算机网络体系中的应用层的。</p>
-<p>ssh root@IP</p>
+        <p>[TOC]</p>
+<h2 id="抽象类和抽象方法"><a href="#抽象类和抽象方法" class="headerlink" title="抽象类和抽象方法"></a>抽象类和抽象方法</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>抽象方法和抽象类都必须被abstract关键字修饰。</li>
+<li>抽象——abstract，抽象类的方法不一定是抽象的，但抽象方法出现的类一定是抽象类。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//抽象方法，没有方法体(即没有&#123;&#125;)，只有声明</span></span><br><span class="line"><span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>最重要的是：<strong>抽象类，抽象既不是真的</strong>，所以，<strong>抽象类不可以实例化</strong>。但可以通过抽象类的实例化来使用</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> * 用来完成9.2的练习</span></span><br><span class="line"><span class="comment"> * 验证抽象类与抽象方法的使用</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">YanZheng</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//      不能被实例化，抽象类，会报错</span></span><br><span class="line"><span class="comment">//        ChouXiang chouxi = new ChouXiang() ;</span></span><br><span class="line"><span class="comment">//        可以实例child类</span></span><br><span class="line"><span class="comment">//        即通过继承其子类来实现不能继承抽象类</span></span><br><span class="line">        Child test = <span class="keyword">new</span> Child();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">AbstractChouXiang</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 构造函数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    AbstractChouXiang() &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个抽象类的抽象方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">chouxiang</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Child</span> <span class="keyword">extends</span> <span class="title">AbstractChouXiang</span></span>&#123;</span><br><span class="line">   Child()&#123;</span><br><span class="line">       System.out.println(<span class="string">"实例时候就打印出来"</span>);</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 注意这里不是abstract就不要讲方法定义为abstract</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span>  <span class="title">chouxiang</span><span class="params">()</span></span>&#123;</span><br><span class="line">         System.out.println(<span class="string">"继承抽象类"</span>);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>子类可以不是抽象类，但要实现抽象父类中的<strong>所有</strong>抽象方法，否则<strong>必须定义为abstract类型</strong>。(下面的代码中，我将其子类的重写方法注释掉之后，就会报错must be declared abstract or implentment abstract method)</li>
+</ul>
+<img src="https://i.loli.net/2020/01/13/i1FJWUbndBAPflN.png" width="850px"/>
+
+
+
+<h3 id="与普通类的区别以及注意点："><a href="#与普通类的区别以及注意点：" class="headerlink" title="与普通类的区别以及注意点："></a>与普通类的区别以及注意点：</h3><ul>
+<li><p>抽象类也是可以与普通类那样，可以直接extends，区别在于抽象类不能直接实例化，可以通过实例化其子类，通过子类重写方法实现等——<em>设置抽象方法就是让子类来实现的，否则毫无意义。</em></p>
+</li>
+<li><p>与普通方法的区别</p>
+</li>
+</ul>
+<blockquote>
+<p>抽象方法和空方法体的方法不是同一个概念。例如，public abstract void test();是一个抽象方法，它根本没方法体，即方法定义后面没有一对花括号；但public void test(){}方法是一个普通方法，它已经定义了方法体，只是方法体为空，即它的方法体什么也不做，因此这个方法不可使用abstract来修饰。——疯狂的Java讲义</p>
+</blockquote>
+<ul>
+<li>abstract不能用于修饰Field，不能用于修饰局部变量，即没有抽象变量、没有抽象Field等说法；abstract也不能用于修饰构造器，没有抽象构造器，<strong>抽象类里定义的构造器只能是普通构造器</strong>。</li>
+</ul>
+<h3 id="抽象类的作用"><a href="#抽象类的作用" class="headerlink" title="抽象类的作用"></a>抽象类的作用</h3><ul>
+<li><p>《thinking in java》</p>
+<blockquote>
+<ul>
+<li><p>抽象类是普通的类与接口之间的一种中庸之道。</p>
+</li>
+<li><p>抽象方法、抽象类可以使类的抽象性明确起来，告诉用户和编译器怎么使用它们；</p>
+</li>
+<li><p>同时，抽象类是很好的重构工具，在后期的工作中，可以实现重用性。</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>体现一种模板的效果，从一群相似的子类提炼出一个抽象类的感觉一样，提供了一种规范，子类可以在其原来的基础上进行扩展。</p>
+</li>
+<li><p>抽象父类可以只定义需要使用的某些方法，把不能实现的部分抽象成抽象方法，就是一中留给下一代去实现，一开始没有能力去实现，那可就给厉害的人去做，留给其子类去实现。</p>
+</li>
+</ul>
+<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>特殊的“抽象类”——接口（interface）：比抽象类更加抽象的是接口，在接口中所有的方法都是抽象的。就不能像上面的抽象类一样还可以有普通方法。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//省略public就变为默认级别，只能在当前包所访问</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Figure</span> </span>&#123; </span><br><span class="line"><span class="comment">//接口中静态成员变量</span></span><br><span class="line">String name = <span class="string">"几何图形"</span>;<span class="comment">//省略public static final </span></span><br><span class="line"><span class="comment">// 绘制几何图形方法</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">onDraw</span><span class="params">()</span></span>; <span class="comment">//省略public 这里是抽象方法</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Java中可以implements多个接口，多继承的含义便是接入多个接口（继承只能单继承）</li>
+<li>一个类可以实现一个或多个接口，继承使用extends关键字（但接口只能继承接口），实现则使用implements关键字。</li>
+</ul>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><ul>
+<li>JieKou.java</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.text.SimpleDateFormat;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> * 这个是实现接口定义的代码，在其它地方去调用</span></span><br><span class="line"><span class="comment"> * 这里的接口不用public的话，其它的包就访问不了</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">JieKou</span> </span>&#123;</span><br><span class="line"><span class="comment">//   定义了两个常量</span></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这里定义一个df变量来获取当前时间</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    SimpleDateFormat df = <span class="keyword">new</span> SimpleDateFormat(<span class="string">"yyyy-MM-dd HH:mm:ss"</span>);<span class="comment">//设置日期格式</span></span><br><span class="line">    String AUTHOR = <span class="string">"yhycoder"</span>;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个接口的方法</span></span><br><span class="line"><span class="comment">     * 这里的public是多余的，在接口里面是自动为public</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="comment">/*public*/</span> <span class="function"><span class="keyword">void</span> <span class="title">print</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用接口的Java代码</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//访问了其它包的接口，就是下面这个地址</span></span><br><span class="line"><span class="keyword">import</span> music.daima.ebook.JieKou;</span><br><span class="line"><span class="keyword">import</span> java.util.Date;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">UseInterfaces</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//实例化using类，实现查看代码的运行情况</span></span><br><span class="line">        Using Shuchu = <span class="keyword">new</span> Using();</span><br><span class="line">        Shuchu.print();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这里是接口继承接口</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Jiekou2</span> <span class="keyword">extends</span> <span class="title">JieKou</span></span>&#123;</span><br><span class="line">    String num = <span class="string">"接口2"</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这里是Using类实现了JieKou和Jiekou2接口，逗号隔开</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Using</span> <span class="keyword">implements</span> <span class="title">JieKou</span>,<span class="title">Jiekou2</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 重写了方法，调用接口定义的常量</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">print</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(AUTHOR+<span class="string">"在新的包里面使用接口的时间："</span>+df.format(<span class="keyword">new</span> Date())+<span class="string">" 同时还有"</span>+num);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><ol>
+<li><strong>接口与抽象类一样都不能被实例化</strong></li>
+<li>实现接口时接口中原有的抽象方法在实现类中必须实现。默认方法可以根据需要有选择实现（覆盖）。静态方法不需要实现，实现类中不能拥有接口中的静态方法。（Java 8之后）</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//InterfaceA.java文件，定义一个接口 </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">InterfaceA</span> </span>&#123;</span><br><span class="line"><span class="comment">//抽象方法</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function">String <span class="title">methodB</span><span class="params">()</span></span>;</span><br><span class="line"><span class="comment">// 默认方法</span></span><br><span class="line">	<span class="function"><span class="keyword">default</span> <span class="keyword">int</span> <span class="title">methodC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"6666"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">// 默认方法</span></span><br><span class="line">	<span class="function"><span class="keyword">default</span> String <span class="title">methodD</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"这是默认方法"</span>;</span><br><span class="line">	&#125;</span><br><span class="line"><span class="comment">// 静态方法</span></span><br><span class="line">	<span class="function"><span class="keyword">static</span> <span class="keyword">double</span> <span class="title">methodE</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0.0</span>;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实现接口代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> xxxx.InterfaceA;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ABC</span> <span class="keyword">implements</span> <span class="title">InterfaceA</span> </span>&#123;</span><br><span class="line">	<span class="comment">//重写</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">methodA</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">methodB</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="string">"实现methodB方法..."</span>;</span><br><span class="line">	&#125;</span><br><span class="line">    <span class="comment">//重写覆盖，根据自己的需要来。</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">methodC</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">500</span>;</span><br><span class="line">	&#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//实现类中不能有接口中的静态方法，最后一行</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//声明接口类型，对象是实现类，发生多态</span></span><br><span class="line">	InterfaceA abc = <span class="keyword">new</span> ABC();</span><br><span class="line"><span class="comment">// 访问实现类methodB方法</span></span><br><span class="line">	System.out.println(abc.methodB());</span><br><span class="line"><span class="comment">// 访问默认方法methodC</span></span><br><span class="line">	System.out.println(abc.methodC()); </span><br><span class="line"><span class="comment">// 访问默认方法methodD</span></span><br><span class="line">	System.out.println(abc.methodD()); </span><br><span class="line"><span class="comment">// 访问InterfaceA静态方法methodE，这里不能通过实现类去使用接口的静态方法，只能通过接口名调用</span></span><br><span class="line">	System.out.println(InterfaceA.methodE()); </span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><ol>
+<li>规范，在分配不同人的任务时，接口就像是总纲一样，告诉大家去实现哪些功能模块等。（命名规范都有限制到）</li>
+</ol>
+<h2 id="最后-接口与抽象类的异同"><a href="#最后-接口与抽象类的异同" class="headerlink" title="最后:接口与抽象类的异同"></a>最后:接口与抽象类的异同</h2><h4 id="不同"><a href="#不同" class="headerlink" title="不同"></a>不同</h4><ul>
+<li><p><strong>接口interface</strong>，实现接口则使用implements；<strong>抽象类abstract</strong></p>
+</li>
+<li><p><strong>抽象类</strong>可以有普通方法。Java 8 之前<strong>接口</strong>中只有抽象方法，而 Java 8 之后接口中也可以声明具体方法，具体方法通过声明默认方法实现。</p>
+</li>
+<li><p><strong>可以继承多个接口，而抽象类不可以。</strong></p>
+</li>
+<li><p>和类继承相似，子接口扩展某个父接口，将会获得父接口里定义的<strong>所有</strong>抽象方法、常量Field、内部类和枚举类定义。</p>
+</li>
+<li><p><strong>实现父接口的所有</strong>：一个类实现了一个或多个接口之后，这个类<strong>必须完全实现</strong>这些接口里所定义的全部抽象方法（也就是重写这些抽象方法）；否则，该类将保留从父接口那里继承到的抽象方法，该类也必须定义成抽象类。</p>
+</li>
+<li><p><strong>接口</strong>定义的是一种<strong>规范</strong>，因此接口里不能包含构造器和初始化块定义。接口里可以包含Field（只能是常量）、方法（只能是抽象实例方法）、内部类（包括内部接口、枚举）定义。但<strong>抽象类</strong>与普通类一样，可以有构造器，初始化模块等。</p>
+</li>
+<li><p><strong>接口只有常量</strong>——<strong>接口</strong>中不能有实例成员变量，接口所声明的成员变量全部是静态常量，即便是变量不加 public static final 修饰符也是静态常量。<strong>抽象类</strong>与普通类一样各种形式的成员变量都可以声明。</p>
+<img src="https://i.loli.net/2020/01/13/q1kxj8XHBZvuoSK.png"  width="850">
+
+</li>
+</ul>
+<h4 id="相同"><a href="#相同" class="headerlink" title="相同"></a>相同</h4><ul>
+<li>都不能直接实例化来使用。</li>
+<li>接口和抽象类都可以包含抽象方法，实现接口或继承抽象类的普通子类都必须实现这些抽象方法。</li>
+</ul>
+<h3 id="使用场景"><a href="#使用场景" class="headerlink" title="使用场景"></a>使用场景</h3><ul>
+<li><p>想要多重继承的时候——接口（功能性强，规范性）-要创建不带任何方法定义和成员变量的基类</p>
+</li>
+<li><p>想要底层基础功能模块不断改变——抽象类（模板设计）</p>
+</li>
+</ul>
+<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p>才疏学浅，不对的地方多多指教！</p>
+<h3 id="借鉴"><a href="#借鉴" class="headerlink" title="借鉴"></a>借鉴</h3><p><a href="https://www.cnblogs.com/east7/p/10580245.html" target="_blank" rel="noopener">博客园的小伙伴</a></p>
+<p><a href="https://www.cnblogs.com/3020815dzq/p/8509137.html" target="_blank" rel="noopener">也是园内小伙伴</a></p>
 
       
 
@@ -209,7 +327,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/%E5%85%B6%E5%AE%83/%E9%80%9A%E4%BF%A1%E5%8D%8F%E8%AE%AE/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/01/Java-SE/%E6%8E%A5%E5%8F%A3/">展开全文 >></a>
         </p>
       
 
@@ -239,177 +357,660 @@
 
 
   
-    <article id="post-0系列/0-多线程并发" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Java-SE/内部类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">0系列/0-多线程并发</a>
+      <a class="article-title" href="/2020/04/01/Java-SE/%E5%86%85%E9%83%A8%E7%B1%BB/">Java-SE/内部类</a>
     </h1>
   
 
         
-        <a href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:19.071Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+        <a href="/2020/04/01/Java-SE/%E5%86%85%E9%83%A8%E7%B1%BB/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.730Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>内部类，讲完前面的特性，今天就讲下内部类这个用的比较多，出现频率挺高的知识点。</p>
+<p>[toc]</p>
+<h2 id="what-is-that"><a href="#what-is-that" class="headerlink" title="what is that?"></a>what is that?</h2><p>首先，顾名思义，内部类就是在类的内部，也就是类的类，嵌套在里面的。直接代码介绍，现一般分为成员内部类和局部内部类，还有一种匿名类。内部类拥有对外围对象的引用。大部分使用的都是成员内部类。<strong>成员内部类</strong>是一种与Field、方法、构造器和初始化块相似的类成员；<strong>局部内部类和匿名内部类</strong>则不是类成员。</p>
+<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><p>定义在类里面的成员变量域的类，就是成员内部类。此时的内部类作为其外部类的成员，所以可以使用任意访问控制符如private、protected和public等修饰。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="comment">//成员内部类，这种包含类的结构</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">b</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
+<p>成员内部类可以分为静态内部类和非静态内部类。注意：<em>根据静态成员不能访问非静态成员的规则，外部类的静态方法、静态代码块不能访问非静态内部类，包括不能使用非静态内部类定义变量、创建实例等。</em></p>
+<ul>
+<li>静态内部类（带static）</li>
+</ul>
+<p>static关键字的作用是把类的成员变成<strong>类相关</strong>，而<strong>不是</strong>实例相关，即static修饰的成员属于<strong>整个</strong>类，而不属于单个对象。静态内部类只可以访问静态的外部类的方法和对象。但是静态内部类<strong>可以有</strong>非静态成员。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这一篇是用来测试静态内部类的使用的</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 1/14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticInner</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> num = <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  定义静态常量，这个才可以被静态内部类调用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> num2 = <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Innerclass</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> num3;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">innerfangfa</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//          System.out.println("调用外部类的成员变量："+num);，这个会报错，因为不能调用非静态的 </span></span><br><span class="line">            System.out.println(<span class="string">"调用外部类的成员变量："</span>+num2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E5%B9%B6%E5%8F%91/">展开全文 >></a>
-        </p>
-      
+<p>报错信息</p>
+<img src="https://i.loli.net/2020/01/14/9vRCZ5xgO1FylTd.png" width = "850px"/>
 
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+<p>外部类使用静态类的代码。<div id ="test"></div></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticInner</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> num = <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  定义静态常量，这个才可以被静态内部类调用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> num2 = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个静态内部类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Innerclass</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> num3;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> num4 = <span class="number">4</span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">innerfangfa</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//          System.out.println("调用外部类的成员变量："+num);，这个会报错，因为不能调用非静态的</span></span><br><span class="line">            System.out.println(<span class="string">"调用外部类的成员变量："</span>+num2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这是外部类的方法，用来验证访问内部类的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">inneracess</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        通过类名访问静态内部类的类成员</span></span><br><span class="line">        System.out.println(<span class="string">"访问静态内部类："</span>+Innerclass.num3);</span><br><span class="line"><span class="comment">//        通过实例访问静态内部类的实例成员</span></span><br><span class="line">        System.out.println(<span class="string">"访问静态内部类："</span>+<span class="keyword">new</span> Innerclass().num4);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
+<ul>
+<li>非静态内部类（不带static）</li>
+</ul>
+<p>内部类可以<strong>直接</strong>访问外部类的变量、方法等，而外部类<strong>只能</strong>通过显式创建类才可以。包括可以访问外部类的private。同时，在非静态内部类里<strong>不能</strong>有静态方法、静态field、静态初始化块。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这一篇是用来讲内部类的一些定义的</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 1/14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> outernum = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建内部类，同时还定义一个常量，为private</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span>  <span class="keyword">int</span> innernum = <span class="number">8</span>;</span><br><span class="line"><span class="comment">//        定义内部类的方法，去调用外部类的成员常量</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">outAcess</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"外部类的值："</span>+outernum);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这个是外部类的成员方法</span></span><br><span class="line"><span class="comment">     * 这里直接调用内部类会报错，不可以直接innernum使用</span></span><br><span class="line"><span class="comment">     * 要通过显式创建内部类对象才可以实现</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">innerAcess</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"内部类的值："</span>+<span class="keyword">new</span> Inner().innernum);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        创建外部类对象，没创建内部类对象</span></span><br><span class="line">     InnerClass i = <span class="keyword">new</span> InnerClass();</span><br><span class="line">        i.innerAcess();</span><br><span class="line">   </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//非静态内部类对象必须寄存在外部类对象里，而外部类对象则不必一定有非静态内部类对象寄存其中</span></span><br></pre></td></tr></table></figure>
 
-  
-    <article id="post-0系列/0-面试准备之集合（数据结构）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E4%B9%8B%E9%9B%86%E5%90%88%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/">0系列/0-面试准备之集合（数据结构）</a>
-    </h1>
-  
+<p>非静态内部类的方法内访问某个变量时，系统优先在该方法内查找（如果存在就使用）——<strong>if not，</strong>则到该方法所在的内部类中（存在则使用）——<strong>if not，</strong>则到该内部类所在的外部类（如果存在则使用）——<strong>if not，</strong>系统将出现编译错误。</p>
+<h3 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h3><p>局部内部类是定义在类的内部方法或者其他作用域里面的内部类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="comment">//局部内部类</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">B</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        
-        <a href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E4%B9%8B%E9%9B%86%E5%90%88%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:19.071Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-%E9%9D%A2%E8%AF%95%E5%87%86%E5%A4%87%E4%B9%8B%E9%9B%86%E5%90%88%EF%BC%88%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
+<p>局部内部类的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  * 这一篇是用来观察局部内部类的定义使用等,thinking in java的练习九</span></span><br><span class="line"><span class="comment"> *  * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> *  * <span class="doctag">@date</span> 1/14</span></span><br><span class="line"><span class="comment"> *  */</span></span><br><span class="line"></span><br><span class="line"> <span class="class"><span class="keyword">interface</span>  <span class="title">Ex9Interface</span></span>&#123;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">      * <span class="doctag">@param</span> s string类型在下面给内部类调用</span></span><br><span class="line"><span class="comment">      * 定义一个接口，同时包含一个say方法，给下面使用</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">say</span><span class="params">(String s)</span></span>;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JuBuInner</span> </span>&#123;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">      * <span class="doctag">@return</span> Inner（）返回该类对此接口的引用</span></span><br><span class="line"><span class="comment">      * //    这是一个方法，下面在里面定义一个内部类</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line"></span><br><span class="line">    <span class="function">Ex9Interface <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> <span class="keyword">implements</span> <span class="title">Ex9Interface</span> </span>&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">                System.out.println(s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Inner();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       JuBuInner x = <span class="keyword">new</span> JuBuInner();</span><br><span class="line"><span class="comment">//       调用局部内部类的say方法</span></span><br><span class="line">        x.f().say(<span class="string">"hi"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 
 
+<ul>
+<li>局部内部类不可以为<strong>public</strong> 和 <strong>private</strong>来修饰。而且因为它的上一级是方法，所以用static来修饰它是没有意义的，所以也不能用<strong>static</strong>来修饰</li>
+</ul>
+<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><p>这个知识点就直接看代码了解一下，次数少的时候可以用它，因为用完就是垃圾了，是内部类的简化写版 ，本质不是类而是匿名对象（继承该类或者实现了改接口的）。</p>
+<h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><p>得提前存在一个类或者是接口给它用，可以是具体类也可以是抽象类。</p>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><p><strong>new 类名or接口名() {重写方法};</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * thinking in java</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> * 匿名内部类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnonymousInner</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test1 <span class="title">getTest</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line"><span class="comment">//        匿名类的结构如下，这里的i会传给基类的构造器</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> test1(i) &#123;</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(<span class="number">22</span>);</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//            重写f方法</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"在匿名类内"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;<span class="comment">//这里要注意有分号</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test1 abc = getTest(<span class="number">55</span>);</span><br><span class="line">        abc.f();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *创建一个抽象类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">test1</span></span>&#123;</span><br><span class="line"><span class="comment">//    基类的构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">test1</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"i is :"</span>+i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-  
-    <article id="post-其它/Electron" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/%E5%85%B6%E5%AE%83/Electron/">其它/Electron</a>
-    </h1>
-  
+<p>《Java的编程思想》中的练习题答案——使用匿名内部类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Inner12</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">modifyOuter</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer12</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> oi = <span class="number">1</span>;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"Outer hi"</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Inner12 <span class="title">inner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Inner12() &#123;</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modifyOuter</span><span class="params">()</span> </span>&#123; </span><br><span class="line">				oi *= <span class="number">2</span>;</span><br><span class="line">				hi(); </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showOi</span><span class="params">()</span> </span>&#123; System.out.println(oi); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Outer12 out = <span class="keyword">new</span> Outer12();</span><br><span class="line">		out.showOi();</span><br><span class="line">		out.inner().modifyOuter();</span><br><span class="line">		out.showOi();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-        
-        <a href="/2020/01/01/%E5%85%B6%E5%AE%83/Electron/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:19.071Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p> Electron 是一个用 HTML，CSS 和 JavaScript 来构建跨平台桌面应用程序的一个开源库。由GitHub开发的。</p>
-<p><img src="https://img2018.cnblogs.com/blog/1847641/201912/1847641-20191212235206399-1173994357.png" alt=""><br>其原理是 Electron 通过将 Chromium 和 Node.js 合并到同一个运行时环境中，并将其打包为 Mac，Windows 和 Linux 系统下的应用来实现这一目的。</p>
-<p><em>在公司里用到了Linux系统，所以就花了一点时间试着搭了一个体验一下。</em></p>
+<p>下面的pd.method()方法调用结果是一样的，下面用的就是匿名内部类，相对简单一点，但是不好理解。记住它是一个对象而不是类。</p>
+<img src="https://i.loli.net/2020/01/14/WXoeldaQDFr8xIY.png" width = "850px">
+
+<h2 id="why-use-it？"><a href="#why-use-it？" class="headerlink" title="why use it？"></a>why use it？</h2><blockquote>
 <ol>
-<li><p>安装这个网站走完安装部署<a href="https://www.linuxidc.com/Linux/2019-10/161183.htm" target="_blank" rel="noopener">步骤</a></p>
-<ol start="2">
-<li>创建electron桌面项目代码等结构参照以下链接<a href="https://github.com/thelostwind/electron-clock" target="_blank" rel="noopener">github</a></li>
-<li>一开始按照网上进行操作，最后会报错，无法执行，直接抛出——throw new Error(‘Electron failed to<br>install correctly, please delete node_modules/electron and try<br>installing again’) 如图</li>
-</ol>
+<li><p>内部类方法可以访问该类定义所在的作用域中的数据，包括私有的数据</p>
+</li>
+<li><p>内部类可以对同一个包内的其他类隐藏起来</p>
+</li>
+<li><p>当想要定义一个回调函数且不想编写大量代码，可以考虑使用匿名内部类比较便捷</p>
+<p>​                                                                            ——《Java核心技术卷一》</p>
 </li>
 </ol>
-<p><img src="https://img-blog.csdnimg.cn/20191121142141593.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDMwNDM4Nw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+</blockquote>
+<p>个人理解：</p>
 <ul>
-<li><p>操作的一些记录<br><img src="https://img-blog.csdnimg.cn/20191121142043608.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDMwNDM4Nw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<li>内部类可以将其封装起来，很好的隐藏，可以用protected 和private权限来修饰。</li>
+<li>拥有访问外部类的所有元素的权限，普通的内部类对象隐式地保存了一个引用，指向创建它的外围类对象。</li>
+<li>比如可以很好处理类的办法同名重叠情况，更加有效地去引用。</li>
+<li>可以间接实现了多重继承，内部类继承其它类，然后实例化外部类可以实现这种间接效果</li>
+</ul>
+<h2 id="how-to-use？"><a href="#how-to-use？" class="headerlink" title="how to use？"></a>how to use？</h2><h4 id="1-在外部类以外使用静态内部类"><a href="#1-在外部类以外使用静态内部类" class="headerlink" title="1.在外部类以外使用静态内部类"></a>1.在外部类以外使用静态内部类</h4><p>(因为静态内部类是外部类类相关的，因此创建内部类对象时无须创建外部类对象。)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**这是用来测试在外部类以外使用静态内部类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">innerOut</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Out1.In1 abc = <span class="keyword">new</span> Out1.In1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义一个外部类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Out1</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个静态内部类,静态内部类是直接与外部类相关的</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">In1</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">FangFa</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"这是静态内部类"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output：这是静态内部类</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-在外部类以外使用非静态内部类"><a href="#2-在外部类以外使用非静态内部类" class="headerlink" title="2.在外部类以外使用非静态内部类"></a>2.在外部类以外使用非静态内部类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用教程——外部类以外使用非静态内部类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        格式，先外部再内部 = new 外部.new 内部</span></span><br><span class="line">        Out.In test = <span class="keyword">new</span> Out().<span class="keyword">new</span> In();</span><br><span class="line">        test.inner();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义一个外部类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Out</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个非静态内部类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">In</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">inner</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"打印出内部类的信息"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:打印出内部类的信息</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-在外部类内部使用内部类"><a href="#3-在外部类内部使用内部类" class="headerlink" title="3.在外部类内部使用内部类"></a>3.在外部类内部使用内部类</h4><p> <a href="#test">在上面有使用的代码</a></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>静态内部类和非静态内部类区别只是在创建内部类对象时，静态的只需使用外部类即可调用构造器，而非静态则一定使用外部类对象来调用里面的方法。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/Java-SE/%E5%86%85%E9%83%A8%E7%B1%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-SE/synchronized" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/Java-SE/synchronized/">Java-SE/synchronized</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/Java-SE/synchronized/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.728Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="浅谈synchronized"><a href="#浅谈synchronized" class="headerlink" title="浅谈synchronized"></a>浅谈synchronized</h1><p>[toc]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看多线程的相关书籍的时候，会经常阅读到一个使用前景，就是银行的取钱存钱操作，假设我们使用两个线程来模拟取钱操作，模拟两个人使用同一个账户并发取钱的问题，我们都知道存款不可能为负的，但是往往并发操作的时候，可能就会导致系统出错导致出现负的数字（假设一开始都是200元余额，两边同时操作取出150，系统可能就会出错）。出现类似这种问题就是缺少同步安全性，为了解决这个问题，Java就增进了同步监视器来解决这个，也就是本文讲的synchronized的作用。</p>
+<h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>synchronized是Java中的<strong>关键字</strong>。同步的意思，用在解决<strong>线程安全</strong>问题上。有添加在<strong>方法</strong>上，和直接修饰<strong>代码块</strong>。有种保护的作用，使用修饰之后，家门上了锁，别人进不来。用synchronized修饰的方法<strong>只允许一个线程</strong>执行，其他线程无法进入该方法。（原子性操作），银行使用该操作之后，就会变成一个排队操作一样，像前言的例子，就会变成一个人等另一个操作取出150之后才可以取钱，这样就不会出现负的余额。</p>
+<ol>
+<li>基本上所有的并发模式 在解决线程冲突的时候，都是采用序列化访问共享资源的方案。就是在给定的时间间隔内只允许一个任务访问共享资源。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所以synchronized保护的是线程遭受破坏，必须按照允许的权限进行资源访问。</span><br></pre></td></tr></table></figure>
+
+<p>记得synchronized关键字可以修饰方法，可以修饰代码块，但<strong>不能</strong>修饰构造函数、属性等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//long与double的操作不是原子的</span></span><br></pre></td></tr></table></figure>
+
+<img src="https://i.loli.net/2020/02/04/yAwzan6S2RWk3BC.png" width="850px">
+
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><img src="https://i.loli.net/2020/02/03/yvfkjoFdD91P2gn.png" width = "850px">
+
+<h3 id="同步代码块"><a href="#同步代码块" class="headerlink" title="同步代码块"></a>同步代码块</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//synchronized代码块</span></span><br><span class="line"><span class="comment">//obj对象即表示线程开始执行同步代码块之前，必须先获得对同步监视器的锁定</span></span><br><span class="line"><span class="comment">//步骤：加锁--修改--释放锁</span></span><br><span class="line"><span class="keyword">synchronized</span> (obj) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>任何时刻只能有一个线程可以获得对同步监视器的锁定，当同步代码块执行完成后，该线程会释放对该同步监视器的锁定。具体的格式参见上面。</p>
+<h3 id="同步方法"><a href="#同步方法" class="headerlink" title="同步方法"></a>同步方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//synchronized方法,可以分为静态方法和普通方法</span></span><br><span class="line"><span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line">      <span class="comment">// todo</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//无论哪种形式都可以看做是“｛”处获取锁，“｝”释放锁</span></span><br></pre></td></tr></table></figure>
+
+<p>与同步代码块对应，Java 的多线程安全支持还提供了同步方法，同步方法就是使用synchronized关键字来修饰某个方法(放在权限词的<strong>后面</strong>即可)，则该方法称为同步方法。对于同步方法而言，<strong>无须显式</strong>指定同步监视器，同步方法的同步监视器是this，也就是<strong>该对象</strong>本身。在<strong>格式</strong>上可以看到一些用法，但是具体来讲，synchronized用在方法体上还分为用在普通方法和静态方法两种，区别在作用锁对象的不同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修饰普通方法作用的是调用这个方法的对象，修饰静态方法作用是调用这个类的所有对象。</span><br><span class="line">synchronized static方法可以在类的范围内防止对static数据的并发访问，</span><br></pre></td></tr></table></figure>
+
+<p>使用同步方法可以很方便得实现线程安全的类，这样类的对象可以被多个线程同时安全得访问。    </p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li>synchronized不能被继承。</li>
+<li>collection中的线程不安全的集合可以变成使用Collections工具类的,具体用法语句可以参考API文档，写的还算比较详细。<img src="https://i.loli.net/2020/02/05/A8VafvYhTC1x7Rg.png" width = "850px"></li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ol>
+<li><p>关于什么使用同步，也就是上锁，引用书上的话</p>
+<blockquote>
+<p>如果你在写一个变量，它可能接下来将被另一个线程读取，或者正在读取上一个已经被另一个线程写过的变量，那么你必须使用同步，并且，读取线程都必须用相同的监视器锁同步</p>
+<p>​                                                                            ——Brain Goetz《Java Concurrency in Pactice》的作者</p>
+</blockquote>
 </li>
-<li><p>查阅了一小会资料，原来是我的Ubuntu上缺少了一些库环境，不过每个人的情况不一样，先是确保你的Python版本在2.7.x，以及安装了node.js那些,就是以及完成了那些该走的步骤，再来就是安装下面的库了。</p>
+<li><p>个人学习记录，有错误欢迎指点，谢谢！加油！</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/Java-SE/synchronized/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-其它/MySQL基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/MySQL%E5%9F%BA%E7%A1%80/">其它/MySQL基础</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/MySQL%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:58:35.653Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="本单元目标"><a href="#本单元目标" class="headerlink" title="本单元目标"></a>本单元目标</h1><p>难点：</p>
+<p>SQL高级语句：group by ,having ,左连接，，子查询（in）,行转列等</p>
+<p>建表方面的第三范式和反</p>
+<p>MySQL集群</p>
+<p>基础</p>
+<p>懂得查看日志，排查问题</p>
+<p>less命令打开文件</p>
+<p>通过grep方式查关键字，grep 关键字 文件名 </p>
+<p>通过vi编辑文件</p>
+<p>通过chmod来设置文件的权限</p>
+<h2 id="一、为什么要学习数据库"><a href="#一、为什么要学习数据库" class="headerlink" title="一、为什么要学习数据库"></a>一、为什么要学习数据库</h2><p>1.持久化数据</p>
+<p>2.方便检索</p>
+<p>3.存储大量数据</p>
+<p>4.共享、安全</p>
+<p>5.通过组合分析，获取新的数据</p>
+<h2 id="二、数据库的相关概念"><a href="#二、数据库的相关概念" class="headerlink" title="二、数据库的相关概念"></a>二、数据库的相关概念</h2><p>​        <strong>DBMS、DB、SQL</strong></p>
+<p>DB:database数据库，存储一系列有组织数据的容器</p>
+<p>DBMS：Database Management System数据库管理系统，使用DBMS管理和维护DB</p>
+<p>SQL：StructureQueryLanguage结构化查询语言，程序员用于和DBMS通信的语言</p>
+<h2 id="三、数据库存储数据的特点"><a href="#三、数据库存储数据的特点" class="headerlink" title="三、数据库存储数据的特点"></a>三、数据库存储数据的特点</h2><p>1、数据先放在表中，表再放在库中</p>
+<p>2、一个库可以有多张表，每张表都有自己的唯一标识名</p>
+<p>3、一张表的设计，类似于java中”类”的设计</p>
+<p>​      表中的字段的设计，类似于属性的设计</p>
+<p>​      表中的单条记录，类似于一个对象</p>
+<p>​      表中的所有的记录，类似于对象的集合</p>
+<p>​     orm ：object relation mapping 对象关系映射</p>
+<h2 id="四、初始MySQL"><a href="#四、初始MySQL" class="headerlink" title="四、初始MySQL"></a>四、初始MySQL</h2><h3 id="1、MySQL产品的介绍"><a href="#1、MySQL产品的介绍" class="headerlink" title="1、MySQL产品的介绍"></a>1、MySQL产品的介绍</h3><p>MySQL 前身属于瑞典的一家公司AB，2008年被sun公司收购，2009年sun被oracle公司收购。</p>
+<p>特点：</p>
+<p>① 体积小、安装较方便</p>
+<p>②开源、免费</p>
+<p>③性能高、稳定性好</p>
+<p>④兼容性好</p>
+<h3 id="2、MySQL产品的安装-★"><a href="#2、MySQL产品的安装-★" class="headerlink" title="2、MySQL产品的安装          ★"></a>2、MySQL产品的安装          ★</h3><p>基于C/S架构的DBMS，需要安装服务端和客户端</p>
+<p><a href="http://www.oracle.com" target="_blank" rel="noopener">www.oracle.com</a></p>
+<p>MySQL5.5</p>
+<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="3、MySQL服务的启动和停止-★"><a href="#3、MySQL服务的启动和停止-★" class="headerlink" title="3、MySQL服务的启动和停止     ★"></a>3、MySQL服务的启动和停止     ★</h3><p>方式一：图形化</p>
+<p>右击——计算机管理——服务——MySQL服务</p>
+<p>方式二：通过管理员身份运行dos</p>
+<p>net start 服务名</p>
+<p>net stop 服务名</p>
+<h3 id="4、MySQL服务的登录和退出-★"><a href="#4、MySQL服务的登录和退出-★" class="headerlink" title="4、MySQL服务的登录和退出     ★"></a>4、MySQL服务的登录和退出     ★</h3><h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><p><strong>方式一：通过dos命令</strong></p>
+<p>mysql -h主机名 -P端口号 -u用户名 -p密码</p>
+<p><strong>注意：</strong></p>
+<p>如果是本机，则-h主机名  可以省略</p>
+<p>如果端口号是3306，则-P端口号可以省略</p>
+<p><strong>方式二：通过图形化界面客户端</strong></p>
+<p>通过sqlyog，直接输入用户名、密码等连接进去即可</p>
+<h3 id="5、MySQL的常见命令和语法规范"><a href="#5、MySQL的常见命令和语法规范" class="headerlink" title="5、MySQL的常见命令和语法规范"></a>5、MySQL的常见命令和语法规范</h3><p><strong>①常见命令</strong></p>
+<p>show databases             显示当前连接下所有数据库</p>
+<p>show tables                    显示当前库中所有表</p>
+<p>show tables from 库名  显示指定库中所有表</p>
+<p>show  columns from 表名    显示指定表中所有列</p>
+<p>use 库名                             打开/使用指定库</p>
+<p><strong>②语法规范</strong></p>
+<p>不区分大小写</p>
+<p>每条命令结尾建议用分号</p>
+<p>注释：</p>
+<p>#单行注释</p>
+<p>– 单行注释</p>
+<p>/<em>多行注释</em>/</p>
+<h2 id="五、DQL语言的学习-★"><a href="#五、DQL语言的学习-★" class="headerlink" title="五、DQL语言的学习   ★"></a>五、DQL语言的学习   ★</h2><p>DQL:Data Query Language  数据查询语言</p>
+<p>select</p>
+<h3 id="1、基础查询-★"><a href="#1、基础查询-★" class="headerlink" title="1、基础查询        ★"></a>1、基础查询        ★</h3><p>语法：</p>
+<p>select 查询列表 from 表名;</p>
+<p>特点：</p>
+<p>①查询结果集是一个虚拟表</p>
+<p>②查询列表可以是单个字段、多个字段、常量、表达式、函数，可以是以上的组合</p>
+<p>引申1：起别名</p>
+<p>select 字段名  as  “别名” from 表名;</p>
+<p>select 字段名 “ 别名” from 表名;</p>
+<p>引申2：+的作用</p>
+<p>作用：加法运算</p>
+<ul>
+<li><p>如果两个操作数都是数值型，则直接做加法运算</p>
+</li>
+<li><p>如果其中一个为非数值型，则将强值转换成数值型，如果转换失败，则当做0</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install build-essential clang libdbus-1-dev libgtk-3-dev \</span><br><span class="line">                       libnotify-dev libgnome-keyring-dev \</span><br><span class="line">                       libasound2-dev libcap-dev libcups2-dev libxtst-dev \</span><br><span class="line">                       libxss1 libnss3-dev gcc-multilib g++-multilib curl \</span><br><span class="line">                       gperf bison python-dbusmock openjdk-8-jre</span><br></pre></td></tr></table></figure>
-
-
-<p>我的就是上面库没装，再次试了一遍之后就成功运行了。</p>
-<p>最后运行成功如下<br><img src="https://img-blog.csdnimg.cn/20191121141809436.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDMwNDM4Nw==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191121143650122.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80NDMwNDM4Nw==,size_16,color_FFFFFF,t_70" alt="success"></p>
+<p>‘123’+4====》127</p>
+<p>‘abc’+4====》 4</p>
 <ul>
-<li><p>参考解决方法<br><a href="https://stackoverflow.com/questions/53393675/problem-installing-electron-on-linux-macos" target="_blank" rel="noopener">stackoverflow上的解决方法</a><br><a href="https://electronjs.org/docs/development/build-instructions-linux" target="_blank" rel="noopener">官方文档</a></p>
+<li>如果其中一个为null，则结果直接为null</li>
+</ul>
+<p>引申3：去重</p>
+<p>select distinct department_id from employees;</p>
+<p>引申4：补充函数</p>
+<p>select version();</p>
+<p>select database();</p>
+<p>select user();</p>
+<p>select ifnull(字段名,表达式);</p>
+<p>select concat(字符1，字符2,字符3);</p>
+<p>select length(字符/字段);获取字节长度</p>
+<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 id="2、条件查询-★"><a href="#2、条件查询-★" class="headerlink" title="2、条件查询         ★"></a>2、条件查询         ★</h3><p><strong>语法：</strong></p>
+<p>select 查询列表 </p>
+<p>from 表名</p>
+<p>where 筛选条件;</p>
+<p><strong>特点：</strong></p>
+<p>筛选条件的分类：</p>
+<p>①按条件表达式筛选</p>
+<p>关系运算符：&gt;=   &lt;   &lt;=   &gt;    &lt;&gt;   =</p>
+<p>②按逻辑表达式筛选</p>
+<p>逻辑运算符：and   or   not</p>
+<p>③模糊查询</p>
+<p>like:一般和通配符搭配使用</p>
+<p>​     _ 任意单个字符</p>
+<p>​    % 任意多个字符</p>
+<p>between and：一般用于判断某字段是否在指定的区间</p>
+<p>​        a between 10 and  100</p>
+<p>in：一般用于判断某字段是否在指定的列表</p>
+<p>​        a  in(10,30,50)</p>
+<p>is null:判断null值</p>
+<p>​    </p>
+<h3 id="3、排序查询-★"><a href="#3、排序查询-★" class="headerlink" title="3、排序查询         ★"></a>3、排序查询         ★</h3><p><strong>语法：</strong></p>
+<p>select  查询列表</p>
+<p>from 表名</p>
+<p>where 筛选条件</p>
+<p>order by 排序列表 ;</p>
+<p><strong>特点：</strong></p>
+<p>①排序列表可以是 单个字段、多个字段、函数、表达式、别名、列的索引，以及以上的组合</p>
+<p>②升序，通过asc</p>
+<p>​    降序，通过desc</p>
+<h3 id="4、常见函数-★"><a href="#4、常见函数-★" class="headerlink" title="4、常见函数        ★"></a>4、常见函数        ★</h3><p>说明：sql中的函数分为单行函数和分组函数</p>
+<p>调用语法：select 函数名(实参列表);</p>
+<p>1》字符函数</p>
+<p>concat(str1,str2,..):拼接字符</p>
+<p>substr(str,pos):截取从pos开始的所有字符，   起始索引从1开始</p>
+<p>substr(str,pos,len):截取len个从pos开始的字符，起始索引从1开始</p>
+<p>length(str):获取字节个数</p>
+<p>char_length(str):获取字符个数</p>
+<p>upper(str):变大写</p>
+<p>lower(str):变小写</p>
+<p>trim(【substr from】str):去前后指定字符，默认是去空格</p>
+<p>left(str,len):从左边截取指定len个数的 字符</p>
+<p>right(str,len):从右边截取指定len个数的 字符</p>
+<p>lpad(str,substr,len):左填充</p>
+<p>rpad(str,substr,len)：右填充</p>
+<p>strcmp(str1,str2):比较两个字符的大小</p>
+<p>instr(str,substr):获取substr在str中第一次出现的索引</p>
+<p>2》数学函数</p>
+<p>ceil(x):向上取整</p>
+<p>floor(x):向下取整</p>
+<p>round(x,d):四舍五入</p>
+<p>mod(x,y):取模/取余</p>
+<p>truncate(x,d):截断，保留小数点后d位</p>
+<p>abs(x):求绝对值</p>
+<p>3》日期函数</p>
+<p>now():获取当前日期——时间</p>
+<p>curtime():只有时间</p>
+<p>curdate():只有日期</p>
+<p>date_format(date,格式):格式日期为字符</p>
+<p>str_to_date(str,格式):将字符转换成日期</p>
+<p>datediff(date1,date2):获取两个日期之间的天数差</p>
+<p>year(date) 指定的格式输出</p>
+<p>month(date)</p>
+<p>一些标准日期格式符的写法</p>
+<p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200222213754576.png" alt="image-20200222213754576"></p>
+<p><strong>4》流程控制函数</strong></p>
+<p>①if(条件，表达式1，表达式2)：如果条件成立，返回表达式1，否则返回表达式2</p>
+<p>②case 表达式</p>
+<p>when 值1 then 结果1</p>
+<p>when 值2 then 结果2</p>
+<p>…</p>
+<p>else 结果n</p>
+<p>end</p>
+<p><strong>③</strong></p>
+<p><strong>case</strong> </p>
+<p>when 条件1 then 结果1</p>
+<p>when 条件2 then 结果2</p>
+<p>…</p>
+<p>else 结果n</p>
+<p>end</p>
+<h3 id="5、分组函数-★"><a href="#5、分组函数-★" class="headerlink" title="5、分组函数        ★"></a>5、分组函数        ★</h3><p>sum求和</p>
+<p>avg平均</p>
+<p>max最大</p>
+<p>min最小</p>
+<p>count个数</p>
+<p>特点：</p>
+<p>1》实参的字段的类型，sum和avg只支持数值型，其他三个可以支持任意类型</p>
+<p>2》这五个函数都忽略null值</p>
+<p>3》count可以支持以下参数</p>
+<p>count(字段)：查询该字段非空值 的个数</p>
+<p>count(*) ：查询结果集的行数</p>
+<p>count(1)：查询结果集的行数</p>
+<p>4》分组函数可以和distinct搭配使用，实现去重的统计</p>
+<p>select count(distinct 字段) from 表;</p>
+<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><h3 id="6、分组查询-★"><a href="#6、分组查询-★" class="headerlink" title="6、分组查询           ★"></a>6、分组查询           ★</h3><p><strong>语法：</strong></p>
+<p>select 分组函数,分组的字段</p>
+<p>from 表名</p>
+<p>where 分组前的筛选条件</p>
+<h4 id="group-by-分组列表"><a href="#group-by-分组列表" class="headerlink" title="group by 分组列表"></a>group by 分组列表</h4><p>group by 要放在where 之后，order by 的前面</p>
+<h4 id="having-分组后的筛选条件"><a href="#having-分组后的筛选条件" class="headerlink" title="having 分组后的筛选条件"></a>having 分组后的筛选条件</h4><p>having是过滤操作</p>
+<p>HAVING和WHERE的差别 这里有另一种理解方法，WHERE在<strong>数据分组前</strong>进行过滤，HAVING在数据分组后进行过滤。这是一个重要的区别，WHERE排除的行不包括在分组中。这可能会改变计算值，从而影响HAVING子句中基于这些值过滤掉的分组。</p>
+<p>order by 排序列表;</p>
+<p><strong>特点：</strong></p>
+<p>1》分组列表可以是单个字段、多个字段</p>
+<p>2》筛选条件分为两类</p>
+<p>​                <strong>筛选的基表        使用的关键字        位置</strong></p>
+<p>分组前筛选        原始表            where                group by前面</p>
+<p>分组后筛选           分组后的结果集    having                group by后面</p>
+<h3 id="7、连接查询-★"><a href="#7、连接查询-★" class="headerlink" title="7、连接查询         ★"></a>7、连接查询         ★</h3><p>说明：当查询中涉及到了多个字段，则需要通过多表连接</p>
+<p>笛卡尔乘积：</p>
+<p>​    出现原因：没有有效的连接条件</p>
+<p>​    解决办法：添加有效的连接条件</p>
+<p>JOIN查询图解</p>
+<p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200322112708086.png" alt="image-20200322112708086"></p>
+<p>————————–SQL92语法————————</p>
+<p>语法：</p>
+<p><strong>select 查询列表</strong>   ①</p>
+<p>*<em>from 表1 别名,表2 别名,… *</em>②</p>
+<p><strong>where 连接条件</strong> ③</p>
+<p><strong>and 筛选条件</strong>④</p>
+<p>group by 分组列表⑤</p>
+<p>having 分组后筛选⑥</p>
+<p>order by 排序列表;⑦</p>
+<p><strong>执行顺序：</strong></p>
+<p>②③④⑤⑥①⑦</p>
+<p>————————–SQL99语法————————</p>
+<p><strong>1》内连接</strong></p>
+<p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200324221836820.png" alt="image-20200324221836820"></p>
+<p>即所连接的表中都包含相同列。</p>
+<p>语法：</p>
+<p>select 查询列表    ①</p>
+<p>from 表1 别名②</p>
+<p>【inner】 join 表2 别名 on 连接条件  ③</p>
+<p>【inner】 join 表3 别名 on 连接条件</p>
+<p>where 筛选条件  ④</p>
+<p>group by 分组列表⑤</p>
+<p>having 分组后的筛选⑥</p>
+<p>order by 排序列表⑦</p>
+<p><strong>执行顺序：</strong></p>
+<p>②③④⑤⑥①⑦</p>
+<h2 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h2><p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200324222019185.png" alt="image-20200324222019185"></p>
+<p>右外连接意思是在右边的数据有多的行而左边没有匹配到。</p>
+<h3 id="8、子查询-√"><a href="#8、子查询-√" class="headerlink" title="8、子查询       √"></a>8、子查询       √</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> first_name <span class="keyword">from</span> employees <span class="keyword">where</span> department_id &gt;(</span><br><span class="line">    <span class="comment"># 子查询</span></span><br><span class="line">       <span class="keyword">select</span> department_id <span class="keyword">from</span> departments</span><br><span class="line">       <span class="keyword">where</span>  location_id=<span class="number">1700</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+
+<p>​    1、子查询语句需要放在小括号内，提高代码的阅读性</p>
+<p>​     2、子查询先于主查询执行，一般来讲，主查询会用到子查询的结果</p>
+<p>​     3、如果子查询放在条件中，一般来讲，子查询需要放在条件的右侧</p>
+<p>​     示例：where job_id&gt;(子查询)</p>
+<p>​     不能写成：where (子查询)&lt;job_id          </p>
+<h3 id="9、分页查询-★"><a href="#9、分页查询-★" class="headerlink" title="9、分页查询       ★"></a>9、分页查询       ★</h3><h3 id="10、union联合查询-√"><a href="#10、union联合查询-√" class="headerlink" title="10、union联合查询    √"></a>10、union联合查询    √</h3><h3 id="11、字符函数"><a href="#11、字符函数" class="headerlink" title="11、字符函数"></a>11、字符函数</h3><p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200324214941880.png" alt="image-20200324214941880"></p>
+<p>INSTR-返回在字符串中指定的字母索引</p>
+<p>SUBSTR-截取字符或者字母</p>
+<p>CONCAT-连接</p>
+<h2 id="六、DML语言的学习-★"><a href="#六、DML语言的学习-★" class="headerlink" title="六、DML语言的学习    ★"></a>六、DML语言的学习    ★</h2><h3 id="1、插入语句"><a href="#1、插入语句" class="headerlink" title="1、插入语句"></a>1、插入语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名<span class="number">1</span>,列名<span class="number">2</span>, …) <span class="keyword">VALUES</span>(值<span class="number">1</span>, 值<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<h3 id="2、修改语句"><a href="#2、修改语句" class="headerlink" title="2、修改语句"></a>2、修改语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式</span></span><br><span class="line"><span class="keyword">UPDATE</span> 表名 <span class="keyword">SET</span> 列名<span class="number">1</span>=值<span class="number">1</span>, … 列名n=值n [<span class="keyword">WHERE</span> 条件]</span><br><span class="line"><span class="keyword">UPDATE</span> stus <span class="keyword">SET</span> sname=’zhangSanSan’, age=’<span class="number">32</span>’, gender=’female’ <span class="keyword">WHERE</span> <span class="keyword">sid</span>=’s_1001’;</span><br></pre></td></tr></table></figure>
+
+<h3 id="3、删除语句"><a href="#3、删除语句" class="headerlink" title="3、删除语句"></a>3、删除语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表名 [<span class="keyword">WHERE</span> 条件] <span class="comment"># 可以回滚</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> 表名 <span class="comment"># 不可以回滚</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="七、DDL语言的学习"><a href="#七、DDL语言的学习" class="headerlink" title="七、DDL语言的学习"></a>七、DDL语言的学习</h2><h3 id="1、库和表的管理-√"><a href="#1、库和表的管理-√" class="headerlink" title="1、库和表的管理     √"></a>1、库和表的管理     √</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">l 查看当前数据库中所有表名称：<span class="keyword">SHOW</span> <span class="keyword">TABLES</span>；　</span><br><span class="line"></span><br><span class="line">l 查看指定表的创建语句：<span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  emps;</span><br><span class="line"></span><br><span class="line">l 查看表结构：DESC emps;</span><br><span class="line"></span><br><span class="line">l 删除表：<span class="keyword">DROP</span> <span class="keyword">TABLE</span> emps</span><br><span class="line"></span><br><span class="line">l 修改表结构:</span><br><span class="line"></span><br><span class="line">a)    修改之添加列：给stus表添加classname列：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stu <span class="keyword">ADD</span> (classname <span class="built_in">varchar</span>(<span class="number">100</span>));</span><br><span class="line"></span><br><span class="line">b)    修改之修改列类型：修改stu表的gender列类型为CHAR(2)：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stus <span class="keyword">MODIFY</span> gender <span class="built_in">CHAR</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">c)    修改之修改列名：修改stu表的gender列名为sex：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stus <span class="keyword">change</span> gender sex <span class="built_in">CHAR</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">d)    修改之删除列：删除stsu表的classname列：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stus <span class="keyword">DROP</span> classname;</span><br><span class="line"></span><br><span class="line">e)    修改之修改表名称：修改stu表名称为student：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stus <span class="keyword">RENAME</span> <span class="keyword">TO</span> student;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2、常见数据类型介绍-√"><a href="#2、常见数据类型介绍-√" class="headerlink" title="2、常见数据类型介绍  √"></a>2、常见数据类型介绍  √</h3><h3 id="3、常见约束-√"><a href="#3、常见约束-√" class="headerlink" title="3、常见约束        √"></a>3、常见约束        √</h3><h2 id="八、TCL语言的学习"><a href="#八、TCL语言的学习" class="headerlink" title="八、TCL语言的学习"></a>八、TCL语言的学习</h2><h3 id="事务和事务处理"><a href="#事务和事务处理" class="headerlink" title="事务和事务处理"></a>事务和事务处理</h3><p>事务的四大特性：ACID</p>
+<ol>
+<li><h3 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h3></li>
+</ol>
+<p>两个事务之间的不同步，即B读到A要撤回改变之前的数据，导致两边提交之后的信息不对等</p>
+<ol>
+<li><h3 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h3></li>
+</ol>
+<p>一个事务内在读取某些数据之后，在读取，发现数据发生了变更，因为有其它事务改变了数据</p>
+<ol>
+<li><h3 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h3></li>
+</ol>
+<p>事务A在按查询条件读取某个范围内的记录，事务B又在该范围内插入了新的满足条件的记录，当事务A再次按条件查询记录时候，会产生新的满足条件的记录。</p>
+<ul>
+<li>不可重复读和幻读的区别</li>
+</ul>
+<p>不可重复读的重点是修改；而幻读重点在于新增或者删除。</p>
+<h3 id="四个隔离级别"><a href="#四个隔离级别" class="headerlink" title="四个隔离级别"></a>四个隔离级别</h3><ol>
+<li>未提交读：全支持读</li>
+<li>提交读</li>
+<li>可重复读</li>
+<li>可串行化：全部不支持读</li>
+</ol>
+<h2 id="九、数据库连接池的使用"><a href="#九、数据库连接池的使用" class="headerlink" title="九、数据库连接池的使用"></a>九、数据库连接池的使用</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p><strong>数据库连接池</strong>：<strong>数据库连接池的基本思想</strong>就是为数据库连接建立一个“缓冲池”。预先在缓冲池中放入一定数量的连接，当需要建立数据库连接时，只需从“缓冲池”中取出一个，使用完毕之后再放回去。数据库连接池负责分配、管理和释放数据库连接，它<strong>允许应用程序重复使用一个现有的数据库连接，而不是重新建立一个</strong>。连接池的最大数据库连接数量限定了这个连接池能占有的最大连接数，当应用程序向连接池请求的连接数超过最大连接数量时，这些请求将被加入到等待队列中。</p>
+<h3 id="数据库连接池的作用"><a href="#数据库连接池的作用" class="headerlink" title="数据库连接池的作用"></a>数据库连接池的作用</h3><ol>
+<li>可以资源重用</li>
+<li>更快的系统反应速度</li>
+<li>新的资源分配手段</li>
+<li>统一的连接管理</li>
+</ol>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JDBC 的数据库连接池使用 javax.sql.DataSource 来表示，DataSource 只是一个接口，该接口通常由服务器(Weblogic, WebSphere, Tomcat)提供实现，也有一些开源组织提供实现：</span><br><span class="line">Druid-阿里提供的数据连接池 学这个开源框架</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSourceFactory;</span><br><span class="line"><span class="comment">//用法参考</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDruid</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		Properties pro = <span class="keyword">new</span> Properties();</span><br><span class="line">        <span class="comment">//pro.load(new FileInputStream("\druid.properties"))</span></span><br><span class="line">		pro.load(TestDruid.class.getClassLoader().getResourceAsStream("druid.properties"));</span><br><span class="line">        <span class="comment">//创建一个指定参数的数据库连接池</span></span><br><span class="line">		DataSource ds = DruidDataSourceFactory.createDataSource(pro);</span><br><span class="line">        <span class="comment">//从数据库连接池中获取可用的连接对象</span></span><br><span class="line">		Connection conn = ds.getConnection();</span><br><span class="line">		System.out.println(conn);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em>druid.properties</em></p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url</span>=<span class="string">jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true</span></span><br><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">123456</span></span><br><span class="line"><span class="attr">driverClassName</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">initialSize</span>=<span class="string">10</span></span><br><span class="line"><span class="attr">maxActive</span>=<span class="string">20</span></span><br><span class="line"><span class="attr">maxWait</span>=<span class="string">1000</span></span><br><span class="line"><span class="attr">filters</span>=<span class="string">wall</span></span><br><span class="line"><span class="attr">&lt;--!配置文件--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>X`</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/MySQL%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-其它/mysql基础知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">其它/mysql基础知识</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:58:35.636Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200322012109828.png" alt="image-20200322012109828"></p>
+<h2 id="字符串类型："><a href="#字符串类型：" class="headerlink" title="字符串类型："></a>字符串类型：</h2><p>字符串类型指<em>CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM和SET</em>。该节描述了这些类型如何工作以及如何在查询中使用这些类型。</p>
+<h3 id="CHAR-、-VARCHAR"><a href="#CHAR-、-VARCHAR" class="headerlink" title="CHAR 、 VARCHAR"></a>CHAR 、 VARCHAR</h3><ul>
+<li>char是<strong>长度固定</strong>的，不变的，长度在0-255字节 ；而varchar是<strong>长度可变</strong>的，长度在0-65535。同时，char后面的空格不会保留，而varchar会保留。还需注意的是oracle中的两个字节表示一个汉字，mysql中只需一个。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char定长:磁盘空间比较浪费,但是效率高,确定数据长度都一样,就使用定长</span><br><span class="line">比如:生日时间、身份证号</span><br><span class="line">varchar变长:比较节省空间,但是效率低,数据不能确定长度(不同数据长度有变化)，不过例如varchar(5)所占的字节数是实际长度的基础上加1，后面还有结束标识符</span><br><span class="line">比如:地址</span><br></pre></td></tr></table></figure>
+
+<h3 id="BINARY、VARBINARY"><a href="#BINARY、VARBINARY" class="headerlink" title="BINARY、VARBINARY"></a>BINARY、VARBINARY</h3><ul>
+<li>两者的关系和上面char和varchar很像，只不过它们是存储二进制字符串，包含字节字符串。</li>
+</ul>
+<h3 id="BLOB"><a href="#BLOB" class="headerlink" title="BLOB"></a>BLOB</h3><ul>
+<li>BLOB 是一个二进制大对象，可以容纳可变数量的数据，分为TINYBLOB（0-255）、BLOB（0-65535）、MEDIUMBLOB 和 LONGBLOB。</li>
+<li>MySQL的四种BLOB类型(除了在存储的最大信息量上不同外，他们是等同的。</li>
+<li>但是有时存储的文件过大，数据库性能就会下降。</li>
+</ul>
+<h3 id="TEXT"><a href="#TEXT" class="headerlink" title="TEXT"></a>TEXT</h3><ul>
+<li><p>存储文字，大的一些文本等，也是四种类型,大小关系和上面的一样</p>
+<img src="https://i.loli.net/2020/03/16/u3YyUOK2WrFpbz7.png" align="left" >
+
+<ul>
+<li>上图的就可以看出分类，不过这个数据类型不怎么使用。</li>
+</ul>
 </li>
-<li><p><a href="https://juejin.im/post/5c46ab47e51d45522b4f55b1" target="_blank" rel="noopener">参考搭建</a></p>
+</ul>
+<h3 id="ENUM和SET"><a href="#ENUM和SET" class="headerlink" title="ENUM和SET"></a>ENUM和SET</h3><ul>
+<li><p>ENUM看名字就知道了，这是一种枚举类型的数据类型，事先将可能出现的<strong>结果都定义</strong>好,实际存储的数据必须是枚举中的一个，不能随意存储。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式：字段名 enum(&#39;值1&#39;,&#39;值2&#39;,...,&#39;值n&#39;) NULL&#x2F;NOT NULL</span><br><span class="line">列表中的每个值都有一个顺序排列的编号，MySQL中存入的是这个编号，就是可以对应其位置来取到相应的值，同时如果存储不是枚举的值，如果类型后面加上了null属性，其默认值为取值列表中的第一个元素。如果不加not null属性，enum类型将允许插入null，而且null为默认值.</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>SET支持去重,可以存储多个元素，如果<strong>要选取列表中多个值的组合，就要选择set类型</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式：字段名 set(&#39;值1&#39;,&#39;值2&#39;,...,&#39;值n&#39;) NULL&#x2F;NOT NULL</span><br><span class="line">这里的同enum类型一样，列表中的每个值都有一个顺序排列的编号</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><em>记住</em>这两种类型的数据都不是直接将数据存入数据库，而是将其列表中的编号存入数据库。</p>
 </li>
 </ul>
 
@@ -424,7 +1025,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/%E5%85%B6%E5%AE%83/Electron/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">展开全文 >></a>
         </p>
       
 
@@ -454,47 +1055,62 @@
 
 
   
-    <article id="post-其它/docker里面创建mysql连接navicat" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-其它/mysql-事务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/%E5%85%B6%E5%AE%83/docker%E9%87%8C%E9%9D%A2%E5%88%9B%E5%BB%BAmysql%E8%BF%9E%E6%8E%A5navicat/">其它/docker里面创建mysql连接navicat</a>
+      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E4%BA%8B%E5%8A%A1/">其它/mysql-事务</a>
     </h1>
   
 
         
-        <a href="/2020/01/01/%E5%85%B6%E5%AE%83/docker%E9%87%8C%E9%9D%A2%E5%88%9B%E5%BB%BAmysql%E8%BF%9E%E6%8E%A5navicat/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:19.071Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:58:22.184Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><strong>在 docker 中使用 mysql</strong></p>
+        <h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>[toc]</p>
+<h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>事务由单独单元的一个或多个SQL语句组成，在这个单元中，每一个mysql语句是相互依赖的；由于整个单独单元作为不可分割的整体，那么如果单元中某条SQL语句一旦执行失败或产生失败，整个单元就会回滚。要么全部成功，要么全部失败。</p>
+<p><em>在mysql中用的最多的存储引擎有：innodb，myisam,memory 等。其中innodb支持事务，而myisam、memory等不支持事务</em></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看mysql支持的引擎：<span class="keyword">SHOW</span> <span class="keyword">engines</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a>事务的四大特性</h2><ol>
+<li>原子性：要么成功，要么失败。</li>
+<li>一致性：状态与其他业务规则保持一致。</li>
+<li>隔离性：在并发中使用。一个事务不被另一个事务所影响</li>
+<li>持久性：一旦改变提交之后，数据就持久化被操作了。</li>
+</ol>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">隐式事务:没有明显的开启和结束标记</span><br><span class="line">显式事务：有明显的开启和结束标记</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用步骤："><a href="#使用步骤：" class="headerlink" title="使用步骤："></a>使用步骤：</h2><p>插个小知识</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DDL（Data Definition Language）：数据定义语言，用来定义数据库对象：库、表、列等；</span><br><span class="line">DML（Data Manipulation Language）：数据操作语言，用来定义数据库记录（数据）；</span><br><span class="line">DCL（Data Control Language）：数据控制语言，用来定义访问权限和安全级别；</span><br><span class="line">DQL（Data Query Language）：数据查询语言，用来查询记录（数据）。</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>安装完docker之后，在命令行中输入docker images可以查看自己创建的image（安装下载docker的教程很多了，大家需要可以去查一下就可以了）这里我之前已经创建了<img src="https://img2018.cnblogs.com/blog/1847641/201911/1847641-20191104145826038-1903259816.png" alt="img"></li>
+<li>一般情况下，如果在一个事务中包含多个SQL语句，那么就要开启事务和结束事务；</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">开启事务：<span class="keyword">start</span> <span class="keyword">transaction</span>；</span><br><span class="line">结束事务：<span class="keyword">commit</span>或<span class="keyword">rollback</span>。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>开始</strong>是以第一个DML语句执行开始</p>
+</li>
+<li><p>以下面的其中之一作为<strong>结束:</strong></p>
+<p>COMMIT 或ROLLBACK 语句（回滚，即回滚到事务的起点，之前做的所有操作都被撤消了！）<br>DDL 或DCL 语句（自动提交）<br>用户会话正常结束<br>系统异常终了</p>
+</li>
 </ul>
 <ul>
-<li>如果没有的小伙伴，要先pull一下MySQL，版本可以根据自己的需要去选择，弄好之后可以再执行docker images查看。</li>
-<li><strong>docker run –name=mysql -it -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql</strong></li>
-</ul>
-<h2 id="这里是新建一个MySQL数据库容器，命名、端口映射设置以及设置密码。这一句比较重要，设置好对应下面的远程连接。这里的-d指的是后台运行。"><a href="#这里是新建一个MySQL数据库容器，命名、端口映射设置以及设置密码。这一句比较重要，设置好对应下面的远程连接。这里的-d指的是后台运行。" class="headerlink" title="这里是新建一个MySQL数据库容器，命名、端口映射设置以及设置密码。这一句比较重要，设置好对应下面的远程连接。这里的-d指的是后台运行。"></a>这里是新建一个MySQL数据库容器，命名、端口映射设置以及设置密码。这一句比较重要，设置好对应下面的远程连接。这里的-d指的是后台运行。</h2><ul>
-<li>在我执行选择对应容器id，进入容器时候开始报错，在报错信息中得知没有启动该容器<img src="https://img2018.cnblogs.com/blog/1847641/201911/1847641-20191104150842113-88401394.png" alt="img"></li>
-<li>docker ps -a可以显示所有容器（默认是在运行的容器） ps 可以接着 -a -f -1等提示语进行（-1表示的是显示上一个create的容器），也可以直接docker ps-显示出来的是2个连接的容器</li>
-<li>输入<strong>docker start</strong>选择id的前六位即可</br>  </li>
-<li><img src="https://img2018.cnblogs.com/blog/1847641/201911/1847641-20191104150750671-1554353945.png" alt="img"></li>
-<li>start之后便可以进入容器，进入容器，使用root登陆进去MySQL中，这里的密码便是之前设置好的密码，输入成功之后便是welcome。<img src="https://img2018.cnblogs.com/blog/1847641/201911/1847641-20191104160110552-1043990296.png" alt="img"></li>
-</ul>
-<ul>
-<li>在命令行操作成功之后，便可以使用一些远程软件去连接，实现可视化操作，这里我用的是navicat，其实类似sql developer一些都可以进行登陆，还有plsql developer也可以登陆使用不同的数据库，包括Oracle、MySQL等。Navicat 是以直觉化的<a href="https://baike.baidu.com/item/图形用户界面" target="_blank" rel="noopener">图形用户界面</a>而建的，让你可以以安全并且简单的方式创建、组织、访问并共用信息。<img src="https://img2018.cnblogs.com/blog/1847641/201911/1847641-20191104160944538-266455364.png" alt="img"></li>
-</ul>
-<ul>
-<li><h2 id="这里的连接名可以自定义，所有的连接软件都是这样，连接名都是可以自定义的。端口就是前面设置好的。这里的ip地址都是localhost的，在自己电脑上便是自己的localhost。远程时候需要ip地址。"><a href="#这里的连接名可以自定义，所有的连接软件都是这样，连接名都是可以自定义的。端口就是前面设置好的。这里的ip地址都是localhost的，在自己电脑上便是自己的localhost。远程时候需要ip地址。" class="headerlink" title="这里的连接名可以自定义，所有的连接软件都是这样，连接名都是可以自定义的。端口就是前面设置好的。这里的ip地址都是localhost的，在自己电脑上便是自己的localhost。远程时候需要ip地址。)"></a>这里的连接名可以自定义，所有的连接软件都是这样，连接名都是可以自定义的。端口就是前面设置好的。这里的ip地址都是localhost的，在自己电脑上便是自己的localhost。远程时候需要ip地址。<img src="https://img2018.cnblogs.com/blog/1847641/201911/1847641-20191104162759056-40216934.png" alt="img">)<img src="https://img2018.cnblogs.com/blog/1847641/201911/1847641-20191104162814096-36789170.png" alt="img"></h2></li>
-<li><p>上面可以看到在数据库里面的table是一致的，说明测试连接使用是正确的。<strong>后面会继续保持更新的，如果你正巧看到这篇文章，麻烦点个赞留个言交流下，谢谢你！加油，共勉！</strong></p>
+<li><pre><code class="sql"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;
+<span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance=balance<span class="number">-10000</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;
+<span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance=balance+<span class="number">10000</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">2</span>;
+<span class="keyword">COMMIT</span>;
+</code></pre>
 </li>
 </ul>
 
@@ -509,7 +1125,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/%E5%85%B6%E5%AE%83/docker%E9%87%8C%E9%9D%A2%E5%88%9B%E5%BB%BAmysql%E8%BF%9E%E6%8E%A5navicat/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E4%BA%8B%E5%8A%A1/">展开全文 >></a>
         </p>
       
 
@@ -539,27 +1155,46 @@
 
 
   
-    <article id="post-0系列/0-volatile" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-其它/mysql-视图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-volatile/">0系列/0-volatile</a>
+      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E8%A7%86%E5%9B%BE/">其它/mysql-视图</a>
     </h1>
   
 
         
-        <a href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-volatile/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:18.986Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E8%A7%86%E5%9B%BE/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:58:22.147Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>虚拟的表，只保持sql的逻辑，不保存查询结果</p>
+<h2 id="需要注意的"><a href="#需要注意的" class="headerlink" title="需要注意的"></a>需要注意的</h2><p>使用规则</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="keyword">statement</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">VIEW</span> view_name</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="keyword">statement</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># 删除 （可以删除多个 ，前提是有drop权限）</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">view</span> [<span class="keyword">if</span> <span class="keyword">exists</span>] view_name,view_name …[restrict|<span class="keyword">cascade</span>]</span><br><span class="line"><span class="comment"># 查看视图</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name</span><br></pre></td></tr></table></figure>
+
+<p>以下视图不能更新</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">•包含以下关键字的sql语句：分组函数、distinct、group by、having、union或者union all</span><br><span class="line">•常量视图</span><br><span class="line">•<span class="keyword">Select</span>中包含子查询</span><br><span class="line">•<span class="keyword">join</span></span><br><span class="line">•<span class="keyword">from</span>一个不能更新的视图</span><br><span class="line">•<span class="keyword">where</span>子句的子查询引用了<span class="keyword">from</span>子句中的表</span><br></pre></td></tr></table></figure>
+
+<h1 id="存储过程和函数"><a href="#存储过程和函数" class="headerlink" title="存储过程和函数"></a>存储过程和函数</h1><p>事先编译并存储在数据库中的一段SQL语句；</p>
+<p>好处：</p>
+<ol>
+<li>简化工作</li>
+<li>提高数据处理的效率</li>
+<li>减少数据在数据库和应用服务器之间的传输</li>
+</ol>
+<p>使用格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># •创建存储过程：</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> 存储过程名([proc_parameter[,…]])</span><br><span class="line">[characteristic…]routine_body</span><br><span class="line"><span class="comment"># •创建函数：</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> 函数名([func_parameter[,…]])</span><br><span class="line"><span class="keyword">returns</span> <span class="keyword">type</span></span><br><span class="line">[characteristic…]routine_body</span><br><span class="line"><span class="comment"># 调用存储过程：</span></span><br><span class="line"><span class="keyword">call</span> 存储过程名(参数列表)</span><br><span class="line"><span class="comment"># 调用函数：</span></span><br><span class="line"><span class="keyword">Select</span> 函数名(参数列表)</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">PROCEDURE</span>/<span class="keyword">FUNCTION</span> <span class="keyword">name</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span>/<span class="keyword">FUNCTION</span> <span class="keyword">name</span></span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line"><span class="number">1.</span>查看存储过程或函数的状态：</span><br><span class="line"><span class="keyword">show</span> &#123;<span class="keyword">procedure</span>|<span class="keyword">function</span>&#125; <span class="keyword">status</span> <span class="keyword">like</span> 存储过程或函数名</span><br><span class="line"><span class="number">2.</span>查看存储过程或函数的定义：</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> &#123;<span class="keyword">procedure</span>|<span class="keyword">function</span>&#125; 存储过程或函数名</span><br><span class="line"><span class="number">3.</span>通过查看information_schema.routines了解存储过程和函数的信息（了解）</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> rountines <span class="keyword">where</span> rounine_name =存储过程名|函数名</span><br></pre></td></tr></table></figure>
+
+
+
+
       
 
       
@@ -571,7 +1206,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-volatile/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E8%A7%86%E5%9B%BE/">展开全文 >></a>
         </p>
       
 
@@ -601,29 +1236,79 @@
 
 
   
-    <article id="post-0系列/0-SQL高级方面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-其它/mysql-约束" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-SQL%E9%AB%98%E7%BA%A7%E6%96%B9%E9%9D%A2/">0系列/0-SQL高级方面</a>
+      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E7%BA%A6%E6%9D%9F/">其它/mysql-约束</a>
     </h1>
   
 
         
-        <a href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-SQL%E9%AB%98%E7%BA%A7%E6%96%B9%E9%9D%A2/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:18.986Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E7%BA%A6%E6%9D%9F/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:58:22.099Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>group、by、having、左连接、子查询</p>
-<p>建表方面——三范式、反范式是什么？</p>
-<p>优化？</p>
+        <h1 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h1><p>[toc]</p>
+<h2 id="约束-1"><a href="#约束-1" class="headerlink" title="约束"></a>约束</h2><p>是SQL规范以约束的方式对表数据进行额外的条件限制,创建时候规定（CREATE TABLE），创建之后规定也可以（使用ALTER TABLE语句）</p>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>具体有以下几种</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NOT NULL 非空约束，规定某个字段不能为空</span><br><span class="line">UNIQUE 唯一约束，规定某个字段在整个表中是唯一的</span><br><span class="line">PRIMARY KEY 主键(非空且唯一)</span><br><span class="line">FOREIGN KEY 外键</span><br><span class="line"><span class="keyword">CHECK</span> 检查约束（mysql不支持，但可以使用，没有效果便是）</span><br><span class="line"><span class="keyword">DEFAULT</span> 默认值</span><br></pre></td></tr></table></figure>
+
+<p>还可以分为单列和多列约束；列级和表级约束；</p>
+<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="NOT-NULL"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.CRATE TABLE table1（</span><br><span class="line">id INT(10) NOT NULL</span><br><span class="line">）;</span><br><span class="line"><span class="comment"># 创建之后的</span></span><br><span class="line">2.ALTER <span class="keyword">TABLE</span> emp </span><br><span class="line"><span class="keyword">MODIFY</span> sex <span class="built_in">VARCHAR</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment"># 还可以取消</span></span><br><span class="line">1.ALTER <span class="keyword">TABLE</span> emp</span><br><span class="line"><span class="keyword">MODIFY</span> sex <span class="built_in">VARCHAR</span>(<span class="number">30</span>) <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">#(使用DEFAULT 'abc'增加默认值)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="UNIQUE-唯一约束，允许出现多个空值：NULL。"><a href="#UNIQUE-唯一约束，允许出现多个空值：NULL。" class="headerlink" title="UNIQUE :唯一约束，允许出现多个空值：NULL。"></a>UNIQUE :唯一约束，允许出现多个空值：NULL。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">USER</span> <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span>(<span class="keyword">NAME</span>,<span class="keyword">PASSWORD</span>);</span><br><span class="line"><span class="comment"># 删除约束</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">USER</span> <span class="keyword">DROP</span> <span class="keyword">INDEX</span> uk_name_pwd;</span><br><span class="line"><span class="comment"># 表级约束</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">USER</span> <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> uk_name_pwd <span class="keyword">UNIQUE</span>(<span class="keyword">NAME</span>,<span class="keyword">PASSWORD</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="PRIMARY-KEY-约束-：相当于唯一约束和非空约束"><a href="#PRIMARY-KEY-约束-：相当于唯一约束和非空约束" class="headerlink" title="PRIMARY KEY 约束 ：相当于唯一约束和非空约束"></a>PRIMARY KEY 约束 ：相当于唯一约束和非空约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*MySQL的主键名总是PRIMARY，当创建主键约束时，系统默认会在所在的列和列组合上建立对应的唯一索引*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 组合模式</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp6(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">NAME</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">pwd <span class="built_in">VARCHAR</span>(<span class="number">15</span>),</span><br><span class="line"><span class="keyword">CONSTRAINT</span> emp7_pk PRIMARY <span class="keyword">KEY</span>(<span class="keyword">NAME</span>,pwd)</span><br><span class="line">);</span><br><span class="line"><span class="comment"># 删除 DROP 修改 MODIFY 添加 ADD</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp5 <span class="keyword">DROP</span> PRIMARY <span class="keyword">KEY</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="FOREIGN-KEY-约束：外键约束是保证一个或两个表之间的参照完整性，外键是构建于一个表的两个字段或是两个表的两个字段之间的参照关系。"><a href="#FOREIGN-KEY-约束：外键约束是保证一个或两个表之间的参照完整性，外键是构建于一个表的两个字段或是两个表的两个字段之间的参照关系。" class="headerlink" title="FOREIGN KEY 约束：外键约束是保证一个或两个表之间的参照完整性，外键是构建于一个表的两个字段或是两个表的两个字段之间的参照关系。"></a>FOREIGN KEY 约束：外键约束是保证一个或两个表之间的参照完整性，外键是构建于一个表的两个字段或是两个表的两个字段之间的参照关系。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">外键约束的参照列，在主表中引用的只能是主键或唯一键约束的列</span></span><br><span class="line"><span class="comment">-FOREIGN KEY: 在表级指定子表中的列</span></span><br><span class="line"><span class="comment">–REFERENCES: 标示在父表中的列</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment"># 主表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> classes(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">INT</span>,</span><br><span class="line">    <span class="keyword">NAME</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    <span class="built_in">number</span> <span class="built_in">INT</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span>(<span class="keyword">NAME</span>,<span class="built_in">number</span>)</span><br><span class="line">    );</span><br><span class="line">    <span class="comment"># 从表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    classes_name <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    classes_number <span class="built_in">INT</span>,</span><br><span class="line">    <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(classes_name,classes_number)     	</span><br><span class="line">    <span class="keyword">REFERENCES</span> classes(<span class="keyword">NAME</span>,<span class="built_in">number</span>)</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#删除 添加和之前那些约束差不多</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="MySQL中使用limit实现分页"><a href="#MySQL中使用limit实现分页" class="headerlink" title="MySQL中使用limit实现分页"></a>MySQL中使用limit实现分页</h3><p>格式</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表</span><br><span class="line">【<span class="keyword">where</span> 条件】</span><br><span class="line"><span class="keyword">limit</span> 【起始条目索引,】查询的条目数;</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">limit子句必须放在整个查询语句的最后！</span><br><span class="line">前10条记录：<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span> <span class="number">0</span>,<span class="number">10</span>;</span><br><span class="line">第11至20条记录：<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span> <span class="number">10</span>,<span class="number">10</span>;</span><br><span class="line">第21至30条记录：<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span> <span class="number">20</span>,<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="mysql中的索引‘"><a href="#mysql中的索引‘" class="headerlink" title="mysql中的索引‘"></a>mysql中的索引‘</h2><p>索引是一种特殊的文件(InnoDB数据表上的索引是表空间的一个组成部分)，它们包含着对数据表里所有记录的引用指针。</p>
+<p>索引是一种数据结构。数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用B树及其变种B+树。就相当于目录。</p>
+<p>缺点的一个是索引也是文件，占物理空间</p>
+<h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><ul>
+<li>在create table就创建</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.CREATE <span class="keyword">TABLE</span> user_index2 (</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">INT</span> auto_increment PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	first_name <span class="built_in">VARCHAR</span> (<span class="number">16</span>),</span><br><span class="line">	last_name <span class="built_in">VARCHAR</span> (<span class="number">16</span>),</span><br><span class="line">	id_card <span class="built_in">VARCHAR</span> (<span class="number">18</span>),</span><br><span class="line">	information <span class="built_in">text</span>,</span><br><span class="line">	<span class="keyword">KEY</span> <span class="keyword">name</span> (first_name, last_name),</span><br><span class="line">	FULLTEXT <span class="keyword">KEY</span> (information),</span><br><span class="line">	<span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> (id_card)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>创建table之后创建—使用ALTER  TABLE</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LTER TABLE table_name ADD INDEX index_name (column_list);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>使用CREATE INDEX命令创建</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> index_name <span class="keyword">ON</span> table_name(column_list);</span><br></pre></td></tr></table></figure>
+
+<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><ol>
+<li>格式：alter table 表名 drop KEY 索引名</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user_index <span class="keyword">drop</span> <span class="keyword">KEY</span> <span class="keyword">name</span>;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>注意的是，如果主键自增长，则不可直接删除，要先解除自增长；不过很少删除主键        </li>
+</ul>
+<h3 id="B树和B-树"><a href="#B树和B-树" class="headerlink" title="B树和B+树"></a>B树和B+树</h3><ul>
+<li>在B树中，你可以将键和值存放在内部节点和叶子节点；但在B+树中，内部节点都是键，没有值，叶子节点同时存放键和值。</li>
+<li>B+树的叶子节点有一条链相连，而B树的叶子节点各自独立。</li>
+</ul>
+<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、B树只适合随机检索，而B+树同时支持随机检索和顺序检索；</span><br><span class="line">2、B+树空间利用率更高，可减少I&#x2F;O次数，磁盘读写代价更低。一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I&#x2F;O消耗。B+树的内部结点并没有指向关键字具体信息的指针，只是作为索引使用，其内部结点比B树小，盘块能容纳的结点中关键字数量更多，一次性读入内存中可以查找的关键字也就越多，相对的，IO读写次数也就降低了。而IO读写次数是影响索引检索效率的最大因素；</span><br><span class="line">3、B+树的查询效率更加稳定。B树搜索有可能会在非叶子结点结束，越靠近根节点的记录查找时间越短，只要找到关键字即可确定记录的存在，其性能等价于在关键字全集内做一次二分查找。而在B+树中，顺序检索比较明显，随机检索时，任何关键字的查找都必须走一条从根节点到叶节点的路，所有关键字的查找路径长度相同，导致每一个关键字的查询效率相当。</span><br><span class="line">4、B-树在提高了磁盘IO性能的同时并没有解决元素遍历的效率低下的问题。B+树的叶子节点使用指针顺序连接在一起，只要遍历叶子节点就可以实现整棵树的遍历。而且在数据库中基于范围的查询是非常频繁的，而B树不支持这样的操作。</span><br><span class="line">增删文件（节点）时，效率更高。因为B+树的叶子节点包含所有关键字，并以有序的链表结构存储，这样可很好提高增删效率。</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -636,7 +1321,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-SQL%E9%AB%98%E7%BA%A7%E6%96%B9%E9%9D%A2/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E7%BA%A6%E6%9D%9F/">展开全文 >></a>
         </p>
       
 
@@ -666,27 +1351,47 @@
 
 
   
-    <article id="post-0系列/0-String与stringbuffer等" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-数据结构/复杂度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-String%E4%B8%8Estringbuffer%E7%AD%89/">0系列/0-String与stringbuffer等</a>
+      <a class="article-title" href="/2020/01/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A4%8D%E6%9D%82%E5%BA%A6/">数据结构/复杂度</a>
     </h1>
   
 
         
-        <a href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-String%E4%B8%8Estringbuffer%E7%AD%89/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:18.986Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+        <a href="/2020/01/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="archive-article-date">
+  	<time datetime="2020-01-08T16:04:15.126Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>String与stringbuffer等</p>
+        <p><a href="https://mp.weixin.qq.com/s/070nYGokM96aorZn6MZTDA" target="_blank" rel="noopener">参考网站</a></p>
+<p>[TOC]</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>常常分析一段代码的好坏，程序员来说，先判断其正确与否，再者，看效率，即包括运行时候的效率等，常常便看到O（n）等字眼，大O符号，其实就是在分析复杂度，包括时间复杂度和空间复杂度。</p>
+<blockquote>
+<p>计算机科学有一种专门用来测量算法最坏情况的速记法，即所谓的“大O”符号。</p>
+<p>大O符号的目的不是使用分钟和秒钟来表示算法的性能，而是方便我们讨论问题规模和程序运行时间之间的关系。由于大O符号故意剔除了细枝末节的内容，所以展示在我们眼前的是将问题分成不同大类的概略情况。</p>
+<p>——《算法之美》</p>
+</blockquote>
+<p>需要注意的是这个大O表示的是个大概整体的情况，并非真实的速度之类的，一个程序的运行总时间主要包括</p>
+<ol>
+<li>执行每条语句的耗时；</li>
+<li>执行每条有的频率；</li>
+</ol>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><ul>
+<li>补充一些数学知识</li>
+</ul>
+<p><img src="https://i.loli.net/2020/01/08/6WdLtpoNyqVfUIv.png" alt="image.png"></p>
+<ul>
+<li>常用常见的大小比较公式</li>
+</ul>
+<p><img src="https://i.loli.net/2020/01/08/rl5hTEP4tdyGKgk.png" alt="image.png"></p>
 
       
 
@@ -699,7 +1404,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-String%E4%B8%8Estringbuffer%E7%AD%89/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/01/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A4%8D%E6%9D%82%E5%BA%A6/">展开全文 >></a>
         </p>
       
 
@@ -729,27 +1434,61 @@
 
 
   
-    <article id="post-0系列/0-HashMap底层实现" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-0系列/随记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-HashMap%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/">0系列/0-HashMap底层实现</a>
+      <a class="article-title" href="/2020/01/09/0%E7%B3%BB%E5%88%97/%E9%9A%8F%E8%AE%B0/">0系列/随记</a>
     </h1>
   
 
         
-        <a href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-HashMap%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:18.970Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
+        <a href="/2020/01/09/0%E7%B3%BB%E5%88%97/%E9%9A%8F%E8%AE%B0/" class="archive-article-date">
+  	<time datetime="2020-01-08T16:04:15.013Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        
+        <ol>
+<li><p>在重写继承的时候，子类的权限不能比父类低</p>
+</li>
+<li><p>类对接口的实现，其实体现了多态性，因为类需要重写接口中所有的抽象方法。</p>
+</li>
+<li><p>构造函数：特殊类型的方法，没有返回值，与void的普通方法不一样，</p>
+</li>
+<li><p>归并排序：稳定，时间复杂度 O(nlog n)</p>
+<p>快速排序：不稳定，时间复杂度 最理想 O(nlogn) 最差时间O(n^2)</p>
+<p>堆排序：不稳定，时间复杂度 O(nlog n)</p>
+<p>归并排序时间复杂度 O（n），消耗空间最多。</p>
+</li>
+<li><p>比特成帧，帧成报文，报文成包，包成段(物理层，数据链路层，网络层，传输层的单位)</p>
+</li>
+<li><p>IP地址分类</p>
+<p>A：0.0.0.0~127.255.255.255</p>
+<p>B：128.0.0.0~191.255.255.255</p>
+<p>C：192.0.0.0~223.255.255.255</p>
+</li>
+<li><pre><code>ARP协议（Address Resolution Protocol，地址解析协议），属于IPv4协议簇，工作在数据链路层。其功能是将IP地址解析为对应的MAC地址。
+
+RARP协议（Reverse ARP，反向ARP协议），其功能是将MAC地址解析为对应的IP地址。
+</code></pre></li>
+<li><p>JDK1.8后，接口中可以有静态方法，静态方法必须有方法体。</p>
+</li>
+<li><p>Java中可以接受抽象类、类与接口对象作为方法的参数</p>
+</li>
+<li><p>三步走学习方法-分散知识点学习、刻意训练、寻求反馈</p>
+</li>
+<li><p>做题法：读题、用尽所有想法、尝试解答、查看答案、套用多个条件、更换不同测试用例。</p>
+</li>
+<li><p>迭代器是一种设计模式，它是一个对象，它可以遍历并选择序列中的对象，而开发人员不需要了解该序列的底层结构。迭代器通常被称为“轻量级”对象，因为创建它的代价小。 　　Java中的Iterator功能比较简单，并且只能单向移动： 　　(1) 使用方法iterator()要求容器返回一个Iterator。第一次调用Iterator的next()方法时，它返回序列的第一个元素。注意：iterator()方法是java.lang.Iterable接口,被Collection继承。 　　(2) 使用next()获得序列中的下一个元素。 　　(3) 使用hasNext()检查序列中是否还有元素。 　　(4) 使用remove()将迭代器新返回的元素删除。 　　Iterator是Java迭代器最简单的实现，为List设计的ListIterator具有更多的功能，它可以从两个方向遍历List，也可以从List中插入和删除元素。</p>
+</li>
+</ol>
+
       
 
       
@@ -761,69 +1500,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-HashMap%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-0系列/0-ArrayList与LinkedList" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-ArrayList%E4%B8%8ELinkedList/">0系列/0-ArrayList与LinkedList</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-ArrayList%E4%B8%8ELinkedList/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:18.970Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ArrayList与LinkedList"><a href="#ArrayList与LinkedList" class="headerlink" title="ArrayList与LinkedList"></a>ArrayList与LinkedList</h1><h2 id="底层实现差别"><a href="#底层实现差别" class="headerlink" title="底层实现差别"></a>底层实现差别</h2><h2 id="运用在什么场合"><a href="#运用在什么场合" class="headerlink" title="运用在什么场合"></a>运用在什么场合</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/0%E7%B3%BB%E5%88%97/0-ArrayList%E4%B8%8ELinkedList/">展开全文 >></a>
+          <a class="article-more-a" href="/2020/01/09/0%E7%B3%BB%E5%88%97/%E9%9A%8F%E8%AE%B0/">展开全文 >></a>
         </p>
       
 
@@ -855,7 +1532,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 

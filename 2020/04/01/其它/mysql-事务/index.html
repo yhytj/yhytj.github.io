@@ -9,17 +9,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>welcome to yhy&#39;s blogs</title>
+  <title>其它/mysql-事务 | welcome to yhy&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[TOC] 前言工欲善其事，必将利其器，当然，不需要背诵这些快捷键，这篇博客就是给个参考，你可以通过阅读去掌握这些技巧。 windows其实windows上很多的热键也可以修改的_，键盘的一些键位也.可以通过软件去修改，按照个人的习惯来做就行了BIOS(Basic Input Output System)写死在内存的一套程序。开机选择时候经常用到。开机首先使用的小程序。 F1:打开帮助信息F2:选">
-<meta property="og:type" content="website">
-<meta property="og:title" content="welcome to yhy&#39;s blogs">
-<meta property="og:url" content="http://yoursite.com/%E9%9A%8F%E8%AE%B0/%E5%BF%AB%E6%8D%B7%E9%94%AE.html">
+  <meta name="description" content="事务[toc] 是什么事务由单独单元的一个或多个SQL语句组成，在这个单元中，每一个mysql语句是相互依赖的；由于整个单独单元作为不可分割的整体，那么如果单元中某条SQL语句一旦执行失败或产生失败，整个单元就会回滚。要么全部成功，要么全部失败。 在mysql中用的最多的存储引擎有：innodb，myisam,memory 等。其中innodb支持事务，而myisam、memory等不支持事务 1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="其它&#x2F;mysql-事务">
+<meta property="og:url" content="http://yoursite.com/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E4%BA%8B%E5%8A%A1/index.html">
 <meta property="og:site_name" content="welcome to yhy&#39;s blogs">
-<meta property="og:description" content="[TOC] 前言工欲善其事，必将利其器，当然，不需要背诵这些快捷键，这篇博客就是给个参考，你可以通过阅读去掌握这些技巧。 windows其实windows上很多的热键也可以修改的_，键盘的一些键位也.可以通过软件去修改，按照个人的习惯来做就行了BIOS(Basic Input Output System)写死在内存的一套程序。开机选择时候经常用到。开机首先使用的小程序。 F1:打开帮助信息F2:选">
+<meta property="og:description" content="事务[toc] 是什么事务由单独单元的一个或多个SQL语句组成，在这个单元中，每一个mysql语句是相互依赖的；由于整个单独单元作为不可分割的整体，那么如果单元中某条SQL语句一旦执行失败或产生失败，整个单元就会回滚。要么全部成功，要么全部失败。 在mysql中用的最多的存储引擎有：innodb，myisam,memory 等。其中innodb支持事务，而myisam、memory等不支持事务 1">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2020-01-01T04:24:47.164Z">
-<meta property="article:modified_time" content="2019-12-30T16:18:42.688Z">
+<meta property="article:published_time" content="2020-04-01T13:58:22.184Z">
+<meta property="article:modified_time" content="2020-03-22T04:02:06.057Z">
 <meta property="article:author" content="yhy coder">
 <meta property="article:tag" content="Java，Notes">
 <meta name="twitter:card" content="summary">
@@ -65,9 +65,13 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/%E9%9A%8F%E8%AE%B0/%E6%80%BB%E7%BB%932019%E5%B1%95%E6%9C%9B2020.md">随笔</a></li>
+				<li><a href="/%E9%9A%8F%E8%AE%B0">随笔</a></li>
 	        
 				<li><a href="/about">关于我</a></li>
+	        
+				<li><a href="/tags/">tags</a></li>
+	        
+				<li><a href="/categories/">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -129,6 +133,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -149,11 +157,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/%E9%9A%8F%E8%AE%B0/%E6%80%BB%E7%BB%932019%E5%B1%95%E6%9C%9B2020.md">随笔</a></li>
+					<li style="width: 20%"><a href="/%E9%9A%8F%E8%AE%B0">随笔</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/about">关于我</a></li>
+					<li style="width: 20%"><a href="/about">关于我</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/">tags</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -168,24 +180,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-其它/mysql-事务" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      其它/mysql-事务
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:58:22.184Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>[TOC]</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>工欲善其事，必将利其器，当然，不需要背诵这些快捷键，这篇博客就是给个参考，你可以通过阅读去掌握这些技巧。</p>
-<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p><em>其实windows上很多的热键也可以修改的_，键盘的一些键位也.可以通过软件去修改，按照个人的习惯来做就行了</em><br>BIOS(Basic Input Output System)写死在内存的一套程序。开机选择时候经常用到。开机首先使用的小程序。</p>
-<p><strong>F1:打开帮助信息</strong><br><strong>F2:选定了一个桌面的信息</strong><br><strong>F3:打开搜素功能</strong><br><strong>F4:打开浏览器的地址菜单列表</strong><br><strong>F5:刷新</strong><br><strong>F6:迅速定位到页面的编辑框</strong><br><strong>F11:全屏</strong><br><em>浏览器上的操作</em><br><strong>ctrl+w:关闭当前的页面<br>Windows+shift+s:截屏</strong></p>
+        <h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>[toc]</p>
+<h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>事务由单独单元的一个或多个SQL语句组成，在这个单元中，每一个mysql语句是相互依赖的；由于整个单独单元作为不可分割的整体，那么如果单元中某条SQL语句一旦执行失败或产生失败，整个单元就会回滚。要么全部成功，要么全部失败。</p>
+<p><em>在mysql中用的最多的存储引擎有：innodb，myisam,memory 等。其中innodb支持事务，而myisam、memory等不支持事务</em></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看mysql支持的引擎：<span class="keyword">SHOW</span> <span class="keyword">engines</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a>事务的四大特性</h2><ol>
+<li>原子性：要么成功，要么失败。</li>
+<li>一致性：状态与其他业务规则保持一致。</li>
+<li>隔离性：在并发中使用。一个事务不被另一个事务所影响</li>
+<li>持久性：一旦改变提交之后，数据就持久化被操作了。</li>
+</ol>
+<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">隐式事务:没有明显的开启和结束标记</span><br><span class="line">显式事务：有明显的开启和结束标记</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用步骤："><a href="#使用步骤：" class="headerlink" title="使用步骤："></a>使用步骤：</h2><p>插个小知识</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DDL（Data Definition Language）：数据定义语言，用来定义数据库对象：库、表、列等；</span><br><span class="line">DML（Data Manipulation Language）：数据操作语言，用来定义数据库记录（数据）；</span><br><span class="line">DCL（Data Control Language）：数据控制语言，用来定义访问权限和安全级别；</span><br><span class="line">DQL（Data Query Language）：数据查询语言，用来查询记录（数据）。</span><br></pre></td></tr></table></figure>
+
 <ul>
-<li>键盘灯的快捷键<br>fn+上下（方向键）可以调节亮度<br>fn+insert<br>fn+home<br>fn+delete</li>
-<li>博客编辑网站<br>很多网站的博客文章编辑时的快捷键都是相通相似的，加粗、撤销等都是一样的，个人感觉如果熟悉掌握之后，在平时编辑记录时候是非常方便高效的，像csdn的markdown编辑快捷键可以直接显示在帮助文档中，可以在编辑的时候进行查看自己所需要的快捷键。<h2 id="Notepad"><a href="#Notepad" class="headerlink" title="Notepad++"></a>Notepad++</h2>notepad这个就无需多介绍了，这个开源代码编辑器功能强大，支持多种语言，以开源、小巧、免费等特点广受各类<em>脱发人士</em>深爱。</li>
-<li>CTRL+L可以快速删除空行，这个是最爱的，经常copy一些文件代码的时候会存在一大堆空行。</li>
-<li>CTRL+Q可以添加单行注释，将当前行变为注释。</li>
+<li>一般情况下，如果在一个事务中包含多个SQL语句，那么就要开启事务和结束事务；</li>
 </ul>
-<h2 id="IDEA快捷键"><a href="#IDEA快捷键" class="headerlink" title="IDEA快捷键"></a>IDEA快捷键</h2><p>alt+ctrl+l代码格式化，将对齐代码</p>
-<p>ctrl+/注释，多行是鼠标选定行即可</p>
-<p>ctrl+D是可以复制当行，并将其复制在光标的下一行中。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">开启事务：<span class="keyword">start</span> <span class="keyword">transaction</span>；</span><br><span class="line">结束事务：<span class="keyword">commit</span>或<span class="keyword">rollback</span>。</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><strong>开始</strong>是以第一个DML语句执行开始</p>
+</li>
+<li><p>以下面的其中之一作为<strong>结束:</strong></p>
+<p>COMMIT 或ROLLBACK 语句（回滚，即回滚到事务的起点，之前做的所有操作都被撤消了！）<br>DDL 或DCL 语句（自动提交）<br>用户会话正常结束<br>系统异常终了</p>
+</li>
+</ul>
+<ul>
+<li><pre><code class="sql"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;
+<span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance=balance<span class="number">-10000</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;
+<span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance=balance+<span class="number">10000</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">2</span>;
+<span class="keyword">COMMIT</span>;
+</code></pre>
+</li>
+</ul>
 
       
 
@@ -270,7 +322,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/%E9%9A%8F%E8%AE%B0/%E5%BF%AB%E6%8D%B7%E9%94%AE.html" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E4%BA%8B%E5%8A%A1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -282,6 +334,25 @@
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          其它/mysql基础知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E8%A7%86%E5%9B%BE/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">其它/mysql-视图</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -303,7 +374,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#windows"><span class="toc-number">1.1.</span> <span class="toc-text">windows</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Notepad"><span class="toc-number">1.2.</span> <span class="toc-text">Notepad++</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IDEA快捷键"><span class="toc-number">1.3.</span> <span class="toc-text">IDEA快捷键</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#事务"><span class="toc-number">1.</span> <span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#是什么"><span class="toc-number">1.1.</span> <span class="toc-text">是什么</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#事务的四大特性"><span class="toc-number">1.2.</span> <span class="toc-text">事务的四大特性</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#分类"><span class="toc-number">1.3.</span> <span class="toc-text">分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤："><span class="toc-number">1.4.</span> <span class="toc-text">使用步骤：</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -351,7 +422,7 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

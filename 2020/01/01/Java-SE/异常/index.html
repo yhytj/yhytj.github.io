@@ -11,17 +11,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Java-SE/异常 | welcome to yhy&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="throwable下面有两个子类：Error和Exception；首先是Error异常是比较严重的异常，从字面的含义也可以了解到，error的语气是要重于exception的，它主要指的是不可修复的异常，程序员都无法修复，只能终止的异常，在现阶段我们遇到的情况应该不多。 而exception指的是可以恢复的异常，指程序员可以修正掌控的异常。常见的空指针，算术的除零异常等。在很多书中大篇幅介绍的异常">
+  <meta name="description" content="前言：异常：程序出现了不正常的情况，比较严重不可修复与可修复的异常，在编译前与编译时出现的异常。 throwable下面有两个子类：Error和Exception；首先是Error异常是比较严重的异常，从字面的含义也可以了解到，error的语气是要重于exception的，它主要指的是不可修复的异常，程序员都无法修复，只能终止的异常，在现阶段我们遇到的情况应该不多。 而exception指的是可以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java-SE&#x2F;异常">
 <meta property="og:url" content="http://yoursite.com/2020/01/01/Java-SE/%E5%BC%82%E5%B8%B8/index.html">
 <meta property="og:site_name" content="welcome to yhy&#39;s blogs">
-<meta property="og:description" content="throwable下面有两个子类：Error和Exception；首先是Error异常是比较严重的异常，从字面的含义也可以了解到，error的语气是要重于exception的，它主要指的是不可修复的异常，程序员都无法修复，只能终止的异常，在现阶段我们遇到的情况应该不多。 而exception指的是可以恢复的异常，指程序员可以修正掌控的异常。常见的空指针，算术的除零异常等。在很多书中大篇幅介绍的异常">
+<meta property="og:description" content="前言：异常：程序出现了不正常的情况，比较严重不可修复与可修复的异常，在编译前与编译时出现的异常。 throwable下面有两个子类：Error和Exception；首先是Error异常是比较严重的异常，从字面的含义也可以了解到，error的语气是要重于exception的，它主要指的是不可修复的异常，程序员都无法修复，只能终止的异常，在现阶段我们遇到的情况应该不多。 而exception指的是可以">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="c:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191228005040872.png">
 <meta property="og:image" content="c:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20191228005303792.png">
 <meta property="article:published_time" content="2020-01-01T04:28:19.139Z">
-<meta property="article:modified_time" content="2019-12-31T16:28:19.044Z">
+<meta property="article:modified_time" content="2020-01-26T00:54:09.359Z">
 <meta property="article:author" content="yhy coder">
 <meta property="article:tag" content="Java，Notes">
 <meta name="twitter:card" content="summary">
@@ -68,9 +68,13 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/%E9%9A%8F%E8%AE%B0/%E6%80%BB%E7%BB%932019%E5%B1%95%E6%9C%9B2020.md">随笔</a></li>
+				<li><a href="/%E9%9A%8F%E8%AE%B0">随笔</a></li>
 	        
 				<li><a href="/about">关于我</a></li>
+	        
+				<li><a href="/tags/">tags</a></li>
+	        
+				<li><a href="/categories/">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -132,6 +136,10 @@
 			
 				
 			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -152,11 +160,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/%E9%9A%8F%E8%AE%B0/%E6%80%BB%E7%BB%932019%E5%B1%95%E6%9C%9B2020.md">随笔</a></li>
+					<li style="width: 20%"><a href="/%E9%9A%8F%E8%AE%B0">随笔</a></li>
 		        
-					<li style="width: 33.333333333333336%"><a href="/about">关于我</a></li>
+					<li style="width: 20%"><a href="/about">关于我</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/">tags</a></li>
+		        
+					<li style="width: 20%"><a href="/categories/">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -191,7 +203,8 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="throwable下面有两个子类：Error和Exception；"><a href="#throwable下面有两个子类：Error和Exception；" class="headerlink" title="throwable下面有两个子类：Error和Exception；"></a>throwable下面有两个子类：Error和Exception；</h2><p>首先是Error异常是比较严重的异常，从字面的含义也可以了解到，error的语气是要重于exception的，它主要指的是不可修复的异常，程序员都无法修复，只能终止的异常，在现阶段我们遇到的情况应该不多。</p>
+        <h1 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h1><p>异常：程序出现了不正常的情况，比较严重不可修复与可修复的异常，在编译前与编译时出现的异常。</p>
+<h2 id="throwable下面有两个子类：Error和Exception；"><a href="#throwable下面有两个子类：Error和Exception；" class="headerlink" title="throwable下面有两个子类：Error和Exception；"></a>throwable下面有两个子类：Error和Exception；</h2><p>首先是Error异常是比较严重的异常，从字面的含义也可以了解到，error的语气是要重于exception的，它主要指的是不可修复的异常，程序员都无法修复，只能终止的异常，在现阶段我们遇到的情况应该不多。</p>
 <p>而exception指的是可以恢复的异常，指程序员可以修正掌控的异常。常见的空指针，算术的除零异常等。在很多书中大篇幅介绍的异常也都指这一类异常</p>
 <ol>
 <li><p>​    Exception分为运行异常和受检查异常</p>
@@ -350,7 +363,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#throwable下面有两个子类：Error和Exception；"><span class="toc-number">1.</span> <span class="toc-text">throwable下面有两个子类：Error和Exception；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#throwable类的三个重要方法"><span class="toc-number">2.</span> <span class="toc-text">throwable类的三个重要方法</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言："><span class="toc-number">1.</span> <span class="toc-text">前言：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#throwable下面有两个子类：Error和Exception；"><span class="toc-number">1.1.</span> <span class="toc-text">throwable下面有两个子类：Error和Exception；</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#throwable类的三个重要方法"><span class="toc-number">1.2.</span> <span class="toc-text">throwable类的三个重要方法</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
