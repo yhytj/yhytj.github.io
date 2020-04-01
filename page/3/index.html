@@ -178,6 +178,110 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java-SE/泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/Java-SE/%E6%B3%9B%E5%9E%8B/">浅谈泛型</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/Java-SE/%E6%B3%9B%E5%9E%8B/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.765Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型定义在类上。</p>
+<p>泛型类：把泛型定义在类上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">show</span> <span class="params">(T t)</span></span>&#123;</span><br><span class="line">   <span class="comment">//这里将泛型定义在方法上。而且这个可以将任意转换</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="泛型定义在接口上"><a href="#泛型定义在接口上" class="headerlink" title="泛型定义在接口上"></a>泛型定义在接口上</h3><p>不知道接口是什么类型的</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main A&lt;T&gt; implements B&lt;T&gt;</span><br><span class="line">    <span class="comment">//将其两边都标记泛型</span></span><br></pre></td></tr></table></figure>
+
+<p>泛型高级类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Animal的子类是Dog Cat 父类是Object</span><br></pre></td></tr></table></figure>
+
+
+
+<ol>
+<li><p>明确写的时候</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前后需要一致</span></span><br><span class="line">Collection&lt;Object&gt; c = <span class="keyword">new</span> ArrayList&lt;Object&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>?表示任意类型都可以</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;?&gt; c = <span class="keyword">new</span> ArrayList&lt;Object&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>?extends E :向下限定，E及其子类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;? extends Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Animal&gt;();</span><br><span class="line">Collection&lt;? extends Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Dog&gt;();</span><br><span class="line">Collection&lt;? extends Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Cat&gt;();</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>？super E：向上限定，E及其父类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Collection &lt;? <span class="keyword">super</span> Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Object&gt;();</span><br><span class="line">Collection &lt;? <span class="keyword">super</span> Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Animal&gt;();</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaEE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Blog</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/Java-SE/%E6%B3%9B%E5%9E%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java-SE/接口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1434,102 +1538,6 @@
 
 
   
-    <article id="post-0系列/随记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/09/0%E7%B3%BB%E5%88%97/%E9%9A%8F%E8%AE%B0/">0系列/随记</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/09/0%E7%B3%BB%E5%88%97/%E9%9A%8F%E8%AE%B0/" class="archive-article-date">
-  	<time datetime="2020-01-08T16:04:15.013Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>在重写继承的时候，子类的权限不能比父类低</p>
-</li>
-<li><p>类对接口的实现，其实体现了多态性，因为类需要重写接口中所有的抽象方法。</p>
-</li>
-<li><p>构造函数：特殊类型的方法，没有返回值，与void的普通方法不一样，</p>
-</li>
-<li><p>归并排序：稳定，时间复杂度 O(nlog n)</p>
-<p>快速排序：不稳定，时间复杂度 最理想 O(nlogn) 最差时间O(n^2)</p>
-<p>堆排序：不稳定，时间复杂度 O(nlog n)</p>
-<p>归并排序时间复杂度 O（n），消耗空间最多。</p>
-</li>
-<li><p>比特成帧，帧成报文，报文成包，包成段(物理层，数据链路层，网络层，传输层的单位)</p>
-</li>
-<li><p>IP地址分类</p>
-<p>A：0.0.0.0~127.255.255.255</p>
-<p>B：128.0.0.0~191.255.255.255</p>
-<p>C：192.0.0.0~223.255.255.255</p>
-</li>
-<li><pre><code>ARP协议（Address Resolution Protocol，地址解析协议），属于IPv4协议簇，工作在数据链路层。其功能是将IP地址解析为对应的MAC地址。
-
-RARP协议（Reverse ARP，反向ARP协议），其功能是将MAC地址解析为对应的IP地址。
-</code></pre></li>
-<li><p>JDK1.8后，接口中可以有静态方法，静态方法必须有方法体。</p>
-</li>
-<li><p>Java中可以接受抽象类、类与接口对象作为方法的参数</p>
-</li>
-<li><p>三步走学习方法-分散知识点学习、刻意训练、寻求反馈</p>
-</li>
-<li><p>做题法：读题、用尽所有想法、尝试解答、查看答案、套用多个条件、更换不同测试用例。</p>
-</li>
-<li><p>迭代器是一种设计模式，它是一个对象，它可以遍历并选择序列中的对象，而开发人员不需要了解该序列的底层结构。迭代器通常被称为“轻量级”对象，因为创建它的代价小。 　　Java中的Iterator功能比较简单，并且只能单向移动： 　　(1) 使用方法iterator()要求容器返回一个Iterator。第一次调用Iterator的next()方法时，它返回序列的第一个元素。注意：iterator()方法是java.lang.Iterable接口,被Collection继承。 　　(2) 使用next()获得序列中的下一个元素。 　　(3) 使用hasNext()检查序列中是否还有元素。 　　(4) 使用remove()将迭代器新返回的元素删除。 　　Iterator是Java迭代器最简单的实现，为List设计的ListIterator具有更多的功能，它可以从两个方向遍历List，也可以从List中插入和删除元素。</p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/09/0%E7%B3%BB%E5%88%97/%E9%9A%8F%E8%AE%B0/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
@@ -1650,6 +1658,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Dream</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>

@@ -178,6 +178,78 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-0系列/解决tomcat中文控制台乱码输出" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/0%E7%B3%BB%E5%88%97/%E8%A7%A3%E5%86%B3tomcat%E4%B8%AD%E6%96%87%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B9%B1%E7%A0%81%E8%BE%93%E5%87%BA/">0系列/解决tomcat中文控制台乱码输出</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/0%E7%B3%BB%E5%88%97/%E8%A7%A3%E5%86%B3tomcat%E4%B8%AD%E6%96%87%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B9%B1%E7%A0%81%E8%BE%93%E5%87%BA/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.837Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="解决tomcat中文控制台乱码输出"><a href="#解决tomcat中文控制台乱码输出" class="headerlink" title="解决tomcat中文控制台乱码输出"></a>解决tomcat中文控制台乱码输出</h1><h2 id="乱码情况"><a href="#乱码情况" class="headerlink" title="乱码情况"></a>乱码情况</h2><img src="https://i.loli.net/2020/03/14/V64cYors9Z2QxkJ.png" >
+
+<h2 id="解决后"><a href="#解决后" class="headerlink" title="解决后"></a>解决后</h2><img src="https://i.loli.net/2020/03/14/ZN1xiUepLOEm4T5.png" >
+
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>找到你的电脑上tomcat文件夹下的conf配置文件中的<strong>logging.properties</strong>–用来配置tomcat的日志输出方式，这里表示文件输出和控制台输出<img src="https://i.loli.net/2020/03/14/nGNhfOgMp8Bzxa1.png" ></p>
+<p>里面很多输出都是默认设置UTF-8的编码，找到logging.Console…那一行修改即可，想要正常中文的就将其修改为GBK编码。</p>
+<img src="https://i.loli.net/2020/03/14/q4OrMIPHAvStWER.png" >
+
+<h3 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h3><p>其实还有设置电脑注册表配置来解决，网上也都有，大家可以自行参考。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/0%E7%B3%BB%E5%88%97/%E8%A7%A3%E5%86%B3tomcat%E4%B8%AD%E6%96%87%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B9%B1%E7%A0%81%E8%BE%93%E5%87%BA/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-0系列/激活" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -945,110 +1017,6 @@
 
 
   
-    <article id="post-Java-SE/泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/Java-SE/%E6%B3%9B%E5%9E%8B/">浅谈泛型</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/01/Java-SE/%E6%B3%9B%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-04-01T13:59:52.765Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型定义在类上。</p>
-<p>泛型类：把泛型定义在类上</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;T&gt; <span class="function"><span class="keyword">void</span> <span class="title">show</span> <span class="params">(T t)</span></span>&#123;</span><br><span class="line">   <span class="comment">//这里将泛型定义在方法上。而且这个可以将任意转换</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="泛型定义在接口上"><a href="#泛型定义在接口上" class="headerlink" title="泛型定义在接口上"></a>泛型定义在接口上</h3><p>不知道接口是什么类型的</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main A&lt;T&gt; implements B&lt;T&gt;</span><br><span class="line">    <span class="comment">//将其两边都标记泛型</span></span><br></pre></td></tr></table></figure>
-
-<p>泛型高级类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Animal的子类是Dog Cat 父类是Object</span><br></pre></td></tr></table></figure>
-
-
-
-<ol>
-<li><p>明确写的时候</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前后需要一致</span></span><br><span class="line">Collection&lt;Object&gt; c = <span class="keyword">new</span> ArrayList&lt;Object&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>?表示任意类型都可以</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;?&gt; c = <span class="keyword">new</span> ArrayList&lt;Object&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>?extends E :向下限定，E及其子类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Collection&lt;? extends Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Animal&gt;();</span><br><span class="line">Collection&lt;? extends Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Dog&gt;();</span><br><span class="line">Collection&lt;? extends Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Cat&gt;();</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>？super E：向上限定，E及其父类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Collection &lt;? <span class="keyword">super</span> Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Object&gt;();</span><br><span class="line">Collection &lt;? <span class="keyword">super</span> Animal&gt; c = <span class="keyword">new</span> ArrayList&lt;Animal&gt;();</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaEE</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Blog</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/Java-SE/%E6%B3%9B%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &amp;raquo;</a>
@@ -1169,6 +1137,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Dream</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
             
             <div class="clearfix"></div>
