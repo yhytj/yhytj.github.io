@@ -9,14 +9,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Java-SE/封装 | welcome to yhy&#39;s blogs</title>
+  <title>浅谈封装 | welcome to yhy&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="三大特性之浅谈封装 [TOC] 前言英语：Encapsulation——封装，包装。  面向对象的封装与真实世界的目的是一样的。封装能够使外部访问者不能随意存取对象的内部数据，隐藏了对象的内部细节，只保留有限的对外接口。外部访问者不用关心对象的内部细节，使得操作对象变得简单。  好处先通过阅读下面的文字，再回来理解可能会更好一点  减少了耦合（物理学上类似相互影响的概念） 便于维护和修改 可以隐藏">
+  <meta name="description" content="[TOC] 前言英语：Encapsulation——封装，包装。  面向对象的封装与真实世界的目的是一样的。封装能够使外部访问者不能随意存取对象的内部数据，隐藏了对象的内部细节，只保留有限的对外接口。外部访问者不用关心对象的内部细节，使得操作对象变得简单。  好处先通过阅读下面的文字，再回来理解可能会更好一点  减少了耦合（物理学上类似相互影响的概念） 便于维护和修改 可以隐藏信息，一些具体实现代">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java-SE&#x2F;封装">
+<meta property="og:title" content="浅谈封装">
 <meta property="og:url" content="http://yoursite.com/2020/01/01/Java-SE/%E5%B0%81%E8%A3%85/index.html">
 <meta property="og:site_name" content="welcome to yhy&#39;s blogs">
-<meta property="og:description" content="三大特性之浅谈封装 [TOC] 前言英语：Encapsulation——封装，包装。  面向对象的封装与真实世界的目的是一样的。封装能够使外部访问者不能随意存取对象的内部数据，隐藏了对象的内部细节，只保留有限的对外接口。外部访问者不用关心对象的内部细节，使得操作对象变得简单。  好处先通过阅读下面的文字，再回来理解可能会更好一点  减少了耦合（物理学上类似相互影响的概念） 便于维护和修改 可以隐藏">
+<meta property="og:description" content="[TOC] 前言英语：Encapsulation——封装，包装。  面向对象的封装与真实世界的目的是一样的。封装能够使外部访问者不能随意存取对象的内部数据，隐藏了对象的内部细节，只保留有限的对外接口。外部访问者不用关心对象的内部细节，使得操作对象变得简单。  好处先通过阅读下面的文字，再回来理解可能会更好一点  减少了耦合（物理学上类似相互影响的概念） 便于维护和修改 可以隐藏信息，一些具体实现代">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://i.loli.net/2020/01/09/HsmyfUFcCWDiwkA.png">
 <meta property="og:image" content="https://i.loli.net/2020/01/09/rcEMGRdyOFzu9At.png">
@@ -24,9 +24,10 @@
 <meta property="og:image" content="https://i.loli.net/2020/01/09/RLNfpT5oZqzY7AD.png">
 <meta property="og:image" content="https://i.loli.net/2020/01/09/bZSgJKmIBAhtvqX.png">
 <meta property="article:published_time" content="2020-01-01T04:28:19.139Z">
-<meta property="article:modified_time" content="2020-01-09T05:55:48.969Z">
+<meta property="article:modified_time" content="2020-04-01T14:29:38.958Z">
 <meta property="article:author" content="yhy coder">
-<meta property="article:tag" content="Java，Notes">
+<meta property="article:tag" content="JavaEE">
+<meta property="article:tag" content="Blog">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://i.loli.net/2020/01/09/HsmyfUFcCWDiwkA.png">
   
@@ -193,7 +194,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Java-SE/封装
+      浅谈封装
     </h1>
   
 
@@ -206,8 +207,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>三大特性之浅谈<strong>封装</strong></p>
-<p>[TOC]</p>
+        <p>[TOC]</p>
 <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>英语：Encapsulation——封装，包装。</p>
 <blockquote>
 <p>面向对象的封装与真实世界的目的是一样的。封装能够使外部访问者不能随意存取对象的内部数据，隐藏了对象的内部细节，只保留有限的对外接口。外部访问者不用关心对象的内部细节，使得操作对象变得简单。</p>
@@ -339,6 +339,21 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaEE</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Blog</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -559,11 +574,23 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">Testing</a>
+                <a href="javascript:void(0)" class="js-tag color2">JavaEE</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Another Tag</a>
+                <a href="javascript:void(0)" class="js-tag color5">Blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">blog</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Dream</a>
               </li>
             
             <div class="clearfix"></div>
