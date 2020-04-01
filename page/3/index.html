@@ -65,9 +65,9 @@
 	        
 				<li><a href="/about">关于我</a></li>
 	        
-				<li><a href="/tags/">tags</a></li>
+				<li><a href="/tags">tags</a></li>
 	        
-				<li><a href="/categories/">categories</a></li>
+				<li><a href="/categories">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -159,9 +159,9 @@
 		        
 					<li style="width: 20%"><a href="/about">关于我</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/">tags</a></li>
+					<li style="width: 20%"><a href="/tags">tags</a></li>
 		        
-					<li style="width: 20%"><a href="/categories/">categories</a></li>
+					<li style="width: 20%"><a href="/categories">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -721,301 +721,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>[toc]</p>
-<h1 id="本单元目标"><a href="#本单元目标" class="headerlink" title="本单元目标"></a>本单元目标</h1><p>难点：</p>
-<p>SQL高级语句：group by ,having ,左连接，，子查询（in）,行转列等</p>
-<p>建表方面的第三范式和反</p>
-<p>MySQL集群</p>
-<p>基础</p>
-<p>懂得查看日志，排查问题</p>
-<p>less命令打开文件</p>
-<p>通过grep方式查关键字，grep 关键字 文件名 </p>
-<p>通过vi编辑文件</p>
-<p>通过chmod来设置文件的权限</p>
-<h2 id="一、为什么要学习数据库"><a href="#一、为什么要学习数据库" class="headerlink" title="一、为什么要学习数据库"></a>一、为什么要学习数据库</h2><p>1.持久化数据</p>
-<p>2.方便检索</p>
-<p>3.存储大量数据</p>
-<p>4.共享、安全</p>
-<p>5.通过组合分析，获取新的数据</p>
-<h2 id="二、数据库的相关概念"><a href="#二、数据库的相关概念" class="headerlink" title="二、数据库的相关概念"></a>二、数据库的相关概念</h2><p>​        <strong>DBMS、DB、SQL</strong></p>
-<p>DB:database数据库，存储一系列有组织数据的容器</p>
-<p>DBMS：Database Management System数据库管理系统，使用DBMS管理和维护DB</p>
-<p>SQL：StructureQueryLanguage结构化查询语言，程序员用于和DBMS通信的语言</p>
-<h2 id="三、数据库存储数据的特点"><a href="#三、数据库存储数据的特点" class="headerlink" title="三、数据库存储数据的特点"></a>三、数据库存储数据的特点</h2><p>1、数据先放在表中，表再放在库中</p>
-<p>2、一个库可以有多张表，每张表都有自己的唯一标识名</p>
-<p>3、一张表的设计，类似于java中”类”的设计</p>
-<p>​      表中的字段的设计，类似于属性的设计</p>
-<p>​      表中的单条记录，类似于一个对象</p>
-<p>​      表中的所有的记录，类似于对象的集合</p>
-<p>​     orm ：object relation mapping 对象关系映射</p>
-<h2 id="四、初始MySQL"><a href="#四、初始MySQL" class="headerlink" title="四、初始MySQL"></a>四、初始MySQL</h2><h3 id="1、MySQL产品的介绍"><a href="#1、MySQL产品的介绍" class="headerlink" title="1、MySQL产品的介绍"></a>1、MySQL产品的介绍</h3><p>MySQL 前身属于瑞典的一家公司AB，2008年被sun公司收购，2009年sun被oracle公司收购。</p>
-<p>特点：</p>
-<p>① 体积小、安装较方便</p>
-<p>②开源、免费</p>
-<p>③性能高、稳定性好</p>
-<p>④兼容性好</p>
-<h3 id="2、MySQL产品的安装-★"><a href="#2、MySQL产品的安装-★" class="headerlink" title="2、MySQL产品的安装          ★"></a>2、MySQL产品的安装          ★</h3><p>基于C/S架构的DBMS，需要安装服务端和客户端</p>
-<p><a href="http://www.oracle.com" target="_blank" rel="noopener">www.oracle.com</a></p>
-<p>MySQL5.5</p>
-<h3 id=""><a href="#" class="headerlink" title=""></a></h3><h3 id="3、MySQL服务的启动和停止-★"><a href="#3、MySQL服务的启动和停止-★" class="headerlink" title="3、MySQL服务的启动和停止     ★"></a>3、MySQL服务的启动和停止     ★</h3><p>方式一：图形化</p>
-<p>右击——计算机管理——服务——MySQL服务</p>
-<p>方式二：通过管理员身份运行dos</p>
-<p>net start 服务名</p>
-<p>net stop 服务名</p>
-<h3 id="4、MySQL服务的登录和退出-★"><a href="#4、MySQL服务的登录和退出-★" class="headerlink" title="4、MySQL服务的登录和退出     ★"></a>4、MySQL服务的登录和退出     ★</h3><h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3><p><strong>方式一：通过dos命令</strong></p>
-<p>mysql -h主机名 -P端口号 -u用户名 -p密码</p>
-<p><strong>注意：</strong></p>
-<p>如果是本机，则-h主机名  可以省略</p>
-<p>如果端口号是3306，则-P端口号可以省略</p>
-<p><strong>方式二：通过图形化界面客户端</strong></p>
-<p>通过sqlyog，直接输入用户名、密码等连接进去即可</p>
-<h3 id="5、MySQL的常见命令和语法规范"><a href="#5、MySQL的常见命令和语法规范" class="headerlink" title="5、MySQL的常见命令和语法规范"></a>5、MySQL的常见命令和语法规范</h3><p><strong>①常见命令</strong></p>
-<p>show databases             显示当前连接下所有数据库</p>
-<p>show tables                    显示当前库中所有表</p>
-<p>show tables from 库名  显示指定库中所有表</p>
-<p>show  columns from 表名    显示指定表中所有列</p>
-<p>use 库名                             打开/使用指定库</p>
-<p><strong>②语法规范</strong></p>
-<p>不区分大小写</p>
-<p>每条命令结尾建议用分号</p>
-<p>注释：</p>
-<p>#单行注释</p>
-<p>– 单行注释</p>
-<p>/<em>多行注释</em>/</p>
-<h2 id="五、DQL语言的学习-★"><a href="#五、DQL语言的学习-★" class="headerlink" title="五、DQL语言的学习   ★"></a>五、DQL语言的学习   ★</h2><p>DQL:Data Query Language  数据查询语言</p>
-<p>select</p>
-<h3 id="1、基础查询-★"><a href="#1、基础查询-★" class="headerlink" title="1、基础查询        ★"></a>1、基础查询        ★</h3><p>语法：</p>
-<p>select 查询列表 from 表名;</p>
-<p>特点：</p>
-<p>①查询结果集是一个虚拟表</p>
-<p>②查询列表可以是单个字段、多个字段、常量、表达式、函数，可以是以上的组合</p>
-<p>引申1：起别名</p>
-<p>select 字段名  as  “别名” from 表名;</p>
-<p>select 字段名 “ 别名” from 表名;</p>
-<p>引申2：+的作用</p>
-<p>作用：加法运算</p>
-<ul>
-<li><p>如果两个操作数都是数值型，则直接做加法运算</p>
-</li>
-<li><p>如果其中一个为非数值型，则将强值转换成数值型，如果转换失败，则当做0</p>
-</li>
-</ul>
-<p>‘123’+4====》127</p>
-<p>‘abc’+4====》 4</p>
-<ul>
-<li>如果其中一个为null，则结果直接为null</li>
-</ul>
-<p>引申3：去重</p>
-<p>select distinct department_id from employees;</p>
-<p>引申4：补充函数</p>
-<p>select version();</p>
-<p>select database();</p>
-<p>select user();</p>
-<p>select ifnull(字段名,表达式);</p>
-<p>select concat(字符1，字符2,字符3);</p>
-<p>select length(字符/字段);获取字节长度</p>
-<h3 id="-2"><a href="#-2" class="headerlink" title=""></a></h3><h3 id="2、条件查询-★"><a href="#2、条件查询-★" class="headerlink" title="2、条件查询         ★"></a>2、条件查询         ★</h3><p><strong>语法：</strong></p>
-<p>select 查询列表 </p>
-<p>from 表名</p>
-<p>where 筛选条件;</p>
-<p><strong>特点：</strong></p>
-<p>筛选条件的分类：</p>
-<p>①按条件表达式筛选</p>
-<p>关系运算符：&gt;=   &lt;   &lt;=   &gt;    &lt;&gt;   =</p>
-<p>②按逻辑表达式筛选</p>
-<p>逻辑运算符：and   or   not</p>
-<p>③模糊查询</p>
-<p>like:一般和通配符搭配使用</p>
-<p>​     _ 任意单个字符</p>
-<p>​    % 任意多个字符</p>
-<p>between and：一般用于判断某字段是否在指定的区间</p>
-<p>​        a between 10 and  100</p>
-<p>in：一般用于判断某字段是否在指定的列表</p>
-<p>​        a  in(10,30,50)</p>
-<p>is null:判断null值</p>
-<p>​    </p>
-<h3 id="3、排序查询-★"><a href="#3、排序查询-★" class="headerlink" title="3、排序查询         ★"></a>3、排序查询         ★</h3><p><strong>语法：</strong></p>
-<p>select  查询列表</p>
-<p>from 表名</p>
-<p>where 筛选条件</p>
-<p>order by 排序列表 ;</p>
-<p><strong>特点：</strong></p>
-<p>①排序列表可以是 单个字段、多个字段、函数、表达式、别名、列的索引，以及以上的组合</p>
-<p>②升序，通过asc</p>
-<p>​    降序，通过desc</p>
-<h3 id="4、常见函数-★"><a href="#4、常见函数-★" class="headerlink" title="4、常见函数        ★"></a>4、常见函数        ★</h3><p>说明：sql中的函数分为单行函数和分组函数</p>
-<p>调用语法：select 函数名(实参列表);</p>
-<p>1》字符函数</p>
-<p>concat(str1,str2,..):拼接字符</p>
-<p>substr(str,pos):截取从pos开始的所有字符，   起始索引从1开始</p>
-<p>substr(str,pos,len):截取len个从pos开始的字符，起始索引从1开始</p>
-<p>length(str):获取字节个数</p>
-<p>char_length(str):获取字符个数</p>
-<p>upper(str):变大写</p>
-<p>lower(str):变小写</p>
-<p>trim(【substr from】str):去前后指定字符，默认是去空格</p>
-<p>left(str,len):从左边截取指定len个数的 字符</p>
-<p>right(str,len):从右边截取指定len个数的 字符</p>
-<p>lpad(str,substr,len):左填充</p>
-<p>rpad(str,substr,len)：右填充</p>
-<p>strcmp(str1,str2):比较两个字符的大小</p>
-<p>instr(str,substr):获取substr在str中第一次出现的索引</p>
-<p>2》数学函数</p>
-<p>ceil(x):向上取整</p>
-<p>floor(x):向下取整</p>
-<p>round(x,d):四舍五入</p>
-<p>mod(x,y):取模/取余</p>
-<p>truncate(x,d):截断，保留小数点后d位</p>
-<p>abs(x):求绝对值</p>
-<p>3》日期函数</p>
-<p>now():获取当前日期——时间</p>
-<p>curtime():只有时间</p>
-<p>curdate():只有日期</p>
-<p>date_format(date,格式):格式日期为字符</p>
-<p>str_to_date(str,格式):将字符转换成日期</p>
-<p>datediff(date1,date2):获取两个日期之间的天数差</p>
-<p>year(date) 指定的格式输出</p>
-<p>month(date)</p>
-<p>一些标准日期格式符的写法</p>
-<p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200222213754576.png" alt="image-20200222213754576"></p>
-<p><strong>4》流程控制函数</strong></p>
-<p>①if(条件，表达式1，表达式2)：如果条件成立，返回表达式1，否则返回表达式2</p>
-<p>②case 表达式</p>
-<p>when 值1 then 结果1</p>
-<p>when 值2 then 结果2</p>
-<p>…</p>
-<p>else 结果n</p>
-<p>end</p>
-<p><strong>③</strong></p>
-<p><strong>case</strong> </p>
-<p>when 条件1 then 结果1</p>
-<p>when 条件2 then 结果2</p>
-<p>…</p>
-<p>else 结果n</p>
-<p>end</p>
-<h3 id="5、分组函数-★"><a href="#5、分组函数-★" class="headerlink" title="5、分组函数        ★"></a>5、分组函数        ★</h3><p>sum求和</p>
-<p>avg平均</p>
-<p>max最大</p>
-<p>min最小</p>
-<p>count个数</p>
-<p>特点：</p>
-<p>1》实参的字段的类型，sum和avg只支持数值型，其他三个可以支持任意类型</p>
-<p>2》这五个函数都忽略null值</p>
-<p>3》count可以支持以下参数</p>
-<p>count(字段)：查询该字段非空值 的个数</p>
-<p>count(*) ：查询结果集的行数</p>
-<p>count(1)：查询结果集的行数</p>
-<p>4》分组函数可以和distinct搭配使用，实现去重的统计</p>
-<p>select count(distinct 字段) from 表;</p>
-<h3 id="-3"><a href="#-3" class="headerlink" title=""></a></h3><h3 id="6、分组查询-★"><a href="#6、分组查询-★" class="headerlink" title="6、分组查询           ★"></a>6、分组查询           ★</h3><p><strong>语法：</strong></p>
-<p>select 分组函数,分组的字段</p>
-<p>from 表名</p>
-<p>where 分组前的筛选条件</p>
-<h4 id="group-by-分组列表"><a href="#group-by-分组列表" class="headerlink" title="group by 分组列表"></a>group by 分组列表</h4><p>group by 要放在where 之后，order by 的前面</p>
-<h4 id="having-分组后的筛选条件"><a href="#having-分组后的筛选条件" class="headerlink" title="having 分组后的筛选条件"></a>having 分组后的筛选条件</h4><p>having是过滤操作</p>
-<p>HAVING和WHERE的差别 这里有另一种理解方法，WHERE在<strong>数据分组前</strong>进行过滤，HAVING在数据分组后进行过滤。这是一个重要的区别，WHERE排除的行不包括在分组中。这可能会改变计算值，从而影响HAVING子句中基于这些值过滤掉的分组。</p>
-<p>order by 排序列表;</p>
-<p><strong>特点：</strong></p>
-<p>1》分组列表可以是单个字段、多个字段</p>
-<p>2》筛选条件分为两类</p>
-<p>​                <strong>筛选的基表        使用的关键字        位置</strong></p>
-<p>分组前筛选        原始表            where                group by前面</p>
-<p>分组后筛选           分组后的结果集    having                group by后面</p>
-<h3 id="7、连接查询-★"><a href="#7、连接查询-★" class="headerlink" title="7、连接查询         ★"></a>7、连接查询         ★</h3><p>说明：当查询中涉及到了多个字段，则需要通过多表连接</p>
-<p>笛卡尔乘积：</p>
-<p>​    出现原因：没有有效的连接条件</p>
-<p>​    解决办法：添加有效的连接条件</p>
-<p>JOIN查询图解</p>
-<p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200322112708086.png" alt="image-20200322112708086"></p>
-<p>————————–SQL92语法————————</p>
-<p>语法：</p>
-<p><strong>select 查询列表</strong>   ①</p>
-<p>*<em>from 表1 别名,表2 别名,… *</em>②</p>
-<p><strong>where 连接条件</strong> ③</p>
-<p><strong>and 筛选条件</strong>④</p>
-<p>group by 分组列表⑤</p>
-<p>having 分组后筛选⑥</p>
-<p>order by 排序列表;⑦</p>
-<p><strong>执行顺序：</strong></p>
-<p>②③④⑤⑥①⑦</p>
-<p>————————–SQL99语法————————</p>
-<p><strong>1》内连接</strong></p>
-<p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200324221836820.png" alt="image-20200324221836820"></p>
-<p>即所连接的表中都包含相同列。</p>
-<p>语法：</p>
-<p>select 查询列表    ①</p>
-<p>from 表1 别名②</p>
-<p>【inner】 join 表2 别名 on 连接条件  ③</p>
-<p>【inner】 join 表3 别名 on 连接条件</p>
-<p>where 筛选条件  ④</p>
-<p>group by 分组列表⑤</p>
-<p>having 分组后的筛选⑥</p>
-<p>order by 排序列表⑦</p>
-<p><strong>执行顺序：</strong></p>
-<p>②③④⑤⑥①⑦</p>
-<h2 id="外连接"><a href="#外连接" class="headerlink" title="外连接"></a>外连接</h2><p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200324222019185.png" alt="image-20200324222019185"></p>
-<p>右外连接意思是在右边的数据有多的行而左边没有匹配到。</p>
-<h3 id="8、子查询-√"><a href="#8、子查询-√" class="headerlink" title="8、子查询       √"></a>8、子查询       √</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> first_name <span class="keyword">from</span> employees <span class="keyword">where</span> department_id &gt;(</span><br><span class="line">    <span class="comment"># 子查询</span></span><br><span class="line">       <span class="keyword">select</span> department_id <span class="keyword">from</span> departments</span><br><span class="line">       <span class="keyword">where</span>  location_id=<span class="number">1700</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-
-<p>​    1、子查询语句需要放在小括号内，提高代码的阅读性</p>
-<p>​     2、子查询先于主查询执行，一般来讲，主查询会用到子查询的结果</p>
-<p>​     3、如果子查询放在条件中，一般来讲，子查询需要放在条件的右侧</p>
-<p>​     示例：where job_id&gt;(子查询)</p>
-<p>​     不能写成：where (子查询)&lt;job_id          </p>
-<h3 id="9、分页查询-★"><a href="#9、分页查询-★" class="headerlink" title="9、分页查询       ★"></a>9、分页查询       ★</h3><h3 id="10、union联合查询-√"><a href="#10、union联合查询-√" class="headerlink" title="10、union联合查询    √"></a>10、union联合查询    √</h3><h3 id="11、字符函数"><a href="#11、字符函数" class="headerlink" title="11、字符函数"></a>11、字符函数</h3><p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200324214941880.png" alt="image-20200324214941880"></p>
-<p>INSTR-返回在字符串中指定的字母索引</p>
-<p>SUBSTR-截取字符或者字母</p>
-<p>CONCAT-连接</p>
-<h2 id="六、DML语言的学习-★"><a href="#六、DML语言的学习-★" class="headerlink" title="六、DML语言的学习    ★"></a>六、DML语言的学习    ★</h2><h3 id="1、插入语句"><a href="#1、插入语句" class="headerlink" title="1、插入语句"></a>1、插入语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> 表名(列名<span class="number">1</span>,列名<span class="number">2</span>, …) <span class="keyword">VALUES</span>(值<span class="number">1</span>, 值<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="2、修改语句"><a href="#2、修改语句" class="headerlink" title="2、修改语句"></a>2、修改语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 格式</span></span><br><span class="line"><span class="keyword">UPDATE</span> 表名 <span class="keyword">SET</span> 列名<span class="number">1</span>=值<span class="number">1</span>, … 列名n=值n [<span class="keyword">WHERE</span> 条件]</span><br><span class="line"><span class="keyword">UPDATE</span> stus <span class="keyword">SET</span> sname=’zhangSanSan’, age=’<span class="number">32</span>’, gender=’female’ <span class="keyword">WHERE</span> <span class="keyword">sid</span>=’s_1001’;</span><br></pre></td></tr></table></figure>
-
-<h3 id="3、删除语句"><a href="#3、删除语句" class="headerlink" title="3、删除语句"></a>3、删除语句</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> 表名 [<span class="keyword">WHERE</span> 条件] <span class="comment"># 可以回滚</span></span><br><span class="line"><span class="keyword">TRUNCATE</span> <span class="keyword">TABLE</span> 表名 <span class="comment"># 不可以回滚</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="七、DDL语言的学习"><a href="#七、DDL语言的学习" class="headerlink" title="七、DDL语言的学习"></a>七、DDL语言的学习</h2><h3 id="1、库和表的管理-√"><a href="#1、库和表的管理-√" class="headerlink" title="1、库和表的管理     √"></a>1、库和表的管理     √</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">l 查看当前数据库中所有表名称：<span class="keyword">SHOW</span> <span class="keyword">TABLES</span>；　</span><br><span class="line"></span><br><span class="line">l 查看指定表的创建语句：<span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span>  emps;</span><br><span class="line"></span><br><span class="line">l 查看表结构：DESC emps;</span><br><span class="line"></span><br><span class="line">l 删除表：<span class="keyword">DROP</span> <span class="keyword">TABLE</span> emps</span><br><span class="line"></span><br><span class="line">l 修改表结构:</span><br><span class="line"></span><br><span class="line">a)    修改之添加列：给stus表添加classname列：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stu <span class="keyword">ADD</span> (classname <span class="built_in">varchar</span>(<span class="number">100</span>));</span><br><span class="line"></span><br><span class="line">b)    修改之修改列类型：修改stu表的gender列类型为CHAR(2)：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stus <span class="keyword">MODIFY</span> gender <span class="built_in">CHAR</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">c)    修改之修改列名：修改stu表的gender列名为sex：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stus <span class="keyword">change</span> gender sex <span class="built_in">CHAR</span>(<span class="number">2</span>);</span><br><span class="line"></span><br><span class="line">d)    修改之删除列：删除stsu表的classname列：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stus <span class="keyword">DROP</span> classname;</span><br><span class="line"></span><br><span class="line">e)    修改之修改表名称：修改stu表名称为student：</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> stus <span class="keyword">RENAME</span> <span class="keyword">TO</span> student;</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="2、常见数据类型介绍-√"><a href="#2、常见数据类型介绍-√" class="headerlink" title="2、常见数据类型介绍  √"></a>2、常见数据类型介绍  √</h3><h3 id="3、常见约束-√"><a href="#3、常见约束-√" class="headerlink" title="3、常见约束        √"></a>3、常见约束        √</h3><h2 id="八、TCL语言的学习"><a href="#八、TCL语言的学习" class="headerlink" title="八、TCL语言的学习"></a>八、TCL语言的学习</h2><h3 id="事务和事务处理"><a href="#事务和事务处理" class="headerlink" title="事务和事务处理"></a>事务和事务处理</h3><p>事务的四大特性：ACID</p>
-<ol>
-<li><h3 id="脏读"><a href="#脏读" class="headerlink" title="脏读"></a>脏读</h3></li>
-</ol>
-<p>两个事务之间的不同步，即B读到A要撤回改变之前的数据，导致两边提交之后的信息不对等</p>
-<ol>
-<li><h3 id="不可重复读"><a href="#不可重复读" class="headerlink" title="不可重复读"></a>不可重复读</h3></li>
-</ol>
-<p>一个事务内在读取某些数据之后，在读取，发现数据发生了变更，因为有其它事务改变了数据</p>
-<ol>
-<li><h3 id="幻读"><a href="#幻读" class="headerlink" title="幻读"></a>幻读</h3></li>
-</ol>
-<p>事务A在按查询条件读取某个范围内的记录，事务B又在该范围内插入了新的满足条件的记录，当事务A再次按条件查询记录时候，会产生新的满足条件的记录。</p>
-<ul>
-<li>不可重复读和幻读的区别</li>
-</ul>
-<p>不可重复读的重点是修改；而幻读重点在于新增或者删除。</p>
-<h3 id="四个隔离级别"><a href="#四个隔离级别" class="headerlink" title="四个隔离级别"></a>四个隔离级别</h3><ol>
-<li>未提交读：全支持读</li>
-<li>提交读</li>
-<li>可重复读</li>
-<li>可串行化：全部不支持读</li>
-</ol>
-<h2 id="九、数据库连接池的使用"><a href="#九、数据库连接池的使用" class="headerlink" title="九、数据库连接池的使用"></a>九、数据库连接池的使用</h2><h3 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h3><p><strong>数据库连接池</strong>：<strong>数据库连接池的基本思想</strong>就是为数据库连接建立一个“缓冲池”。预先在缓冲池中放入一定数量的连接，当需要建立数据库连接时，只需从“缓冲池”中取出一个，使用完毕之后再放回去。数据库连接池负责分配、管理和释放数据库连接，它<strong>允许应用程序重复使用一个现有的数据库连接，而不是重新建立一个</strong>。连接池的最大数据库连接数量限定了这个连接池能占有的最大连接数，当应用程序向连接池请求的连接数超过最大连接数量时，这些请求将被加入到等待队列中。</p>
-<h3 id="数据库连接池的作用"><a href="#数据库连接池的作用" class="headerlink" title="数据库连接池的作用"></a>数据库连接池的作用</h3><ol>
-<li>可以资源重用</li>
-<li>更快的系统反应速度</li>
-<li>新的资源分配手段</li>
-<li>统一的连接管理</li>
-</ol>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JDBC 的数据库连接池使用 javax.sql.DataSource 来表示，DataSource 只是一个接口，该接口通常由服务器(Weblogic, WebSphere, Tomcat)提供实现，也有一些开源组织提供实现：</span><br><span class="line">Druid-阿里提供的数据连接池 学这个开源框架</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.sql.Connection;</span><br><span class="line"><span class="keyword">import</span> java.util.Properties;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.sql.DataSource;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> com.alibaba.druid.pool.DruidDataSourceFactory;</span><br><span class="line"><span class="comment">//用法参考</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDruid</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">		Properties pro = <span class="keyword">new</span> Properties();</span><br><span class="line">        <span class="comment">//pro.load(new FileInputStream("\druid.properties"))</span></span><br><span class="line">		pro.load(TestDruid.class.getClassLoader().getResourceAsStream("druid.properties"));</span><br><span class="line">        <span class="comment">//创建一个指定参数的数据库连接池</span></span><br><span class="line">		DataSource ds = DruidDataSourceFactory.createDataSource(pro);</span><br><span class="line">        <span class="comment">//从数据库连接池中获取可用的连接对象</span></span><br><span class="line">		Connection conn = ds.getConnection();</span><br><span class="line">		System.out.println(conn);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><em>druid.properties</em></p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">url</span>=<span class="string">jdbc:mysql://localhost:3306/test?rewriteBatchedStatements=true</span></span><br><span class="line"><span class="attr">username</span>=<span class="string">root</span></span><br><span class="line"><span class="attr">password</span>=<span class="string">123456</span></span><br><span class="line"><span class="attr">driverClassName</span>=<span class="string">com.mysql.jdbc.Driver</span></span><br><span class="line"><span class="attr">initialSize</span>=<span class="string">10</span></span><br><span class="line"><span class="attr">maxActive</span>=<span class="string">20</span></span><br><span class="line"><span class="attr">maxWait</span>=<span class="string">1000</span></span><br><span class="line"><span class="attr">filters</span>=<span class="string">wall</span></span><br><span class="line"><span class="attr">&lt;--!配置文件--&gt;</span></span><br></pre></td></tr></table></figure>
-
-<p>X`</p>
-
+        
+          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/MySQL%E5%9F%BA%E7%A1%80/#more">more >></a>
+        
       
 
       
@@ -1279,7 +987,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>虚拟的表，只保持sql的逻辑，不保存查询结果</p>
+        <a id="more"></a>
+
+<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>虚拟的表，只保持sql的逻辑，不保存查询结果</p>
 <h2 id="需要注意的"><a href="#需要注意的" class="headerlink" title="需要注意的"></a>需要注意的</h2><p>使用规则</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="keyword">statement</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">VIEW</span> view_name</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="keyword">statement</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># 删除 （可以删除多个 ，前提是有drop权限）</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">view</span> [<span class="keyword">if</span> <span class="keyword">exists</span>] view_name,view_name …[restrict|<span class="keyword">cascade</span>]</span><br><span class="line"><span class="comment"># 查看视图</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name</span><br></pre></td></tr></table></figure>
 

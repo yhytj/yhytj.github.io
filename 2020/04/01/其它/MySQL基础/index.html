@@ -11,12 +11,12 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>其它/MySQL基础 | welcome to yhy&#39;s blogs</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="[toc] 本单元目标难点： SQL高级语句：group by ,having ,左连接，，子查询（in）,行转列等 建表方面的第三范式和反 MySQL集群 基础 懂得查看日志，排查问题 less命令打开文件 通过grep方式查关键字，grep 关键字 文件名  通过vi编辑文件 通过chmod来设置文件的权限 一、为什么要学习数据库1.持久化数据 2.方便检索 3.存储大量数据 4.共享、安全">
+  <meta name="description" content="[toc]">
 <meta property="og:type" content="article">
 <meta property="og:title" content="其它&#x2F;MySQL基础">
 <meta property="og:url" content="http://yoursite.com/2020/04/01/%E5%85%B6%E5%AE%83/MySQL%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="welcome to yhy&#39;s blogs">
-<meta property="og:description" content="[toc] 本单元目标难点： SQL高级语句：group by ,having ,左连接，，子查询（in）,行转列等 建表方面的第三范式和反 MySQL集群 基础 懂得查看日志，排查问题 less命令打开文件 通过grep方式查关键字，grep 关键字 文件名  通过vi编辑文件 通过chmod来设置文件的权限 一、为什么要学习数据库1.持久化数据 2.方便检索 3.存储大量数据 4.共享、安全">
+<meta property="og:description" content="[toc]">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="c:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200222213754576.png">
 <meta property="og:image" content="c:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200322112708086.png">
@@ -24,7 +24,7 @@
 <meta property="og:image" content="c:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200324222019185.png">
 <meta property="og:image" content="c:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200324214941880.png">
 <meta property="article:published_time" content="2020-04-01T13:58:35.653Z">
-<meta property="article:modified_time" content="2020-03-24T17:11:03.840Z">
+<meta property="article:modified_time" content="2020-04-01T15:06:28.366Z">
 <meta property="article:author" content="yhy coder">
 <meta property="article:tag" content="Java，Notes">
 <meta name="twitter:card" content="summary">
@@ -75,9 +75,9 @@
 	        
 				<li><a href="/about">关于我</a></li>
 	        
-				<li><a href="/tags/">tags</a></li>
+				<li><a href="/tags">tags</a></li>
 	        
-				<li><a href="/categories/">categories</a></li>
+				<li><a href="/categories">categories</a></li>
 	        
 			</ul>
 		</nav>
@@ -169,9 +169,9 @@
 		        
 					<li style="width: 20%"><a href="/about">关于我</a></li>
 		        
-					<li style="width: 20%"><a href="/tags/">tags</a></li>
+					<li style="width: 20%"><a href="/tags">tags</a></li>
 		        
-					<li style="width: 20%"><a href="/categories/">categories</a></li>
+					<li style="width: 20%"><a href="/categories">categories</a></li>
 		        
 				</ul>
 			</nav>
@@ -207,6 +207,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>[toc]</p>
+<a id="more"></a>
+
 <h1 id="本单元目标"><a href="#本单元目标" class="headerlink" title="本单元目标"></a>本单元目标</h1><p>难点：</p>
 <p>SQL高级语句：group by ,having ,左连接，，子查询（in）,行转列等</p>
 <p>建表方面的第三范式和反</p>
