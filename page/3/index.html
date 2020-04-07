@@ -178,6 +178,337 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-0系列/0-equals与==" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/0%E7%B3%BB%E5%88%97/0-equals%E4%B8%8E==/">0系列/0-equals与==</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/0%E7%B3%BB%E5%88%97/0-equals%E4%B8%8E==/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.791Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id=""><a href="#" class="headerlink" title="=="></a>==</h2><p>基本数据类型就是比较值，如果是引用类型的话，就是比较地址</p>
+<h2 id="equals"><a href="#equals" class="headerlink" title="equals"></a>equals</h2><p>在string类里面，“equals()”比较字符串中所包含的内容是否相同，equals方法是可以重写的，所以在一些类型中，已经被重写了.</p>
+<p>原本的object类下的equals方法是先比较</p>
+<p>string类下的equals</p>
+<img src="https://i.loli.net/2020/01/15/ijeoK47zIxUFOdJ.png" width="850">
+
+<p>array类下的equals</p>
+<img src="https://i.loli.net/2020/01/15/4E5A8bPyetmRSFZ.png"  width = "850">
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/0%E7%B3%BB%E5%88%97/0-equals%E4%B8%8E==/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-SE/集合常用方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/Java-SE/%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">Java-SE/集合常用方法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/Java-SE/%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.776Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="谈谈Collection"><a href="#谈谈Collection" class="headerlink" title="谈谈Collection"></a>谈谈Collection</h1><p>[toc]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这一篇讲的collection接口；首先，集合是用来<strong>存储数据</strong>的，它是基于某种数据结构数据容器。常见的数据结构：数组（Array）、集（Set）、队列（Queue）、链表（Linkedlist）、树（Tree）、堆（Heap）、栈（Stack）和映射（Map）等结构。<em>集合大类分为了Collection和Map</em>。<strong>如下图</strong></p>
+<img src="https://i.loli.net/2020/01/16/gfscPTxIbDHo46Y.png" width = "850px">
+
+<h2 id="Collection"><a href="#Collection" class="headerlink" title="Collection"></a>Collection</h2><p>这一篇文章的内容——现在讲下collection，“集合、容器”，用来存储数据的，它是一个<strong>接口</strong>，不能直接实例化使用；只能通过它的子类来完成，从上图来看，Collection分为List和Set，List集合中的元素是有序的、可重复的，而Set集合中的元素是无序的、不能重复的。List集合强调的是有序，Set集合强调的是不重复。下面是它的已知实现类。</p>
+<img src="https://i.loli.net/2020/01/18/sC9ULZXDIoG2FgA.png" height = "120px" width = "850px">
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collection是描述所有序列容器的共性的根接口，可能会被认为是一个附属接口，即因为要表示其他若干个接口的共性而出现的接口。同时为什么要将其作为接口？是因为可以使我们能够创建更通用的代码。通过针对接口而非具体实现来编写代码，这样，才可以更好地应用于更多的对象类型。</span><br></pre></td></tr></table></figure>
+
+<p>下面的是Collection更加仔细一点的分类。今天这篇重点介绍一下Collection的几个方法，掌握了这些，对于它的子类都是可以直接拿来用的。子类的介绍后面再总结出来。</p>
+<h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>遇到一些自己不熟的知识点，在IDEA上可以直接查看该接口的详细源码(ctrl加鼠标左键)，点开旁边的结构图按钮，可以直观得去查看这些方法</p>
+<img src="https://i.loli.net/2020/01/16/hS1Jy2Nr3bcYmPe.png" width = "850px">
+
+<h3 id="1-boolean-add-E"><a href="#1-boolean-add-E" class="headerlink" title="1.boolean add(E)"></a>1.boolean add(E)</h3><p>这个一看就知道了，就是添加功能，往集合里面添加元素或者对象的方法，若是list这种，因为它返回都是true,一般情况下，可以随便往里面添加。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Collection s = <span class="keyword">new</span> Collection();</span><br><span class="line">s.add(你要添加的);</span><br><span class="line">s.add(<span class="string">"你要添加的"</span>);</span><br></pre></td></tr></table></figure>
+
+<p>有时需要注意的时候，如果操作的集合是不允许重复值的，往里面添加就会报错。返回的是false.</p>
+<h3 id="2-void-clear"><a href="#2-void-clear" class="headerlink" title="2.void clear()"></a>2.void clear()</h3><p>移除容器中的所有元素，该集合不支持移除的话就会抛出UnsupportedOperationException异常（不支持该操作）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//接着用上面的s集合</span></span><br><span class="line">s.clear();</span><br><span class="line"><span class="comment">//这时候集合为空了</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="3-boolean-contains-Object-o"><a href="#3-boolean-contains-Object-o" class="headerlink" title="3.boolean contains(Object o)"></a>3.boolean contains(Object o)</h3><p>用来检查此集合是否包含指定元素或者对象，包含则返回true不包含就返回false；会返回两种错误。</p>
+<img src="https://i.loli.net/2020/01/16/ZlgEKFtUa5WTbyQ.png" width = "850px">
+
+<h3 id="4-boolean-isEmpty"><a href="#4-boolean-isEmpty" class="headerlink" title="4.boolean isEmpty()"></a>4.boolean isEmpty()</h3><p>用来检查集合中是否为空，如果为空就返回true。</p>
+<h3 id="5-Iterator-iterator"><a href="#5-Iterator-iterator" class="headerlink" title="5.Iterator  iterator()"></a>5.Iterator <T> iterator()</h3><p>返回一个Iterator<T>迭代器，这个方法是用来遍历集合中的元素的，在一些需要获取集合中的元素（包括打印输出，调用等场景下），依赖于集合而存在的，有next方法和hasNext方法。</p>
+<img src="https://i.loli.net/2020/01/16/y8C96cKVDWzgxPf.png" width = "850" >
+
+<p>这两个方法一般情况下都是<strong>绑定一起用的</strong>。形式如下。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//其主要的用法如下，遍历的功能</span></span><br><span class="line"><span class="comment">//通过集合对象获取迭代器对象</span></span><br><span class="line">Iterator i = 集合.iterator();</span><br><span class="line"><span class="comment">//hasNext方法是布尔型的返回值，有元素在集合里面的时候就会返回true</span></span><br><span class="line"><span class="keyword">while</span>(it.hasNext())&#123;</span><br><span class="line">    System.out.println(it.next());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="6-int-size"><a href="#6-int-size" class="headerlink" title="6.int size()"></a>6.int size()</h3><p>用来返回的集合的<strong>长度</strong>，也就是集合里面的元素的个数。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接使用，返回长度</span></span><br><span class="line">集合.size();</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-Boolean-remove"><a href="#7-Boolean-remove" class="headerlink" title="7.Boolean remove()"></a>7.Boolean remove()</h3><p>用来<strong>删除</strong>集合中的元素，对象，只要有移除动作就会返回true。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="什么是可选操作"><a href="#什么是可选操作" class="headerlink" title="什么是可选操作"></a>什么是可选操作</h3><p>在看源码的时候，会发现有些方法在后面会标记为可选操作 (optional operation)。</p>
+<blockquote>
+<p>执行各种不同的添加和移除的方法在Colletion接口中都是可选操作，这意味着实现类并不需要为这些方法提供功能定义。……如果一个操作是可选的，编译器仍旧会严格要求你只能调用该接口中的方法。</p>
+<p>它声明调用某些方法将不会执行有意义的行为，相反，它们会抛出异常。   ——《Java编程思想》</p>
+<p>异常UnsupportedOperationException（这个和上面讲remove时候不支持操作的时候抛出一样的异常）</p>
+</blockquote>
+<img src="https://i.loli.net/2020/01/16/EhVsjeGOtNUxwmI.png" width ="850px ">
+
+<p>大概意思是collection子类可以<strong>重写</strong>这个方法以达到子类自己的目的，<strong>也可以不覆盖</strong>这个方法但是。<strong>没有</strong>实现这个方法的子类使用这个方法的话会抛出UnsupportedOperationException异常。（这个未获得支持的异常在运行时候才能探测到，属于动态类型异常），先看下报错的代码示例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.ArrayList;</span><br><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"><span class="keyword">import</span> java.util.Collection;</span><br><span class="line"><span class="keyword">import</span> java.util.List;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> * 这个是用来观察java中的可选操作方法的一些特点以及定义使用以及报错的原因，这是书上的代码</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Unsupport</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(String msg, List&lt;String&gt; list)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"--- "</span> + msg + <span class="string">" ---"</span>);</span><br><span class="line">        Collection&lt;String&gt; c = list;</span><br><span class="line">        Collection&lt;String&gt; subList = list.subList(<span class="number">1</span>,<span class="number">8</span>);</span><br><span class="line">        Collection&lt;String&gt; c2 = <span class="keyword">new</span> ArrayList&lt;String&gt;(subList);</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            c.retainAll(c2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"retainAll(): "</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123; c.removeAll(c2); &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"removeAll(): "</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123; c.clear(); &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"clear(): "</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123; c.add(<span class="string">"X"</span>); &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"add(): "</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123; c.addAll(c2); &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"addAll(): "</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">try</span> &#123; c.remove(<span class="string">"C"</span>); &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"remove(): "</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// The List.set() 虽然改变了值但没有改变它的数据结构尺寸</span></span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            list.set(<span class="number">0</span>, <span class="string">"X"</span>);</span><br><span class="line">        &#125; <span class="keyword">catch</span>(Exception e) &#123;</span><br><span class="line">            System.out.println(<span class="string">"List.set(): "</span> + e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//asList方法：返回由指定数组支持的固定大小的列表。 （将返回的列表更改为“写入数组”。）该方法作为基于数组和基于集合的API之间的桥梁，与Collection.toArray()相结合 。 </span></span><br><span class="line">        <span class="comment">//返回的列表是可序列化的，并实现RandomAccess 。 此方法还提供了一种方便的方式来创建一个初始化为包含几个元素的固定大小的列表：</span></span><br><span class="line">        List&lt;String&gt; list  = Arrays.asList(<span class="string">"A B C D E F G H I J K L"</span>.split(<span class="string">" "</span>));</span><br><span class="line">        System.out.println(list.getClass());</span><br><span class="line">        test(<span class="string">"Arrays.asList()"</span>, list);</span><br><span class="line">        <span class="comment">// System.out.println(list1.getClass());</span></span><br><span class="line">        test(<span class="string">"Modifiable Copy"</span>, <span class="keyword">new</span> ArrayList&lt;String&gt;(list));</span><br><span class="line">        <span class="comment">//test("unmodifiableList()",Collections.unmodifiableList(new ArrayList&lt;String&gt;(list)));</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>output(输出）：</strong></p>
+<img src="https://i.loli.net/2020/01/16/KOXfVuctnjl5HdC.png" width = "850px">
+
+
+
+<h3 id="集合使用的整体框架（步骤）"><a href="#集合使用的整体框架（步骤）" class="headerlink" title="集合使用的整体框架（步骤）"></a>集合使用的整体框架（步骤）</h3><img src="https://i.loli.net/2020/01/16/ojqwLTWelJkOpym.png" width = "850px">
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/Java-SE/%E9%9B%86%E5%90%88%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-SE/集合" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/Java-SE/%E9%9B%86%E5%90%88/">Java-SE/集合</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/Java-SE/%E9%9B%86%E5%90%88/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.774Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h1><p>[TOC]</p>
+<h2 id="摘要"><a href="#摘要" class="headerlink" title="摘要"></a>摘要</h2><p>集合只用于存储对象，集合分为了collection（单列）和map（双列）两种。</p>
+<img src="https://i.loli.net/2020/01/15/kiemV1qCa6onEFf.png" width = "850px">
+
+<p>因为我们要讲的以下都是继承了父类collection，所以可以先对父类的方法进行研究，这些父类的方法在子类中也是会重复出现的，如果熟悉了，以后遇到了哪一个集合类都可以对这些方法运用得很好了。直接看jdk上的这些方法，当然而不需要背，有个印象，但需要的时候可以查仔细的用法就行了。<img src="https://i.loli.net/2020/01/15/9o2vre4hX3n7Pqt.png" width = "850px"></p>
+<h2 id="list"><a href="#list" class="headerlink" title="list"></a>list</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>list是只关心顺序的，所以会有重复的，而且，List必须按照插入的顺序来保存元素。</p>
+<h3 id="是什么？"><a href="#是什么？" class="headerlink" title="是什么？"></a>是什么？</h3><p>​    List 接口的实现类有：ArrayList 和 LinkedList。ArrayList 是基于动态数组数据结构的实现，LinkedList 是基于链表数据结构的实现。ArrayList 访问元素速优于 LinkedList，LinkedList占用的内存空间比较大，但 LinkedList 在批量插入或删除数据时优于 ArrayList。</p>
+<h3 id="怎么用？"><a href="#怎么用？" class="headerlink" title="怎么用？"></a>怎么用？</h3><ul>
+<li>定义创建</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List s = <span class="keyword">new</span> List();</span><br><span class="line">ArrayList s = <span class="keyword">new</span> ArrayList();</span><br><span class="line">LinkedList s = <span class="keyword">new</span> LinkedList();</span><br><span class="line">Vector s = <span class="keyword">new</span> vector();</span><br></pre></td></tr></table></figure>
+
+<p>List中特有的方法</p>
+<p><img src="https://i.loli.net/2020/01/16/m1OZkhupP5xY3qH.png" width = "850px"></a></p>
+<h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><h2 id="set"><a href="#set" class="headerlink" title="set"></a>set</h2><h3 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h3><p>set不能有重复的元素</p>
+<h2 id="map"><a href="#map" class="headerlink" title="map"></a>map</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/Java-SE/%E9%9B%86%E5%90%88/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-SE/网络编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/Java-SE/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">Java-SE/网络编程</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/Java-SE/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.772Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h2><h3 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h3><p>分为了OSI模型（七层），和TCP/IP模型（四层）-应用层、网络层、链路层、以及物理层。</p>
+<h3 id="网络编程三要素"><a href="#网络编程三要素" class="headerlink" title="网络编程三要素"></a>网络编程三要素</h3><h4 id="IP地址–网络中的计算机的唯一标识"><a href="#IP地址–网络中的计算机的唯一标识" class="headerlink" title="IP地址–网络中的计算机的唯一标识"></a>IP地址–网络中的计算机的唯一标识</h4><p>分为了四类：A、B、C、D类（常用的是后两种）</p>
+<p>在DOS命令里可以通过ipconfig查看本机的ip地址、和使用ping命令查看本机与相应的ip地址是否存在通信问题。</p>
+<h4 id="端口–程序运行的标识"><a href="#端口–程序运行的标识" class="headerlink" title="端口–程序运行的标识"></a>端口–程序运行的标识</h4><p>范围是0-65535,0-1024为系统所使用，一般建议使用10000以上。</p>
+<h4 id="协议–通行规则"><a href="#协议–通行规则" class="headerlink" title="协议–通行规则"></a>协议–通行规则</h4><p>分为UDP和TCP两大类</p>
+<p>UDP</p>
+<p>速度快，但信息传输不可靠，不建立连接，多用于数据打包，大小不大于64k，不在乎数据是否传送完成以及成功。</p>
+<p>TCP</p>
+<p>速度慢，但是传输可靠，建立连接，在连接中进行大量的数据传输，但数据传输效率较低。</p>
+<h2 id="Socket"><a href="#Socket" class="headerlink" title="Socket"></a>Socket</h2><p>socket包含了ip和端口信息，通信两端都有socket，也叫做套接字。</p>
+<p>网络通信其实也是socke之间的通信，数据在两个socket之间相互传输。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/Java-SE/%E7%BD%91%E7%BB%9C%E7%BC%96%E7%A8%8B/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Java-SE/泛型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -867,390 +1198,9 @@
 
 
   
-    <article id="post-其它/mysql-事务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E4%BA%8B%E5%8A%A1/">其它/mysql-事务</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E4%BA%8B%E5%8A%A1/" class="archive-article-date">
-  	<time datetime="2020-04-01T13:58:22.184Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="事务"><a href="#事务" class="headerlink" title="事务"></a>事务</h1><p>[toc]</p>
-<h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>事务由单独单元的一个或多个SQL语句组成，在这个单元中，每一个mysql语句是相互依赖的；由于整个单独单元作为不可分割的整体，那么如果单元中某条SQL语句一旦执行失败或产生失败，整个单元就会回滚。要么全部成功，要么全部失败。</p>
-<p><em>在mysql中用的最多的存储引擎有：innodb，myisam,memory 等。其中innodb支持事务，而myisam、memory等不支持事务</em></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">查看mysql支持的引擎：<span class="keyword">SHOW</span> <span class="keyword">engines</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="事务的四大特性"><a href="#事务的四大特性" class="headerlink" title="事务的四大特性"></a>事务的四大特性</h2><ol>
-<li>原子性：要么成功，要么失败。</li>
-<li>一致性：状态与其他业务规则保持一致。</li>
-<li>隔离性：在并发中使用。一个事务不被另一个事务所影响</li>
-<li>持久性：一旦改变提交之后，数据就持久化被操作了。</li>
-</ol>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">隐式事务:没有明显的开启和结束标记</span><br><span class="line">显式事务：有明显的开启和结束标记</span><br></pre></td></tr></table></figure>
-
-<h2 id="使用步骤："><a href="#使用步骤：" class="headerlink" title="使用步骤："></a>使用步骤：</h2><p>插个小知识</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DDL（Data Definition Language）：数据定义语言，用来定义数据库对象：库、表、列等；</span><br><span class="line">DML（Data Manipulation Language）：数据操作语言，用来定义数据库记录（数据）；</span><br><span class="line">DCL（Data Control Language）：数据控制语言，用来定义访问权限和安全级别；</span><br><span class="line">DQL（Data Query Language）：数据查询语言，用来查询记录（数据）。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>一般情况下，如果在一个事务中包含多个SQL语句，那么就要开启事务和结束事务；</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">开启事务：<span class="keyword">start</span> <span class="keyword">transaction</span>；</span><br><span class="line">结束事务：<span class="keyword">commit</span>或<span class="keyword">rollback</span>。</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p><strong>开始</strong>是以第一个DML语句执行开始</p>
-</li>
-<li><p>以下面的其中之一作为<strong>结束:</strong></p>
-<p>COMMIT 或ROLLBACK 语句（回滚，即回滚到事务的起点，之前做的所有操作都被撤消了！）<br>DDL 或DCL 语句（自动提交）<br>用户会话正常结束<br>系统异常终了</p>
-</li>
-</ul>
-<ul>
-<li><pre><code class="sql"><span class="keyword">START</span> <span class="keyword">TRANSACTION</span>;
-<span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance=balance<span class="number">-10000</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">1</span>;
-<span class="keyword">UPDATE</span> <span class="keyword">account</span> <span class="keyword">SET</span> balance=balance+<span class="number">10000</span> <span class="keyword">WHERE</span> <span class="keyword">id</span>=<span class="number">2</span>;
-<span class="keyword">COMMIT</span>;
-</code></pre>
-</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E4%BA%8B%E5%8A%A1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-其它/mysql-视图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E8%A7%86%E5%9B%BE/">其它/mysql-视图</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E8%A7%86%E5%9B%BE/" class="archive-article-date">
-  	<time datetime="2020-04-01T13:58:22.147Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <a id="more"></a>
-
-<h1 id="视图"><a href="#视图" class="headerlink" title="视图"></a>视图</h1><p>虚拟的表，只保持sql的逻辑，不保存查询结果</p>
-<h2 id="需要注意的"><a href="#需要注意的" class="headerlink" title="需要注意的"></a>需要注意的</h2><p>使用规则</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="keyword">statement</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">VIEW</span> view_name</span><br><span class="line"><span class="keyword">AS</span> <span class="keyword">SELECT</span> <span class="keyword">statement</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># 删除 （可以删除多个 ，前提是有drop权限）</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">view</span> [<span class="keyword">if</span> <span class="keyword">exists</span>] view_name,view_name …[restrict|<span class="keyword">cascade</span>]</span><br><span class="line"><span class="comment"># 查看视图</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">VIEW</span> view_name</span><br></pre></td></tr></table></figure>
-
-<p>以下视图不能更新</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">•包含以下关键字的sql语句：分组函数、distinct、group by、having、union或者union all</span><br><span class="line">•常量视图</span><br><span class="line">•<span class="keyword">Select</span>中包含子查询</span><br><span class="line">•<span class="keyword">join</span></span><br><span class="line">•<span class="keyword">from</span>一个不能更新的视图</span><br><span class="line">•<span class="keyword">where</span>子句的子查询引用了<span class="keyword">from</span>子句中的表</span><br></pre></td></tr></table></figure>
-
-<h1 id="存储过程和函数"><a href="#存储过程和函数" class="headerlink" title="存储过程和函数"></a>存储过程和函数</h1><p>事先编译并存储在数据库中的一段SQL语句；</p>
-<p>好处：</p>
-<ol>
-<li>简化工作</li>
-<li>提高数据处理的效率</li>
-<li>减少数据在数据库和应用服务器之间的传输</li>
-</ol>
-<p>使用格式</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># •创建存储过程：</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">procedure</span> 存储过程名([proc_parameter[,…]])</span><br><span class="line">[characteristic…]routine_body</span><br><span class="line"><span class="comment"># •创建函数：</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">function</span> 函数名([func_parameter[,…]])</span><br><span class="line"><span class="keyword">returns</span> <span class="keyword">type</span></span><br><span class="line">[characteristic…]routine_body</span><br><span class="line"><span class="comment"># 调用存储过程：</span></span><br><span class="line"><span class="keyword">call</span> 存储过程名(参数列表)</span><br><span class="line"><span class="comment"># 调用函数：</span></span><br><span class="line"><span class="keyword">Select</span> 函数名(参数列表)</span><br><span class="line"><span class="comment"># 修改</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">PROCEDURE</span>/<span class="keyword">FUNCTION</span> <span class="keyword">name</span></span><br><span class="line"><span class="comment"># 删除</span></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">PROCEDURE</span>/<span class="keyword">FUNCTION</span> <span class="keyword">name</span></span><br><span class="line"><span class="comment"># 查看</span></span><br><span class="line"><span class="number">1.</span>查看存储过程或函数的状态：</span><br><span class="line"><span class="keyword">show</span> &#123;<span class="keyword">procedure</span>|<span class="keyword">function</span>&#125; <span class="keyword">status</span> <span class="keyword">like</span> 存储过程或函数名</span><br><span class="line"><span class="number">2.</span>查看存储过程或函数的定义：</span><br><span class="line"><span class="keyword">show</span> <span class="keyword">create</span> &#123;<span class="keyword">procedure</span>|<span class="keyword">function</span>&#125; 存储过程或函数名</span><br><span class="line"><span class="number">3.</span>通过查看information_schema.routines了解存储过程和函数的信息（了解）</span><br><span class="line"><span class="keyword">select</span> * <span class="keyword">from</span> rountines <span class="keyword">where</span> rounine_name =存储过程名|函数名</span><br></pre></td></tr></table></figure>
-
-
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E8%A7%86%E5%9B%BE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-其它/mysql-约束" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E7%BA%A6%E6%9D%9F/">其它/mysql-约束</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E7%BA%A6%E6%9D%9F/" class="archive-article-date">
-  	<time datetime="2020-04-01T13:58:22.099Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="约束"><a href="#约束" class="headerlink" title="约束"></a>约束</h1><p>[toc]</p>
-<h2 id="约束-1"><a href="#约束-1" class="headerlink" title="约束"></a>约束</h2><p>是SQL规范以约束的方式对表数据进行额外的条件限制,创建时候规定（CREATE TABLE），创建之后规定也可以（使用ALTER TABLE语句）</p>
-<h2 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h2><p>具体有以下几种</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">NOT NULL 非空约束，规定某个字段不能为空</span><br><span class="line">UNIQUE 唯一约束，规定某个字段在整个表中是唯一的</span><br><span class="line">PRIMARY KEY 主键(非空且唯一)</span><br><span class="line">FOREIGN KEY 外键</span><br><span class="line"><span class="keyword">CHECK</span> 检查约束（mysql不支持，但可以使用，没有效果便是）</span><br><span class="line"><span class="keyword">DEFAULT</span> 默认值</span><br></pre></td></tr></table></figure>
-
-<p>还可以分为单列和多列约束；列级和表级约束；</p>
-<h2 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h2><h3 id="NOT-NULL"><a href="#NOT-NULL" class="headerlink" title="NOT NULL"></a>NOT NULL</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.CRATE TABLE table1（</span><br><span class="line">id INT(10) NOT NULL</span><br><span class="line">）;</span><br><span class="line"><span class="comment"># 创建之后的</span></span><br><span class="line">2.ALTER <span class="keyword">TABLE</span> emp </span><br><span class="line"><span class="keyword">MODIFY</span> sex <span class="built_in">VARCHAR</span>(<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment"># 还可以取消</span></span><br><span class="line">1.ALTER <span class="keyword">TABLE</span> emp</span><br><span class="line"><span class="keyword">MODIFY</span> sex <span class="built_in">VARCHAR</span>(<span class="number">30</span>) <span class="literal">NULL</span>;</span><br><span class="line"><span class="comment">#(使用DEFAULT 'abc'增加默认值)</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="UNIQUE-唯一约束，允许出现多个空值：NULL。"><a href="#UNIQUE-唯一约束，允许出现多个空值：NULL。" class="headerlink" title="UNIQUE :唯一约束，允许出现多个空值：NULL。"></a>UNIQUE :唯一约束，允许出现多个空值：NULL。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">USER</span> <span class="keyword">ADD</span> <span class="keyword">UNIQUE</span>(<span class="keyword">NAME</span>,<span class="keyword">PASSWORD</span>);</span><br><span class="line"><span class="comment"># 删除约束</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">USER</span> <span class="keyword">DROP</span> <span class="keyword">INDEX</span> uk_name_pwd;</span><br><span class="line"><span class="comment"># 表级约束</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> <span class="keyword">USER</span> <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> uk_name_pwd <span class="keyword">UNIQUE</span>(<span class="keyword">NAME</span>,<span class="keyword">PASSWORD</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="PRIMARY-KEY-约束-：相当于唯一约束和非空约束"><a href="#PRIMARY-KEY-约束-：相当于唯一约束和非空约束" class="headerlink" title="PRIMARY KEY 约束 ：相当于唯一约束和非空约束"></a>PRIMARY KEY 约束 ：相当于唯一约束和非空约束</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*MySQL的主键名总是PRIMARY，当创建主键约束时，系统默认会在所在的列和列组合上建立对应的唯一索引*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 组合模式</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> emp6(</span><br><span class="line"><span class="keyword">id</span> <span class="built_in">INT</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line"><span class="keyword">NAME</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">pwd <span class="built_in">VARCHAR</span>(<span class="number">15</span>),</span><br><span class="line"><span class="keyword">CONSTRAINT</span> emp7_pk PRIMARY <span class="keyword">KEY</span>(<span class="keyword">NAME</span>,pwd)</span><br><span class="line">);</span><br><span class="line"><span class="comment"># 删除 DROP 修改 MODIFY 添加 ADD</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> emp5 <span class="keyword">DROP</span> PRIMARY <span class="keyword">KEY</span>;</span><br></pre></td></tr></table></figure>
-
-<h3 id="FOREIGN-KEY-约束：外键约束是保证一个或两个表之间的参照完整性，外键是构建于一个表的两个字段或是两个表的两个字段之间的参照关系。"><a href="#FOREIGN-KEY-约束：外键约束是保证一个或两个表之间的参照完整性，外键是构建于一个表的两个字段或是两个表的两个字段之间的参照关系。" class="headerlink" title="FOREIGN KEY 约束：外键约束是保证一个或两个表之间的参照完整性，外键是构建于一个表的两个字段或是两个表的两个字段之间的参照关系。"></a>FOREIGN KEY 约束：外键约束是保证一个或两个表之间的参照完整性，外键是构建于一个表的两个字段或是两个表的两个字段之间的参照关系。</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">外键约束的参照列，在主表中引用的只能是主键或唯一键约束的列</span></span><br><span class="line"><span class="comment">-FOREIGN KEY: 在表级指定子表中的列</span></span><br><span class="line"><span class="comment">–REFERENCES: 标示在父表中的列</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="comment"># 主表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> classes(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">INT</span>,</span><br><span class="line">    <span class="keyword">NAME</span> <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    <span class="built_in">number</span> <span class="built_in">INT</span>,</span><br><span class="line">    PRIMARY <span class="keyword">KEY</span>(<span class="keyword">NAME</span>,<span class="built_in">number</span>)</span><br><span class="line">    );</span><br><span class="line">    <span class="comment"># 从表</span></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> student(</span><br><span class="line">    <span class="keyword">id</span> <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    classes_name <span class="built_in">VARCHAR</span>(<span class="number">20</span>),</span><br><span class="line">    classes_number <span class="built_in">INT</span>,</span><br><span class="line">    <span class="keyword">FOREIGN</span> <span class="keyword">KEY</span>(classes_name,classes_number)     	</span><br><span class="line">    <span class="keyword">REFERENCES</span> classes(<span class="keyword">NAME</span>,<span class="built_in">number</span>)</span><br><span class="line">    );</span><br><span class="line">    </span><br><span class="line">    <span class="comment">#删除 添加和之前那些约束差不多</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="MySQL中使用limit实现分页"><a href="#MySQL中使用limit实现分页" class="headerlink" title="MySQL中使用limit实现分页"></a>MySQL中使用limit实现分页</h3><p>格式</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> 查询列表</span><br><span class="line"><span class="keyword">from</span> 表</span><br><span class="line">【<span class="keyword">where</span> 条件】</span><br><span class="line"><span class="keyword">limit</span> 【起始条目索引,】查询的条目数;</span><br></pre></td></tr></table></figure>
-
-
-
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">limit子句必须放在整个查询语句的最后！</span><br><span class="line">前10条记录：<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span> <span class="number">0</span>,<span class="number">10</span>;</span><br><span class="line">第11至20条记录：<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span> <span class="number">10</span>,<span class="number">10</span>;</span><br><span class="line">第21至30条记录：<span class="keyword">SELECT</span> * <span class="keyword">FROM</span> <span class="keyword">table</span> <span class="keyword">LIMIT</span> <span class="number">20</span>,<span class="number">10</span>;</span><br></pre></td></tr></table></figure>
-
-<h2 id="mysql中的索引‘"><a href="#mysql中的索引‘" class="headerlink" title="mysql中的索引‘"></a>mysql中的索引‘</h2><p>索引是一种特殊的文件(InnoDB数据表上的索引是表空间的一个组成部分)，它们包含着对数据表里所有记录的引用指针。</p>
-<p>索引是一种数据结构。数据库索引，是数据库管理系统中一个排序的数据结构，以协助快速查询、更新数据库表中数据。索引的实现通常使用B树及其变种B+树。就相当于目录。</p>
-<p>缺点的一个是索引也是文件，占物理空间</p>
-<h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><ul>
-<li>在create table就创建</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.CREATE <span class="keyword">TABLE</span> user_index2 (</span><br><span class="line">	<span class="keyword">id</span> <span class="built_in">INT</span> auto_increment PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	first_name <span class="built_in">VARCHAR</span> (<span class="number">16</span>),</span><br><span class="line">	last_name <span class="built_in">VARCHAR</span> (<span class="number">16</span>),</span><br><span class="line">	id_card <span class="built_in">VARCHAR</span> (<span class="number">18</span>),</span><br><span class="line">	information <span class="built_in">text</span>,</span><br><span class="line">	<span class="keyword">KEY</span> <span class="keyword">name</span> (first_name, last_name),</span><br><span class="line">	FULLTEXT <span class="keyword">KEY</span> (information),</span><br><span class="line">	<span class="keyword">UNIQUE</span> <span class="keyword">KEY</span> (id_card)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>创建table之后创建—使用ALTER  TABLE</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LTER TABLE table_name ADD INDEX index_name (column_list);</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用CREATE INDEX命令创建</li>
-</ul>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">INDEX</span> index_name <span class="keyword">ON</span> table_name(column_list);</span><br></pre></td></tr></table></figure>
-
-<h3 id="删除索引"><a href="#删除索引" class="headerlink" title="删除索引"></a>删除索引</h3><ol>
-<li>格式：alter table 表名 drop KEY 索引名</li>
-</ol>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> user_index <span class="keyword">drop</span> <span class="keyword">KEY</span> <span class="keyword">name</span>;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>注意的是，如果主键自增长，则不可直接删除，要先解除自增长；不过很少删除主键        </li>
-</ul>
-<h3 id="B树和B-树"><a href="#B树和B-树" class="headerlink" title="B树和B+树"></a>B树和B+树</h3><ul>
-<li>在B树中，你可以将键和值存放在内部节点和叶子节点；但在B+树中，内部节点都是键，没有值，叶子节点同时存放键和值。</li>
-<li>B+树的叶子节点有一条链相连，而B树的叶子节点各自独立。</li>
-</ul>
-<h4 id="比较"><a href="#比较" class="headerlink" title="比较"></a>比较</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、B树只适合随机检索，而B+树同时支持随机检索和顺序检索；</span><br><span class="line">2、B+树空间利用率更高，可减少I&#x2F;O次数，磁盘读写代价更低。一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I&#x2F;O消耗。B+树的内部结点并没有指向关键字具体信息的指针，只是作为索引使用，其内部结点比B树小，盘块能容纳的结点中关键字数量更多，一次性读入内存中可以查找的关键字也就越多，相对的，IO读写次数也就降低了。而IO读写次数是影响索引检索效率的最大因素；</span><br><span class="line">3、B+树的查询效率更加稳定。B树搜索有可能会在非叶子结点结束，越靠近根节点的记录查找时间越短，只要找到关键字即可确定记录的存在，其性能等价于在关键字全集内做一次二分查找。而在B+树中，顺序检索比较明显，随机检索时，任何关键字的查找都必须走一条从根节点到叶节点的路，所有关键字的查找路径长度相同，导致每一个关键字的查询效率相当。</span><br><span class="line">4、B-树在提高了磁盘IO性能的同时并没有解决元素遍历的效率低下的问题。B+树的叶子节点使用指针顺序连接在一起，只要遍历叶子节点就可以实现整棵树的遍历。而且在数据库中基于范围的查询是非常频繁的，而B树不支持这样的操作。</span><br><span class="line">增删文件（节点）时，效率更高。因为B+树的叶子节点包含所有关键字，并以有序的链表结构存储，这样可很好提高增删效率。</span><br></pre></td></tr></table></figure>
-
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql-%E7%BA%A6%E6%9D%9F/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-数据结构/复杂度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A4%8D%E6%9D%82%E5%BA%A6/">数据结构/复杂度</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A4%8D%E6%9D%82%E5%BA%A6/" class="archive-article-date">
-  	<time datetime="2020-01-08T16:04:15.126Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="https://mp.weixin.qq.com/s/070nYGokM96aorZn6MZTDA" target="_blank" rel="noopener">参考网站</a></p>
-<p>[TOC]</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>常常分析一段代码的好坏，程序员来说，先判断其正确与否，再者，看效率，即包括运行时候的效率等，常常便看到O（n）等字眼，大O符号，其实就是在分析复杂度，包括时间复杂度和空间复杂度。</p>
-<blockquote>
-<p>计算机科学有一种专门用来测量算法最坏情况的速记法，即所谓的“大O”符号。</p>
-<p>大O符号的目的不是使用分钟和秒钟来表示算法的性能，而是方便我们讨论问题规模和程序运行时间之间的关系。由于大O符号故意剔除了细枝末节的内容，所以展示在我们眼前的是将问题分成不同大类的概略情况。</p>
-<p>——《算法之美》</p>
-</blockquote>
-<p>需要注意的是这个大O表示的是个大概整体的情况，并非真实的速度之类的，一个程序的运行总时间主要包括</p>
-<ol>
-<li>执行每条语句的耗时；</li>
-<li>执行每条有的频率；</li>
-</ol>
-<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h2 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h2><ul>
-<li>补充一些数学知识</li>
-</ul>
-<p><img src="https://i.loli.net/2020/01/08/6WdLtpoNyqVfUIv.png" alt="image.png"></p>
-<ul>
-<li>常用常见的大小比较公式</li>
-</ul>
-<p><img src="https://i.loli.net/2020/01/08/rl5hTEP4tdyGKgk.png" alt="image.png"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/09/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%A4%8D%E6%9D%82%E5%BA%A6/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/">Next &amp;raquo;</a>
     </nav>
   
 
@@ -1372,6 +1322,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">springboot</a>
               </li>
             
             <div class="clearfix"></div>
