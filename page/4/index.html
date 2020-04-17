@@ -178,6 +178,412 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Java-SE/内部类" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/Java-SE/%E5%86%85%E9%83%A8%E7%B1%BB/">Java-SE/内部类</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/Java-SE/%E5%86%85%E9%83%A8%E7%B1%BB/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.730Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>内部类，讲完前面的特性，今天就讲下内部类这个用的比较多，出现频率挺高的知识点。</p>
+<p>[toc]</p>
+<h2 id="what-is-that"><a href="#what-is-that" class="headerlink" title="what is that?"></a>what is that?</h2><p>首先，顾名思义，内部类就是在类的内部，也就是类的类，嵌套在里面的。直接代码介绍，现一般分为成员内部类和局部内部类，还有一种匿名类。内部类拥有对外围对象的引用。大部分使用的都是成员内部类。<strong>成员内部类</strong>是一种与Field、方法、构造器和初始化块相似的类成员；<strong>局部内部类和匿名内部类</strong>则不是类成员。</p>
+<h3 id="成员内部类"><a href="#成员内部类" class="headerlink" title="成员内部类"></a>成员内部类</h3><p>定义在类里面的成员变量域的类，就是成员内部类。此时的内部类作为其外部类的成员，所以可以使用任意访问控制符如private、protected和public等修饰。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="comment">//成员内部类，这种包含类的结构</span></span><br><span class="line">	<span class="class"><span class="keyword">class</span> <span class="title">b</span></span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>成员内部类可以分为静态内部类和非静态内部类。注意：<em>根据静态成员不能访问非静态成员的规则，外部类的静态方法、静态代码块不能访问非静态内部类，包括不能使用非静态内部类定义变量、创建实例等。</em></p>
+<ul>
+<li>静态内部类（带static）</li>
+</ul>
+<p>static关键字的作用是把类的成员变成<strong>类相关</strong>，而<strong>不是</strong>实例相关，即static修饰的成员属于<strong>整个</strong>类，而不属于单个对象。静态内部类只可以访问静态的外部类的方法和对象。但是静态内部类<strong>可以有</strong>非静态成员。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这一篇是用来测试静态内部类的使用的</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 1/14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticInner</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> num = <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  定义静态常量，这个才可以被静态内部类调用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> num2 = <span class="number">6</span>;</span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Innerclass</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> num3;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">innerfangfa</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//          System.out.println("调用外部类的成员变量："+num);，这个会报错，因为不能调用非静态的 </span></span><br><span class="line">            System.out.println(<span class="string">"调用外部类的成员变量："</span>+num2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>报错信息</p>
+<img src="https://i.loli.net/2020/01/14/9vRCZ5xgO1FylTd.png" width = "850px"/>
+
+<p>外部类使用静态类的代码。<div id ="test"></div></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticInner</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">int</span> num = <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     *  定义静态常量，这个才可以被静态内部类调用</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">private</span>  <span class="keyword">static</span>  <span class="keyword">int</span> num2 = <span class="number">6</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个静态内部类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">Innerclass</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">int</span> num3;</span><br><span class="line">        <span class="keyword">private</span> <span class="keyword">int</span> num4 = <span class="number">4</span>;</span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">innerfangfa</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//          System.out.println("调用外部类的成员变量："+num);，这个会报错，因为不能调用非静态的</span></span><br><span class="line">            System.out.println(<span class="string">"调用外部类的成员变量："</span>+num2);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这是外部类的方法，用来验证访问内部类的方法</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">inneracess</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//        通过类名访问静态内部类的类成员</span></span><br><span class="line">        System.out.println(<span class="string">"访问静态内部类："</span>+Innerclass.num3);</span><br><span class="line"><span class="comment">//        通过实例访问静态内部类的实例成员</span></span><br><span class="line">        System.out.println(<span class="string">"访问静态内部类："</span>+<span class="keyword">new</span> Innerclass().num4);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>非静态内部类（不带static）</li>
+</ul>
+<p>内部类可以<strong>直接</strong>访问外部类的变量、方法等，而外部类<strong>只能</strong>通过显式创建类才可以。包括可以访问外部类的private。同时，在非静态内部类里<strong>不能</strong>有静态方法、静态field、静态初始化块。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 这一篇是用来讲内部类的一些定义的</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@date</span> 1/14</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerClass</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> outernum = <span class="number">9</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 创建内部类，同时还定义一个常量，为private</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Inner</span></span>&#123;</span><br><span class="line">        <span class="keyword">private</span>  <span class="keyword">int</span> innernum = <span class="number">8</span>;</span><br><span class="line"><span class="comment">//        定义内部类的方法，去调用外部类的成员常量</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">outAcess</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"外部类的值："</span>+outernum);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 这个是外部类的成员方法</span></span><br><span class="line"><span class="comment">     * 这里直接调用内部类会报错，不可以直接innernum使用</span></span><br><span class="line"><span class="comment">     * 要通过显式创建内部类对象才可以实现</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">innerAcess</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"内部类的值："</span>+<span class="keyword">new</span> Inner().innernum);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        创建外部类对象，没创建内部类对象</span></span><br><span class="line">     InnerClass i = <span class="keyword">new</span> InnerClass();</span><br><span class="line">        i.innerAcess();</span><br><span class="line">   </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//非静态内部类对象必须寄存在外部类对象里，而外部类对象则不必一定有非静态内部类对象寄存其中</span></span><br></pre></td></tr></table></figure>
+
+<p>非静态内部类的方法内访问某个变量时，系统优先在该方法内查找（如果存在就使用）——<strong>if not，</strong>则到该方法所在的内部类中（存在则使用）——<strong>if not，</strong>则到该内部类所在的外部类（如果存在则使用）——<strong>if not，</strong>系统将出现编译错误。</p>
+<h3 id="局部内部类"><a href="#局部内部类" class="headerlink" title="局部内部类"></a>局部内部类</h3><p>局部内部类是定义在类的内部方法或者其他作用域里面的内部类。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">	<span class="comment">//局部内部类</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">B</span><span class="params">()</span></span>&#123;</span><br><span class="line">		<span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>局部内部类的使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"> <span class="comment">/**</span></span><br><span class="line"><span class="comment"> *  * 这一篇是用来观察局部内部类的定义使用等,thinking in java的练习九</span></span><br><span class="line"><span class="comment"> *  * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> *  * <span class="doctag">@date</span> 1/14</span></span><br><span class="line"><span class="comment"> *  */</span></span><br><span class="line"></span><br><span class="line"> <span class="class"><span class="keyword">interface</span>  <span class="title">Ex9Interface</span></span>&#123;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">      * <span class="doctag">@param</span> s string类型在下面给内部类调用</span></span><br><span class="line"><span class="comment">      * 定义一个接口，同时包含一个say方法，给下面使用</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line">     <span class="function"><span class="keyword">void</span> <span class="title">say</span><span class="params">(String s)</span></span>;</span><br><span class="line"> &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">JuBuInner</span> </span>&#123;</span><br><span class="line">     <span class="comment">/**</span></span><br><span class="line"><span class="comment">      * <span class="doctag">@return</span> Inner（）返回该类对此接口的引用</span></span><br><span class="line"><span class="comment">      * //    这是一个方法，下面在里面定义一个内部类</span></span><br><span class="line"><span class="comment">      */</span></span><br><span class="line"></span><br><span class="line">    <span class="function">Ex9Interface <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Inner</span> <span class="keyword">implements</span> <span class="title">Ex9Interface</span> </span>&#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">say</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">                System.out.println(s);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Inner();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">       JuBuInner x = <span class="keyword">new</span> JuBuInner();</span><br><span class="line"><span class="comment">//       调用局部内部类的say方法</span></span><br><span class="line">        x.f().say(<span class="string">"hi"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>局部内部类不可以为<strong>public</strong> 和 <strong>private</strong>来修饰。而且因为它的上一级是方法，所以用static来修饰它是没有意义的，所以也不能用<strong>static</strong>来修饰</li>
+</ul>
+<h3 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h3><p>这个知识点就直接看代码了解一下，次数少的时候可以用它，因为用完就是垃圾了，是内部类的简化写版 ，本质不是类而是匿名对象（继承该类或者实现了改接口的）。</p>
+<h4 id="前提"><a href="#前提" class="headerlink" title="前提"></a>前提</h4><p>得提前存在一个类或者是接口给它用，可以是具体类也可以是抽象类。</p>
+<h4 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h4><p><strong>new 类名or接口名() {重写方法};</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * thinking in java</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> * 匿名内部类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">AnonymousInner</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> test1 <span class="title">getTest</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line"><span class="comment">//        匿名类的结构如下，这里的i会传给基类的构造器</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> test1(i) &#123;</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(<span class="number">22</span>);</span><br><span class="line">            &#125;</span><br><span class="line"><span class="comment">//            重写f方法</span></span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                System.out.println(<span class="string">"在匿名类内"</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;<span class="comment">//这里要注意有分号</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        test1 abc = getTest(<span class="number">55</span>);</span><br><span class="line">        abc.f();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *创建一个抽象类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">test1</span></span>&#123;</span><br><span class="line"><span class="comment">//    基类的构造器</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">test1</span><span class="params">(<span class="keyword">int</span> i)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"i is :"</span>+i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">f</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>《Java的编程思想》中的练习题答案——使用匿名内部类</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Inner12</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">modifyOuter</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Outer12</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">int</span> oi = <span class="number">1</span>;</span><br><span class="line">	<span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">hi</span><span class="params">()</span> </span>&#123; System.out.println(<span class="string">"Outer hi"</span>); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> Inner12 <span class="title">inner</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> Inner12() &#123;</span><br><span class="line">			<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">modifyOuter</span><span class="params">()</span> </span>&#123; </span><br><span class="line">				oi *= <span class="number">2</span>;</span><br><span class="line">				hi(); </span><br><span class="line">			&#125;</span><br><span class="line">		&#125;; </span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showOi</span><span class="params">()</span> </span>&#123; System.out.println(oi); &#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		Outer12 out = <span class="keyword">new</span> Outer12();</span><br><span class="line">		out.showOi();</span><br><span class="line">		out.inner().modifyOuter();</span><br><span class="line">		out.showOi();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面的pd.method()方法调用结果是一样的，下面用的就是匿名内部类，相对简单一点，但是不好理解。记住它是一个对象而不是类。</p>
+<img src="https://i.loli.net/2020/01/14/WXoeldaQDFr8xIY.png" width = "850px">
+
+<h2 id="why-use-it？"><a href="#why-use-it？" class="headerlink" title="why use it？"></a>why use it？</h2><blockquote>
+<ol>
+<li><p>内部类方法可以访问该类定义所在的作用域中的数据，包括私有的数据</p>
+</li>
+<li><p>内部类可以对同一个包内的其他类隐藏起来</p>
+</li>
+<li><p>当想要定义一个回调函数且不想编写大量代码，可以考虑使用匿名内部类比较便捷</p>
+<p>​                                                                            ——《Java核心技术卷一》</p>
+</li>
+</ol>
+</blockquote>
+<p>个人理解：</p>
+<ul>
+<li>内部类可以将其封装起来，很好的隐藏，可以用protected 和private权限来修饰。</li>
+<li>拥有访问外部类的所有元素的权限，普通的内部类对象隐式地保存了一个引用，指向创建它的外围类对象。</li>
+<li>比如可以很好处理类的办法同名重叠情况，更加有效地去引用。</li>
+<li>可以间接实现了多重继承，内部类继承其它类，然后实例化外部类可以实现这种间接效果</li>
+</ul>
+<h2 id="how-to-use？"><a href="#how-to-use？" class="headerlink" title="how to use？"></a>how to use？</h2><h4 id="1-在外部类以外使用静态内部类"><a href="#1-在外部类以外使用静态内部类" class="headerlink" title="1.在外部类以外使用静态内部类"></a>1.在外部类以外使用静态内部类</h4><p>(因为静态内部类是外部类类相关的，因此创建内部类对象时无须创建外部类对象。)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**这是用来测试在外部类以外使用静态内部类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">innerOut</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        Out1.In1 abc = <span class="keyword">new</span> Out1.In1();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义一个外部类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Out1</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个静态内部类,静态内部类是直接与外部类相关的</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">class</span> <span class="title">In1</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">FangFa</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"这是静态内部类"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output：这是静态内部类</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="2-在外部类以外使用非静态内部类"><a href="#2-在外部类以外使用非静态内部类" class="headerlink" title="2.在外部类以外使用非静态内部类"></a>2.在外部类以外使用非静态内部类</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 使用教程——外部类以外使用非静态内部类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> yhy</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InnerTest</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="comment">//        格式，先外部再内部 = new 外部.new 内部</span></span><br><span class="line">        Out.In test = <span class="keyword">new</span> Out().<span class="keyword">new</span> In();</span><br><span class="line">        test.inner();</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义一个外部类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Out</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 定义一个非静态内部类</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">In</span></span>&#123;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">inner</span><span class="params">()</span></span>&#123;</span><br><span class="line">            System.out.println(<span class="string">"打印出内部类的信息"</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:打印出内部类的信息</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="3-在外部类内部使用内部类"><a href="#3-在外部类内部使用内部类" class="headerlink" title="3.在外部类内部使用内部类"></a>3.在外部类内部使用内部类</h4><p> <a href="#test">在上面有使用的代码</a></p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>静态内部类和非静态内部类区别只是在创建内部类对象时，静态的只需使用外部类即可调用构造器，而非静态则一定使用外部类对象来调用里面的方法。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/Java-SE/%E5%86%85%E9%83%A8%E7%B1%BB/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-Java-SE/synchronized" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/Java-SE/synchronized/">Java-SE/synchronized</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/Java-SE/synchronized/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:59:52.728Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="浅谈synchronized"><a href="#浅谈synchronized" class="headerlink" title="浅谈synchronized"></a>浅谈synchronized</h1><p>[toc]</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>看多线程的相关书籍的时候，会经常阅读到一个使用前景，就是银行的取钱存钱操作，假设我们使用两个线程来模拟取钱操作，模拟两个人使用同一个账户并发取钱的问题，我们都知道存款不可能为负的，但是往往并发操作的时候，可能就会导致系统出错导致出现负的数字（假设一开始都是200元余额，两边同时操作取出150，系统可能就会出错）。出现类似这种问题就是缺少同步安全性，为了解决这个问题，Java就增进了同步监视器来解决这个，也就是本文讲的synchronized的作用。</p>
+<h2 id="是什么"><a href="#是什么" class="headerlink" title="是什么"></a>是什么</h2><p>synchronized是Java中的<strong>关键字</strong>。同步的意思，用在解决<strong>线程安全</strong>问题上。有添加在<strong>方法</strong>上，和直接修饰<strong>代码块</strong>。有种保护的作用，使用修饰之后，家门上了锁，别人进不来。用synchronized修饰的方法<strong>只允许一个线程</strong>执行，其他线程无法进入该方法。（原子性操作），银行使用该操作之后，就会变成一个排队操作一样，像前言的例子，就会变成一个人等另一个操作取出150之后才可以取钱，这样就不会出现负的余额。</p>
+<ol>
+<li>基本上所有的并发模式 在解决线程冲突的时候，都是采用序列化访问共享资源的方案。就是在给定的时间间隔内只允许一个任务访问共享资源。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">所以synchronized保护的是线程遭受破坏，必须按照允许的权限进行资源访问。</span><br></pre></td></tr></table></figure>
+
+<p>记得synchronized关键字可以修饰方法，可以修饰代码块，但<strong>不能</strong>修饰构造函数、属性等。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//long与double的操作不是原子的</span></span><br></pre></td></tr></table></figure>
+
+<img src="https://i.loli.net/2020/02/04/yAwzan6S2RWk3BC.png" width="850px">
+
+<h2 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h2><img src="https://i.loli.net/2020/02/03/yvfkjoFdD91P2gn.png" width = "850px">
+
+<h3 id="同步代码块"><a href="#同步代码块" class="headerlink" title="同步代码块"></a>同步代码块</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//synchronized代码块</span></span><br><span class="line"><span class="comment">//obj对象即表示线程开始执行同步代码块之前，必须先获得对同步监视器的锁定</span></span><br><span class="line"><span class="comment">//步骤：加锁--修改--释放锁</span></span><br><span class="line"><span class="keyword">synchronized</span> (obj) &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>任何时刻只能有一个线程可以获得对同步监视器的锁定，当同步代码块执行完成后，该线程会释放对该同步监视器的锁定。具体的格式参见上面。</p>
+<h3 id="同步方法"><a href="#同步方法" class="headerlink" title="同步方法"></a>同步方法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">//synchronized方法,可以分为静态方法和普通方法</span></span><br><span class="line"><span class="function"><span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span>&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">method</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">   <span class="keyword">synchronized</span>(<span class="keyword">this</span>) &#123;</span><br><span class="line">      <span class="comment">// todo</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//无论哪种形式都可以看做是“｛”处获取锁，“｝”释放锁</span></span><br></pre></td></tr></table></figure>
+
+<p>与同步代码块对应，Java 的多线程安全支持还提供了同步方法，同步方法就是使用synchronized关键字来修饰某个方法(放在权限词的<strong>后面</strong>即可)，则该方法称为同步方法。对于同步方法而言，<strong>无须显式</strong>指定同步监视器，同步方法的同步监视器是this，也就是<strong>该对象</strong>本身。在<strong>格式</strong>上可以看到一些用法，但是具体来讲，synchronized用在方法体上还分为用在普通方法和静态方法两种，区别在作用锁对象的不同。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">修饰普通方法作用的是调用这个方法的对象，修饰静态方法作用是调用这个类的所有对象。</span><br><span class="line">synchronized static方法可以在类的范围内防止对static数据的并发访问，</span><br></pre></td></tr></table></figure>
+
+<p>使用同步方法可以很方便得实现线程安全的类，这样类的对象可以被多个线程同时安全得访问。    </p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><ol>
+<li>synchronized不能被继承。</li>
+<li>collection中的线程不安全的集合可以变成使用Collections工具类的,具体用法语句可以参考API文档，写的还算比较详细。<img src="https://i.loli.net/2020/02/05/A8VafvYhTC1x7Rg.png" width = "850px"></li>
+</ol>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><ol>
+<li><p>关于什么使用同步，也就是上锁，引用书上的话</p>
+<blockquote>
+<p>如果你在写一个变量，它可能接下来将被另一个线程读取，或者正在读取上一个已经被另一个线程写过的变量，那么你必须使用同步，并且，读取线程都必须用相同的监视器锁同步</p>
+<p>​                                                                            ——Brain Goetz《Java Concurrency in Pactice》的作者</p>
+</blockquote>
+</li>
+<li><p>个人学习记录，有错误欢迎指点，谢谢！加油！</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/Java-SE/synchronized/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-其它/MySQL基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/MySQL%E5%9F%BA%E7%A1%80/">其它/MySQL基础</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/MySQL%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:58:35.653Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+        
+          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/MySQL%E5%9F%BA%E7%A1%80/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/MySQL%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-其它/mysql基础知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">其它/mysql基础知识</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+  	<time datetime="2020-04-01T13:58:35.636Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>[toc]</p>
+<h1 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h1><p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200322012109828.png" alt="image-20200322012109828"></p>
+<h2 id="字符串类型："><a href="#字符串类型：" class="headerlink" title="字符串类型："></a>字符串类型：</h2><p>字符串类型指<em>CHAR、VARCHAR、BINARY、VARBINARY、BLOB、TEXT、ENUM和SET</em>。该节描述了这些类型如何工作以及如何在查询中使用这些类型。</p>
+<h3 id="CHAR-、-VARCHAR"><a href="#CHAR-、-VARCHAR" class="headerlink" title="CHAR 、 VARCHAR"></a>CHAR 、 VARCHAR</h3><ul>
+<li>char是<strong>长度固定</strong>的，不变的，长度在0-255字节 ；而varchar是<strong>长度可变</strong>的，长度在0-65535。同时，char后面的空格不会保留，而varchar会保留。还需注意的是oracle中的两个字节表示一个汉字，mysql中只需一个。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">char定长:磁盘空间比较浪费,但是效率高,确定数据长度都一样,就使用定长</span><br><span class="line">比如:生日时间、身份证号</span><br><span class="line">varchar变长:比较节省空间,但是效率低,数据不能确定长度(不同数据长度有变化)，不过例如varchar(5)所占的字节数是实际长度的基础上加1，后面还有结束标识符</span><br><span class="line">比如:地址</span><br></pre></td></tr></table></figure>
+
+<h3 id="BINARY、VARBINARY"><a href="#BINARY、VARBINARY" class="headerlink" title="BINARY、VARBINARY"></a>BINARY、VARBINARY</h3><ul>
+<li>两者的关系和上面char和varchar很像，只不过它们是存储二进制字符串，包含字节字符串。</li>
+</ul>
+<h3 id="BLOB"><a href="#BLOB" class="headerlink" title="BLOB"></a>BLOB</h3><ul>
+<li>BLOB 是一个二进制大对象，可以容纳可变数量的数据，分为TINYBLOB（0-255）、BLOB（0-65535）、MEDIUMBLOB 和 LONGBLOB。</li>
+<li>MySQL的四种BLOB类型(除了在存储的最大信息量上不同外，他们是等同的。</li>
+<li>但是有时存储的文件过大，数据库性能就会下降。</li>
+</ul>
+<h3 id="TEXT"><a href="#TEXT" class="headerlink" title="TEXT"></a>TEXT</h3><ul>
+<li><p>存储文字，大的一些文本等，也是四种类型,大小关系和上面的一样</p>
+<img src="https://i.loli.net/2020/03/16/u3YyUOK2WrFpbz7.png" align="left" >
+
+<ul>
+<li>上图的就可以看出分类，不过这个数据类型不怎么使用。</li>
+</ul>
+</li>
+</ul>
+<h3 id="ENUM和SET"><a href="#ENUM和SET" class="headerlink" title="ENUM和SET"></a>ENUM和SET</h3><ul>
+<li><p>ENUM看名字就知道了，这是一种枚举类型的数据类型，事先将可能出现的<strong>结果都定义</strong>好,实际存储的数据必须是枚举中的一个，不能随意存储。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式：字段名 enum(&#39;值1&#39;,&#39;值2&#39;,...,&#39;值n&#39;) NULL&#x2F;NOT NULL</span><br><span class="line">列表中的每个值都有一个顺序排列的编号，MySQL中存入的是这个编号，就是可以对应其位置来取到相应的值，同时如果存储不是枚举的值，如果类型后面加上了null属性，其默认值为取值列表中的第一个元素。如果不加not null属性，enum类型将允许插入null，而且null为默认值.</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<ul>
+<li><p>SET支持去重,可以存储多个元素，如果<strong>要选取列表中多个值的组合，就要选择set类型</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">格式：字段名 set(&#39;值1&#39;,&#39;值2&#39;,...,&#39;值n&#39;) NULL&#x2F;NOT NULL</span><br><span class="line">这里的同enum类型一样，列表中的每个值都有一个顺序排列的编号</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><em>记住</em>这两种类型的数据都不是直接将数据存入数据库，而是将其列表中的编号存入数据库。</p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/01/%E5%85%B6%E5%AE%83/mysql%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-其它/mysql-事务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -784,542 +1190,6 @@ RARP协议（Reverse ARP，反向ARP协议），其功能是将MAC地址解析�
 
 
   
-    <article id="post-Java-SE/封装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/Java-SE/%E5%B0%81%E8%A3%85/">浅谈封装</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/01/Java-SE/%E5%B0%81%E8%A3%85/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:19.139Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>英语：Encapsulation——封装，包装。</p>
-<blockquote>
-<p>面向对象的封装与真实世界的目的是一样的。封装能够使外部访问者不能随意存取对象的内部数据，隐藏了对象的内部细节，只保留有限的对外接口。外部访问者不用关心对象的内部细节，使得操作对象变得简单。</p>
-</blockquote>
-<h2 id="好处"><a href="#好处" class="headerlink" title="好处"></a>好处</h2><p><em>先通过阅读下面的文字，再回来理解可能会更好一点</em></p>
-<ol>
-<li>减少了耦合（物理学上类似相互影响的概念）</li>
-<li>便于维护和修改</li>
-<li>可以隐藏信息，一些具体实现代码，安全性</li>
-<li>对成员变量精准控制</li>
-</ol>
-<h2 id="介绍（实现方式）"><a href="#介绍（实现方式）" class="headerlink" title="介绍（实现方式）"></a>介绍（实现方式）</h2><ol>
-<li><p>Java 面向对象的封装性是通过对成员变量和方法进行访问控制实现的。这里就涉及到了访问控制的四个关键字了。</p>
-<table>
-<thead>
-<tr>
-<th>类别\不同地方</th>
-<th><strong>同一个类</strong></th>
-<th><strong>同一个包</strong></th>
-<th><strong>不同包</strong>的子类</th>
-<th><strong>不同包非</strong>子类</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>私有的（private）</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>默认</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-<td>No</td>
-</tr>
-<tr>
-<td>保护的（protected）</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>No</td>
-</tr>
-<tr>
-<td>公有的（public）</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-<td>Yes</td>
-</tr>
-</tbody></table>
-</li>
-<li><p>封装是一种保护作用，将其变量以及方法保护起来，防止被随机访问，所以一定程度上增强了代码的安全性。</p>
-</li>
-</ol>
-<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><ul>
-<li>下面是代码示例，<em>私有类只能在同一个类中被访问，否则会报错。</em></li>
-</ul>
-<td style="text-align:left;"><img src="https://i.loli.net/2020/01/09/HsmyfUFcCWDiwkA.png" alt="image.png" width="850px"/></td>
-
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">private</span>还可以防止直接访问特定的构造器（或全部的构造器）</span><br><span class="line">    <span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestClass</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="title">TestClass</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    <span class="function"><span class="keyword">static</span> TestClass <span class="title">make</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> TestClass();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PrivateDaiMa</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line"><span class="comment">//        TestClass x = new TestClass();</span></span><br><span class="line">        TestClass x = TestClass.make();</span><br><span class="line"><span class="comment">//        不能通过构造器来创建TestClass,要通过调用make方法才可以</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>  报错信息说明TestClass的private将其构造器给私有化了，不能直接访问。</p>
-<td style="text-align:left;"><img src="https://i.loli.net/2020/01/09/rcEMGRdyOFzu9At.png" width="850px"/></td>
-
-<ul>
-<li>访问不同包的protected方法（非子类的），先是定义在Music类中的BaoHu方法。</li>
-</ul>
-<td style="text-align:right;"><img src="https://i.loli.net/2020/01/09/c5KPmB3XEnYWo9H.png" alt="image.png" width="850px"/></td>
-
-<p>  在其它包访问，就会报错，因为在Music里面这个BaoHu的方法用的是protected修饰的。</p>
-<td style="text-align:left;"><img src="https://i.loli.net/2020/01/09/RLNfpT5oZqzY7AD.png" alt = "image2.png" width="850px"/></td>
-
-<p>  其实在Idea写代码时候，定义的属性之类可以在左下角有个概览,可以查看是什么类型的</p>
-<td style="text-align:left;"><img src="https://i.loli.net/2020/01/09/bZSgJKmIBAhtvqX.png" alt="image.png" width="850px" /></td>
-
-<ul>
-<li><p>整体的test代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> music.Music;<span class="comment">//导入了music包的Music类</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">test</span></span>&#123;</span><br><span class="line">    test(<span class="keyword">int</span> i)&#123;</span><br><span class="line"></span><br><span class="line">        i = i + <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//将其变为public String name;的话下面就可以访问</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">int</span> num=<span class="number">2</span>;<span class="comment">//公有的可以被访问</span></span><br><span class="line">    <span class="keyword">double</span> i = <span class="number">2.2</span>;<span class="comment">//默认的定义，也可以被访问，在本包里面</span></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FengZhuang</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">       test a = <span class="keyword">new</span> test(<span class="number">6</span>);</span><br><span class="line">        System.out.println(a.num);</span><br><span class="line">        <span class="comment">//a.name就会报错，因为在上面的name是私有的</span></span><br><span class="line">        Music ceshi = <span class="keyword">new</span> Music();<span class="comment">//导入了不同的包中的类</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//        ceshi.BaoHu();报错，是在其它包里的protected方法</span></span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>访问成员有两种方式：一种是调用，即通过类或对象调用它的成员，如p.printX()语句；另一种是继承，即子类继承父类的成员变量和方法。在开发使用的时候，应该尽量限制类中成员的可见性</p>
-<ol>
-<li><p>公有访问级别任何情况下两种方式都可以；（public）</p>
-</li>
-<li><p>默认访问级别在同一包中两种访问方式都可以，不能在包之外访问；()</p>
-</li>
-<li><p>保护访问级别在同一包中与默认访问级别一样，两种访问方式都可以。但是在不同包之</p>
-<p>外只能继承访问；(protected)</p>
-</li>
-<li><p>私有访问级别只能在本类中通过调用方法访问，不能继承访问。(private)</p>
-</li>
-</ol>
-<h2 id="感谢阅读！！！"><a href="#感谢阅读！！！" class="headerlink" title="感谢阅读！！！"></a>感谢阅读！！！</h2><p>才疏学浅，有不对的地方请指出。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaEE</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Blog</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/Java-SE/%E5%B0%81%E8%A3%85/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-SE/继承" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/Java-SE/%E7%BB%A7%E6%89%BF/">Java-SE/继承</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/01/Java-SE/%E7%BB%A7%E6%89%BF/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:19.139Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
-<p>类的继承性是面向对象语言的基本特性，多态性前提是继承性。Java 支持继承性和多态性。——Java从小白到大牛</p>
-</blockquote>
-<p>继承：三大特性之一，关键词：extends</p>
-<h3 id="简单用伪代码去介绍一些。"><a href="#简单用伪代码去介绍一些。" class="headerlink" title="简单用伪代码去介绍一些。"></a>简单用伪代码去介绍一些。</h3><ul>
-<li>假设需要定义个student类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Student</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;<span class="comment">//名字 </span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;<span class="comment">//年龄</span></span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sex;<span class="comment">//性别</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>再来个需求，需要定义一个学生Andy，不用继承时候，需要一个个去定义；</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Andy</span></span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> age;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> sex;</span><br><span class="line">    <span class="keyword">private</span> String country;<span class="comment">//新增一个国家信息</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>从上面看两者有着很多的相似的重复定义的东西，如果使用继承去写这段代码就可以如下：</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Andy</span> <span class="keyword">extends</span> <span class="title">student</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String country</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><strong>所以从上面可以看出类的继承大致用途，Andy类已经继承了Student类，上面的父类便是student，extends后面跟着的</strong>。继承的时候，要明确指出，要不然就是在<em>Java标准根类Object</em>进行继承。</p>
-<p>再者，在继承的过程中，除了你可以在新的类中去添加东西，也不一定非得使用基类的方法属性等。</p>
-<ul>
-<li>还可以有多层继承关系（下面的输出是随便定义的伪代码，可以是直接输出某一些语句，方便运行查看）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Art</span></span>&#123;</span><br><span class="line">Art()&#123;输出<span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Music</span> <span class="keyword">extends</span> <span class="title">Art</span></span>&#123;</span><br><span class="line">Music(输出<span class="number">2</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dance</span> <span class="keyword">extends</span> <span class="title">music</span></span>&#123;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Dance</span><span class="params">()</span></span>&#123;输出<span class="number">3</span>&#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">dance x = <span class="keyword">new</span> dance();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出的顺序是1 2 3</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="父类与子类的构造函数问题"><a href="#父类与子类的构造函数问题" class="headerlink" title="父类与子类的构造函数问题"></a>父类与子类的构造函数问题</h3><ul>
-<li>若不在类中定义构造函数，会默认生成一个无参的函数构造器，如果有了就不会。（构造器即构造函数，与类同名，在初始化的时候就被调用,,默认的构造函数是不带任何参数的）</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Art</span>｛</span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">｝</span></span><br><span class="line"><span class="class">//等同于下面</span></span><br><span class="line"><span class="class"><span class="title">class</span> <span class="title">Art</span>｛</span></span><br><span class="line"><span class="class">	<span class="title">public</span> <span class="title">Art</span>()</span>&#123;</span><br><span class="line">	<span class="comment">//</span></span><br><span class="line">	&#125;</span><br><span class="line">｝</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>​    super关键字</li>
-</ul>
-<p>Java用super表示超类的医生，当前类是从超类继承来的。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Game</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    Game(<span class="keyword">int</span> i)&#123;<span class="comment">//构造函数</span></span><br><span class="line">        System.out.println(<span class="string">"this is a game!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printg</span><span class="params">(<span class="keyword">int</span> d)</span></span>&#123;<span class="comment">//普通函数</span></span><br><span class="line">        System.out.println(<span class="string">"12"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ballGame</span> <span class="keyword">extends</span> <span class="title">Game</span></span>&#123;</span><br><span class="line"></span><br><span class="line">    ballGame(<span class="keyword">int</span> i)&#123;</span><br><span class="line">        <span class="keyword">super</span>(i);<span class="comment">//调用父类的构造器,漏了这句就会报错，显示there is no default constructor available</span></span><br><span class="line">        System.out.println(<span class="string">"ballGame is coming!"</span>);</span><br><span class="line">        <span class="keyword">super</span>.h = <span class="number">3</span>;<span class="comment">//访问父类的属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>super可以用于访问父类定义的属性，用于调用父类中的成员方法，super代表父类的内存空间。可以访问父类的父类</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Game</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> h;</span><br><span class="line">    Game(<span class="keyword">int</span> i)&#123;<span class="comment">//构造函数</span></span><br><span class="line">        System.out.println(i);<span class="comment">//输出</span></span><br><span class="line">        System.out.println(<span class="string">"第一层"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">printg</span><span class="params">(<span class="keyword">int</span> d)</span></span>&#123;<span class="comment">//普通函数</span></span><br><span class="line">        System.out.println(<span class="string">"1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ballGame</span> <span class="keyword">extends</span> <span class="title">Game</span></span>&#123;</span><br><span class="line">    ballGame(<span class="keyword">int</span> i)&#123;</span><br><span class="line">    	<span class="keyword">super</span>(i);<span class="comment">//调用父类的构造器</span></span><br><span class="line">    	System.out.println(<span class="string">"第二层"</span>);</span><br><span class="line">    	<span class="keyword">super</span>.h = <span class="number">2</span>;<span class="comment">//访问父类的属性</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">jichengSuper</span> <span class="keyword">extends</span> <span class="title">ballGame</span></span>&#123;</span><br><span class="line">    jichengSuper(<span class="keyword">int</span> b) &#123;</span><br><span class="line">    	<span class="keyword">super</span>(b);<span class="comment">//调用的是上面父类的构造函数，将输出3</span></span><br><span class="line">     	<span class="keyword">int</span> a = <span class="keyword">super</span>.h ;<span class="comment">//将第二层里的3赋值给a</span></span><br><span class="line">     	System.out.println(a);<span class="comment">//打印</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span>  <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">        <span class="keyword">new</span> jichengSuper(<span class="number">3</span>);<span class="comment">//这里的3将代进去上面的构造函数jichengSuper中</span></span><br><span class="line">        System.out.print(<span class="string">"最后一层"</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> *output：</span></span><br><span class="line"><span class="comment"> 3</span></span><br><span class="line"><span class="comment">第一层</span></span><br><span class="line"><span class="comment">第二层</span></span><br><span class="line"><span class="comment">2</span></span><br><span class="line"><span class="comment">最后一层</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-
-
-
-<ul>
-<li><p>接口在实现的时候，在类中一定要实现接口的抽象方法</p>
-</li>
-<li><p>而继承不用，想要用哪个再用</p>
-</li>
-</ul>
-<h2 id="others"><a href="#others" class="headerlink" title="others"></a>others</h2><p>可以有多个接口但是只能有一个继承。一般情况下，一个子类只能继承一个父类，这称为“单继承”，但有的情况下一个子类可以有多个不同的父类，这称为“多重继承”。在Java中，类的继承只能是单继承，而多重继承可以通过实现多个接口实现。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/Java-SE/%E7%BB%A7%E6%89%BF/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-SE/多态" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/Java-SE/%E5%A4%9A%E6%80%81/">Java-SE/多态</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/01/Java-SE/%E5%A4%9A%E6%80%81/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:19.139Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h2 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h2><p>这篇讲下三大特性之一的<strong>多态</strong>，可以通俗得去理解，多种形态，多种姿态。。。</p>
-<p>那么在面向对象的程序设计中，多态是    指什么?</p>
-<blockquote>
-<p>Java引用变量有两个类型；一个是编译类型，一个是运行时类型。编译时类型由声明该变量时使用的类型决定，运行时类型由实际赋给该变量的对象决定.如果编译类型和运行时类型不一致，就可能出现所谓的多态（Polymorphism）</p>
-<p>“多形性”（Polymorphism）从另一个角度将接口从具体的实施细节中分离出来，亦即实现了“是什么”与“怎样做”两个模块的分离。利用多形性的概念，代码的组织以及可读性均能获得改善。此外，还能创建“易于扩展”的程序。无论在项目的创建过程中，还是在需要加入新特性的时候，它们都可以方便地“成长”。——ThinkinJava</p>
-</blockquote>
-<p>直接网易百科-Polymorphism</p>
-<img src="https://i.loli.net/2019/12/20/Q4IryEZBHvd5OUY.png" width= "850px"/>
-
-
-
-
-
-
-
-<h2 id="二、发生的条件"><a href="#二、发生的条件" class="headerlink" title="二、发生的条件"></a>二、发生的条件</h2><ul>
-<li>继承。多态发生一定要子类和父类之间。</li>
-<li>覆盖。子类覆盖父类的方法</li>
-<li>声明的变量类型是父类，但是实际指向的是子类。程序中的new后面就是子类</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//f4变量是子类类型，指向子类实例</span></span><br><span class="line">       Triangle f4 = <span class="keyword">new</span> Triangle();</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="三、多态包含（或者说体现在）两个方面："><a href="#三、多态包含（或者说体现在）两个方面：" class="headerlink" title="三、多态包含（或者说体现在）两个方面："></a>三、多态包含（或者说体现在）两个方面：</h2><ol>
-<li><p>首先是同一个方法，不同的实现效果，就具体的方法是怎么实现的，是可以不同的。就是<strong>方法的多态性</strong>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">吃苹果方法，可以剥皮吃，也可以不剥皮吃，甚至是榨苹果汁喝。</span><br></pre></td></tr></table></figure>
-
-<p>规范讲这种就是可以通过重载和覆写来实现</p>
-<ul>
-<li>重载：同一个方法名称，因为不同的参数类型和个数，因此可以达到不同的效果。</li>
-<li>覆写：同一个方法，根据实例化的子类对象不同，最后的效果和实现功能不一样。</li>
-</ul>
-</li>
-<li><p>对象的多态性</p>
-<p><em>引用类型转换也是通过小括号运算符实现，类型转换有两个方向：将父类引用类型</em></p>
-<p><em>变量转换为子类类型，这种转换称为向下转型（downcast）；将子类引用类型变量转换为</em></p>
-<p><em>父类类型，这种转换称为向上转型（upcast）。向下转型需要强制转换，而向上转型是自</em></p>
-<p><em>动的。</em></p>
-<ul>
-<li>向上转型：子类对象变为父类</li>
-<li>向下转型：父类对象变为子类</li>
-</ul>
-</li>
-</ol>
-<h2 id="四、示例"><a href="#四、示例" class="headerlink" title="四、示例"></a>四、示例</h2><ul>
-<li><strong>简单的示例多态,代码里面的@Override是伪代码，表示方法重写。一般你重写正确了，IDE会自动加上去的。也是一种验证方法。</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Figure</span></span>&#123;</span><br><span class="line">    <span class="comment">//绘制几何图形方法</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"绘制Figure..."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Ellipse</span> <span class="keyword">extends</span> <span class="title">Figure</span></span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"绘制椭圆形"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Triangle</span> <span class="keyword">extends</span> <span class="title">Figure</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 绘制几何图形方法</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"绘制三角形..."</span>);</span><br><span class="line">    &#125; &#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PolymorphismEasy</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// f1变量是父类类型，指向父类实例</span></span><br><span class="line">        Figure f1 = <span class="keyword">new</span> Figure();</span><br><span class="line">        f1.onDraw();</span><br><span class="line">        <span class="comment">//f2变量是父类类型，指向子类实例，发生多态</span></span><br><span class="line">        Figure f2 = <span class="keyword">new</span> Triangle();</span><br><span class="line">        f2.onDraw();</span><br><span class="line">        <span class="comment">//f3变量是父类类型，指向子类实例，发生多态</span></span><br><span class="line">        Figure f3 = <span class="keyword">new</span> Ellipse();</span><br><span class="line">        f3.onDraw();</span><br><span class="line">        <span class="comment">//f4变量是子类类型，指向子类实例</span></span><br><span class="line">        Triangle f4 = <span class="keyword">new</span> Triangle(	);</span><br><span class="line">        f4.onDraw();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line">绘制Figure...</span><br><span class="line">绘制三角形...</span><br><span class="line">绘制椭圆形</span><br><span class="line">绘制三角形...</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>不能覆盖private方法</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PolymorphismFugai</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">p</span><span class="params">()</span></span>&#123;<span class="comment">//if public...就可以覆盖</span></span><br><span class="line">        System.out.println(<span class="string">"1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        PolymorphismFugai s = <span class="keyword">new</span> jicheng();</span><br><span class="line">        s.p();<span class="comment">//将输出的是上面的1而不是我们想要的jicheng类中的方法</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">jicheng</span> <span class="keyword">extends</span> <span class="title">PolymorphismFugai</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">p</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:1</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><strong>Static静态方法与多态的关系</strong></li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> music.daima.ebook;</span><br><span class="line"><span class="comment">//这一篇是用来研究静态方法与多态的</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">get</span><span class="params">()</span></span>&#123;<span class="comment">//定义一个方法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"A is base"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//继承A</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">get</span><span class="params">()</span></span>&#123;<span class="comment">//同样的方法</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">"B is not base"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StaticUpcast</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        A a = <span class="keyword">new</span> B();<span class="comment">//upcast 向上转型</span></span><br><span class="line">        System.out.println(a.get());</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//output:</span></span><br><span class="line"><span class="comment">//A is base</span></span><br><span class="line"><span class="comment">//从这里发现静态方法是与类相关联的，不是与单个对象关联的，不能覆盖掉</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="感谢阅读"><a href="#感谢阅读" class="headerlink" title="感谢阅读"></a>感谢阅读</h2><p>才疏学浅，有不对的地方欢迎指教！</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/Java-SE/%E5%A4%9A%E6%80%81/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-Java-SE/常量变量数据类型" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/01/Java-SE/%E5%B8%B8%E9%87%8F%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">基础数据类型</a>
-    </h1>
-  
-
-        
-        <a href="/2020/01/01/Java-SE/%E5%B8%B8%E9%87%8F%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" class="archive-article-date">
-  	<time datetime="2020-01-01T04:28:19.139Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>按照xmind文件总结所有的基础，开始第二阶段学习。</p>
-<h2 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h2><ol>
-<li><p>有些数据在程序运行中值不能被改变，这些数据在程序中就被称为常量。</p>
-</li>
-<li><p>Java中用final修饰的成员变量表示常量，值一旦给定就无法改变！</p>
-<ol>
-<li><pre><code class="java"><span class="number">1</span>. <span class="keyword">final</span> <span class="keyword">double</span> PI = <span class="number">3.14</span>；
-<span class="number">2</span>. <span class="keyword">final</span> <span class="keyword">char</span> MAN=‘M’，FEMALE=‘F’;
-&lt;!--￼<span class="number">0</span>--&gt;</code></pre>
-</li>
-</ol>
-</li>
-<li><p>还分为静态常量和局部常量；局部常量放在class里面，也可以被调用时候引用。静态常量往往由于访问效率比较高。不过一般会把他们放在以下三个地方。</p>
-<p>一：放到Interface,因为 Java interface中声明的字段在编译时会自动加上static final的修饰符，即声明为常量</p>
-<p>二：放到文件，如Properties文件</p>
-<p>三：放到Class，使用final String </p>
-</li>
-</ol>
-<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><ul>
-<li>变量分为基本类型和引用类型。<ul>
-<li>基本类型包括boolean类型和数值类型。数值类型有整数类型和浮点类型。整数类型包括byte、short、int、long、char，浮点类型包括float和double。（八大类型，不包括string）</li>
-<li>byte（-128~127）是1个字节，short两位，int是四位，long是八位，float是四位，double是八位(保存范围最广的)，char（字符）是两位。</li>
-<li>建议在选择小数操作时候都使用double型；每一个单引号中只保存一个字符</li>
-<li>引用类型包括<strong>类(class)、接口（interface）和数组</strong>类型，还有NULL型。所谓引用数据类型就是对一个对象的引用，对象包括实例和数组两种。这个引用类型在Java中非常非常重要。</li>
-</ul>
-</li>
-</ul>
-<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><ol>
-<li>单行注释：/</li>
-<li>多行注释/**/</li>
-</ol>
-<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>开发一个大型软件时，需要定义成千上万的类，而且需要很多人参与开发。每个人都会开发一些类，并在类里定义一些方法、Field提供给其他人使用，但其他人怎么知道如何使用这些类和方法呢？这时候就需要提供一份说明文档，用于说明每个类、每个方法的用途。当其他人使用一个类或一个方法时，他无须关心这个类或这个方法的具体实现，他只要知道这个类或这个方法的功能即可，然后使用这个类或方法来实现具体的目的，也就是通过调用应用程序接口（API）来编程。API文档就是用以说明这些应用程序接口的文档。对于Java语言而言，API文档通常详细说明了每个类、每个方法的功能及用法等。调用API可以实现更快的开发。Java的API可以在官网下载jdk文档来看。</p>
-<h2 id="符号"><a href="#符号" class="headerlink" title="符号"></a>符号</h2><p>圆点（.）通常用做类/对象和它的成员（包括Field、方法和内部类）之间的分隔符，表明调用某个类或某个实例的指定成员。</p>
-<p>运算符就不讲了，遗忘的话可以多查看。</p>
-<h2 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h2><p>标识符不能以数字开头，不能用关键字，不能空格。标识符只能包含美元符（$），不能包含@、#等其他特殊字符。</p>
-<h2 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h2><p><img src="https://i.loli.net/2019/12/22/osKhMiEGkx95uVd.png" alt="image.png">上面的enum是用来定义一个枚举。从Java 5增加的。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">JavaEE</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">blog</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/java//" class="article-tag-list-link color5">java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/01/01/Java-SE/%E5%B8%B8%E9%87%8F%E5%8F%98%E9%87%8F%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/5/">Next &amp;raquo;</a>
@@ -1448,6 +1318,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>

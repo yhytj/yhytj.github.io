@@ -178,6 +178,382 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-Linux基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/17/Linux%E5%9F%BA%E7%A1%80/">Linux基础</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/17/Linux%E5%9F%BA%E7%A1%80/" class="archive-article-date">
+  	<time datetime="2020-04-17T15:37:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="LInux基础知识"><a href="#LInux基础知识" class="headerlink" title="LInux基础知识"></a>LInux基础知识</h1><p>下面是自己学习centos7的笔记总结</p>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><h3 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a>网络配置</h3><ul>
+<li>ifconfig</li>
+</ul>
+<p>这个和windows中的ipconfig一样。</p>
+<h3 id="查看"><a href="#查看" class="headerlink" title="查看"></a>查看</h3><ul>
+<li>more查看文件-支持空格翻页</li>
+<li>less和more差不多，空格翻页，但是支持上下查看行信息（可以在文件中使用/来向下查找指定字符，向上用？）</li>
+<li>head看头部</li>
+</ul>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p><strong>ln</strong>直接使用不加参数，是默认创建硬链接，加上-s是软链接</p>
+<ul>
+<li><p>硬链接</p>
+<ul>
+<li>一个文件可以有多个访问路径，防止重要文件被删</li>
+</ul>
+</li>
+<li><p>软链接</p>
+<ul>
+<li>类似windows的快捷方式，依赖于源</li>
+</ul>
+</li>
+<li><p>code</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">实例</span><br><span class="line">[root@VM_0_3_centos sysconfig]# cd &#x2F;home</span><br><span class="line">[root@VM_0_3_centos home]# ls</span><br><span class="line">[root@VM_0_3_centos home]# touch file1 </span><br><span class="line">[root@VM_0_3_centos home]# ls</span><br><span class="line">file1</span><br><span class="line">[root@VM_0_3_centos home]# ln file1 file2  &#x2F;&#x2F;创建硬链接</span><br><span class="line">[root@VM_0_3_centos home]# ls</span><br><span class="line">file1  file2</span><br><span class="line">[root@VM_0_3_centos home]# ln -s file1 file3 &#x2F;&#x2F;软链接</span><br><span class="line">[root@VM_0_3_centos home]# ls</span><br><span class="line">file1  file2  file3</span><br><span class="line">[root@VM_0_3_centos home]# ll</span><br><span class="line">total 0</span><br><span class="line">-rw-r--r-- 2 root root 0 Apr 17 23:49 file1</span><br><span class="line">-rw-r--r-- 2 root root 0 Apr 17 23:49 file2</span><br><span class="line">lrwxrwxrwx 1 root root 5 Apr 17 23:49 file3 -&gt; file1</span><br><span class="line">[root@VM_0_3_centos home]# rm -rf file1</span><br><span class="line">[root@VM_0_3_centos home]# ls</span><br><span class="line">file2  file3 &#x2F;&#x2F;这里的file3会显示颜色，因为删除了file1，但是硬链接却没有事</span><br><span class="line">[root@VM_0_3_centos home]#</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i.loli.net/2020/04/17/CpGifLWjdkPBJEx.png" alt="image.png"></p>
+</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux学习//" class="article-tag-list-link color3">Linux学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/17/Linux%E5%9F%BA%E7%A1%80/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-动态代理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/17/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">动态代理</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/17/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/" class="archive-article-date">
+  	<time datetime="2020-04-17T05:07:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h1><p>代理是基本的设计模式之一，代理相当于中间人角色，例如在租房中，就相当于中介，租客和房东之间借助代理中介来交流沟通。</p>
+<h1 id=""><a href="#" class="headerlink" title=""></a></h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java学习//" class="article-tag-list-link color2">Java学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/17/%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/15/%E7%AE%97%E6%B3%95/">算法总结</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/15/%E7%AE%97%E6%B3%95/" class="archive-article-date">
+  	<time datetime="2020-04-15T02:10:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="经典算法总结"><a href="#经典算法总结" class="headerlink" title="经典算法总结"></a>经典算法总结</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">总结下一些经常遇到的算法中的一些，包括自己面试遇到过了。</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h2><h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">例题1：2、5、7块的硬币，求组成27元所需的最少硬币数。</span><br></pre></td></tr></table></figure>
+
+<p>这道题假设我们使用递归来做，就会发现重复计算的数太多了，严重浪费，</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x )</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> res =<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> max = Integer.MAX_VALUE;</span><br><span class="line">        <span class="keyword">if</span> (x&gt;=<span class="number">2</span>)&#123;</span><br><span class="line">            res = Math.min(find(x-<span class="number">2</span>)+<span class="number">1</span>,max);</span><br><span class="line">        &#125; <span class="keyword">if</span> (x&gt;=<span class="number">5</span>)&#123;</span><br><span class="line">            res = Math.min(find(x-<span class="number">5</span>)+<span class="number">1</span>,max);</span><br><span class="line">        &#125; <span class="keyword">if</span> (x&gt;=<span class="number">7</span>)&#123;</span><br><span class="line">            res = Math.min(find(x-<span class="number">7</span>)+<span class="number">1</span>,max);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="八皇后算法"><a href="#八皇后算法" class="headerlink" title="八皇后算法"></a>八皇后算法</h2><h2 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java学习//" class="article-tag-list-link color2">Java学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/15/%E7%AE%97%E6%B3%95/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/14/mysql%E6%80%BB%E7%BB%93/">mysql总结</a>
+    </h1>
+  
+
+        
+        <a href="/2020/04/14/mysql%E6%80%BB%E7%BB%93/" class="archive-article-date">
+  	<time datetime="2020-04-14T14:14:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Java学习//" class="article-tag-list-link color2">Java学习</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/04/14/mysql%E6%80%BB%E7%BB%93/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-Springboot-quick-start" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1947,282 +2323,6 @@
 
 
   
-    <article id="post-随记及总结/快捷键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/%E5%BF%AB%E6%8D%B7%E9%94%AE/">随记及总结/快捷键</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="archive-article-date">
-  	<time datetime="2020-04-01T13:59:52.860Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>[TOC]</p>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>工欲善其事，必将利其器，当然，不需要背诵这些快捷键，这篇博客就是给个参考，你可以通过阅读去掌握这些技巧。</p>
-<h2 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h2><p><em>其实windows上很多的热键也可以修改的_，键盘的一些键位也.可以通过软件去修改，按照个人的习惯来做就行了</em><br>BIOS(Basic Input Output System)写死在内存的一套程序。开机选择时候经常用到。开机首先使用的小程序。</p>
-<p><strong>F1:打开帮助信息</strong><br><strong>F2:选定了一个桌面的信息</strong><br><strong>F3:打开搜素功能</strong><br><strong>F4:打开浏览器的地址菜单列表</strong><br><strong>F5:刷新</strong><br><strong>F6:迅速定位到页面的编辑框</strong><br><strong>F11:全屏</strong><br><em>浏览器上的操作</em><br><strong>ctrl+w:关闭当前的页面<br>Windows+shift+s:截屏</strong></p>
-<ul>
-<li>键盘灯的快捷键<br>fn+上下（方向键）可以调节亮度<br>fn+insert<br>fn+home<br>fn+delete</li>
-<li>博客编辑网站<br>很多网站的博客文章编辑时的快捷键都是相通相似的，加粗、撤销等都是一样的，个人感觉如果熟悉掌握之后，在平时编辑记录时候是非常方便高效的，像csdn的markdown编辑快捷键可以直接显示在帮助文档中，可以在编辑的时候进行查看自己所需要的快捷键。<h2 id="Notepad"><a href="#Notepad" class="headerlink" title="Notepad++"></a>Notepad++</h2>notepad这个就无需多介绍了，这个开源代码编辑器功能强大，支持多种语言，以开源、小巧、免费等特点广受各类<em>脱发人士</em>深爱。</li>
-<li>CTRL+L可以快速删除空行，这个是最爱的，经常copy一些文件代码的时候会存在一大堆空行。</li>
-<li>CTRL+Q可以添加单行注释，将当前行变为注释。</li>
-</ul>
-<h2 id="IDEA快捷键"><a href="#IDEA快捷键" class="headerlink" title="IDEA快捷键"></a>IDEA快捷键</h2><p>alt+ctrl+l代码格式化，将对齐代码</p>
-<p>ctrl+/注释，多行是鼠标选定行即可</p>
-<p>选择整个单词 shift + CTRL + 箭头 选择的是光标前后的单词</p>
-<p>ctrl+D是可以复制当行，并将其复制在光标的下一行中。–这里将其设置为删除</p>
-<p>select in main menu导航 选择打开的，显示当前文件选择目标弹出层，弹出层中有很多目标可以进行选择 alt + f1 我将其设置为alt+s (这个是必备的) 查看api文档的时候想查看文件结构的时候可以快速查看</p>
-<p>select next tab 我将其设置为CTRL+ alt + 向左箭头</p>
-<p>generate将导入一些原始的方法构造器等 也非常好用的快捷方式 我将其设置为alt + g</p>
-<p>shift  + enter 将直接开始新的一行，并且将光标放在开始处 –必备</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/%E5%BF%AB%E6%8D%B7%E9%94%AE/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-随记及总结/Untitled" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/Untitled/">随记及总结/Untitled</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/Untitled/" class="archive-article-date">
-  	<time datetime="2020-04-01T13:59:52.858Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/Untitled/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-随记及总结/Untitled 1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/Untitled%201/">随记及总结/Untitled 1</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/Untitled%201/" class="archive-article-date">
-  	<time datetime="2020-04-01T13:59:52.856Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/Untitled%201/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-随记及总结/reading notes" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/reading%20notes/">随记及总结/reading notes</a>
-    </h1>
-  
-
-        
-        <a href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/reading%20notes/" class="archive-article-date">
-  	<time datetime="2020-04-01T13:59:52.854Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="笔记"><a href="#笔记" class="headerlink" title="笔记"></a>笔记</h1><p>所谓算法，基于特定的计算模型，旨在解决某一种信息处理问题而设计的一个指令序列</p>
-<h2 id="需要具备的条件"><a href="#需要具备的条件" class="headerlink" title="需要具备的条件"></a>需要具备的条件</h2><p>正确性、有序性、可行性、重用性、确定性，同时还有输入输出。</p>
-<h3 id="bubble-sort"><a href="#bubble-sort" class="headerlink" title="bubble sort"></a>bubble sort</h3><p>经过k趟扫描后，最大的前k元素必然就位，；同时待解决问题的规模也减少至n-k</p>
-<p>两层循环，内循环从前向后，依次比较各对相邻元素，有必要则将其交换。外循环至多执行n-1次</p>
-<p>这里的交换和比较都是不同操作，所以内循环是执行了2(n-1)次</p>
-<p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200219154913160.png" alt="image-20200219154913160"></p>
-<p>在上面的while外层里面就有一个n–在对问题规模减少在监控</p>
-<h3 id="big-O-notation"><a href="#big-O-notation" class="headerlink" title="big-O notation"></a>big-O notation</h3><p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200219155513875.png" alt="image-20200219155513875"></p>
-<p>下面也就是在计算时间复杂度的时候可以省略前面的常数项，或者是一些比较小的项</p>
-<p><img src="C:%5CUsers%5Cadmin%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20200219155526227.png" alt="image-20200219155526227"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/04/01/%E9%9A%8F%E8%AE%B0%E5%8F%8A%E6%80%BB%E7%BB%93/reading%20notes/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -2351,6 +2451,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">springboot</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
               </li>
             
             <div class="clearfix"></div>
